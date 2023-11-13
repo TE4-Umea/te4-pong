@@ -81,23 +81,43 @@ texture = ExtResource("2_cqfwg")
 
 [node name="Label" type="Label" parent="Control"]
 layout_mode = 0
-offset_left = 88.0
-offset_top = 32.0
-offset_right = 192.0
-offset_bottom = 96.0
+offset_left = 80.0
+offset_top = 24.0
+offset_right = 184.0
+offset_bottom = 88.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Score: 0"
+text = "x 0"
+autowrap_mode = 2
 
 [node name="Label2" type="Label" parent="Control"]
 layout_mode = 0
-offset_left = 976.0
-offset_top = 32.0
-offset_right = 1080.0
-offset_bottom = 96.0
+offset_left = 1088.0
+offset_top = 24.0
+offset_right = 1152.0
+offset_bottom = 88.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Score: 0"
+text = "x 0"
+autowrap_mode = 2
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("3_62d1g")]
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 16.0
+offset_right = 80.0
+offset_bottom = 56.0
+texture = ExtResource("2_cqfwg")
+expand_mode = 2
+
+[node name="TextureRect2" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 1048.0
+offset_top = 16.0
+offset_right = 1088.0
+offset_bottom = 56.0
+texture = ExtResource("2_cqfwg")
+expand_mode = 2
+
+[node name="Ball" parent="." instance=ExtResource("3_62d1g")]
 position = Vector2(576, 324)
 
 [node name="p1" parent="." instance=ExtResource("1_lert0")]

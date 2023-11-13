@@ -8,8 +8,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$Control/Label.text = str("Score: " + str(Main.p1_score))
-	$Control/Label2.text = str("Score: " + str(Main.p2_score))
+	$Control/Label.text = str("x" + str(Main.p1_score))
+	$Control/Label2.text = str("x" + str(Main.p2_score))
 
 
 
