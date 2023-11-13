@@ -1,0 +1,9 @@
+StaticBody2D
+Label
+CollisionShape2D
+Area2D
+Node2D
+Sprite2D
+CharacterBody2D
+Control
+TextureRect

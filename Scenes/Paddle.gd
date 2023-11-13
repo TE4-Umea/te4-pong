@@ -1,18 +1,26 @@
-extends Area2D
-@export var speed : float = 300
-@onready var polygon_2d = $Polygon2D
-@onready var collision_polygon_2d = $CollisionPolygon2D
-var screen_size
+extends CharacterBody2D
 
-func _ready():
-	screen_size = get_viewport_rect().size
+@export var speed : float = 300.0
+@export var side = 'p1'
 
-func _process(delta):
-	var velocity = Vector2.ZERO
-	if Input.is_action_pressed('W_UP'):
-		velocity.y -= speed
-	if Input.is_action_pressed('S_DOWN'):
-		velocity.y += speed
-	var test = Vector2(0, collision_polygon_2d.get_global_transform()[2].y/2)
-	position += velocity * delta
-	position = position.clamp(Vector2.ZERO + test, screen_size - test)
+func _physics_process(delta):
+	var direction
+	if side == 'p1':
+		direction = get_axis('P1_UP', 'P1_DOWN')
+	else:
+		direction = get_axis('P2_UP', 'P2_DOWN')
+	if direction:
+		velocity.y = direction * speed
+	else:
+		velocity.y = move_toward(velocity.y, 0, speed)
+	
+	move_and_slide()
+
+func get_axis(up, down):
+	if Input.is_action_pressed(up): return -1
+	elif Input.is_action_pressed(down): return 1
+
+
+func _on_area_2d_body_entered(body):
+	body.direction.x *= -1
+	Main.side = side 
