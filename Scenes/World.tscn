@@ -17,7 +17,7 @@ size = Vector2(16, 680)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0adeh"]
 size = Vector2(16, 680)
 
-[node name="Node" type="Node"]
+[node name="World" type="Node"]
 script = ExtResource("1_i0ao4")
 
 [node name="Norr" type="Area2D" parent="."]
@@ -71,6 +71,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
 
 [node name="Background" type="TextureRect" parent="Control"]
 z_index = -10
@@ -78,6 +79,7 @@ layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
 texture = ExtResource("2_cqfwg")
+metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="Control"]
 layout_mode = 0
@@ -88,6 +90,7 @@ offset_bottom = 88.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "x 0"
 autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="Label2" type="Label" parent="Control"]
 layout_mode = 0
@@ -98,6 +101,7 @@ offset_bottom = 88.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "x 0"
 autowrap_mode = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="Control"]
 layout_mode = 0
@@ -107,6 +111,7 @@ offset_right = 80.0
 offset_bottom = 56.0
 texture = ExtResource("2_cqfwg")
 expand_mode = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect2" type="TextureRect" parent="Control"]
 layout_mode = 0
@@ -116,9 +121,38 @@ offset_right = 1088.0
 offset_bottom = 56.0
 texture = ExtResource("2_cqfwg")
 expand_mode = 2
+metadata/_edit_use_anchors_ = true
 
-[node name="Ball" parent="." instance=ExtResource("3_62d1g")]
-position = Vector2(576, 324)
+[node name="Label3" type="Label" parent="Control"]
+visible = false
+z_index = 10
+layout_mode = 0
+offset_left = 320.0
+offset_top = 192.0
+offset_right = 832.0
+offset_bottom = 448.0
+theme_override_font_sizes/font_size = 60
+text = "Winner"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayAgain" type="Button" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 448.0
+offset_top = 384.0
+offset_right = 704.0
+offset_bottom = 448.0
+text = "PLAY AGAIN"
+
+[node name="MainMenu" type="Button" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 448.0
+offset_top = 456.0
+offset_right = 704.0
+offset_bottom = 520.0
+text = "MAIN MENU"
 
 [node name="p1" parent="." instance=ExtResource("1_lert0")]
 position = Vector2(72, 320)
@@ -131,7 +165,15 @@ collision_layer = 5
 collision_mask = 5
 side = "p2"
 
+[node name="Ball" parent="." instance=ExtResource("3_62d1g")]
+position = Vector2(576, 320)
+
+[connection signal="pauseSignal" from="." to="p1" method="_on_world_pause_signal"]
+[connection signal="pauseSignal" from="." to="p2" method="_on_world_pause_signal"]
+[connection signal="pauseSignal" from="." to="Ball" method="_on_world_pause_signal"]
 [connection signal="body_entered" from="Norr" to="." method="_on_norr_body_entered"]
 [connection signal="body_entered" from="Bottom" to="." method="_on_bottom_body_entered"]
 [connection signal="body_entered" from="Kanye" to="." method="_on_kanye_body_entered"]
 [connection signal="body_entered" from="!Left" to="." method="_on_left_body_entered"]
+[connection signal="pressed" from="Control/PlayAgain" to="." method="_on_play_again_pressed"]
+[connection signal="pressed" from="Control/MainMenu" to="." method="_on_main_menu_pressed"]

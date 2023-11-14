@@ -1,6 +1,8 @@
-TextureRect
-StaticBody2D
+Button
 Label
+TextureRect
+Timer
+StaticBody2D
 CollisionShape2D
 Area2D
 Node2D
