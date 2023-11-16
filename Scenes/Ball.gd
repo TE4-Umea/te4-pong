@@ -10,12 +10,10 @@ func _ready():
 func _physics_process(delta):
 	if !paused:
 		if direction:
-			velocity = direction * speed
+			velocity = direction.normalized() * speed
 		else:
 			velocity = velocity.move_toward(Vector2.ZERO, speed)
 		move_and_slide()
-	
-
 
 func _on_world_pause_signal():
 	paused = true

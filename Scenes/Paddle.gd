@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 @export var speed : float = 300.0
 @export var side = 'p1'
+
+var max_bounce_angle = 0.3490658504					#20 grader
 var paused = false
 
 func _physics_process(delta):
@@ -24,7 +26,24 @@ func get_axis(up, down):
 
 
 func _on_area_2d_body_entered(body):
-	body.direction.x *= -1
+	var body_x_direction = body.direction.x
+	var body_collision : CollisionShape2D = body.get_node("CollisionShape2D")
+	var body_height = body_collision.shape.get_rect().size.y
+	var collision : CollisionShape2D = $Area2D/CollisionShape2D
+	var collision_height = collision.shape.get_rect().size.y
+	
+	var dist = (position.y+(collision_height/2)) - (body.position.y+(body_height/2))
+	var normalizedDist = dist/(collision_height/2)
+	
+	var bounceAngle = normalizedDist * max_bounce_angle
+	
+	var dir
+	if body_x_direction < 0:
+		dir = 1
+	else:
+		dir = -1
+		
+	body.direction = Vector2(cos(bounceAngle) * dir, sin(bounceAngle))
 	Main.side = side 
 
 
