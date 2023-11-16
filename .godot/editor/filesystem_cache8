@@ -1,9 +1,18 @@
 ea4bc82a6ad023ab7ee23ee620429895
+<<<<<<< HEAD
 ::res://::1700050743
 B).png::CompressedTexture2D::4056688228728719747::1700047680::1700047680::1::::<><>::
 icon.svg::CompressedTexture2D::2238694631515760513::1700047680::1700047680::1::::<><>::
 README.md::TextFile::-1::1700047680::0::1::::<><>::
 ::res://Scenes/::1700047680
+=======
+::res://::1700053189
+B).png::CompressedTexture2D::4056688228728719747::1700047680::1700047680::1::::<><>::
+icon.svg::CompressedTexture2D::2238694631515760513::1700047680::1700047680::1::::<><>::
+README.md::TextFile::-1::1700047680::0::1::::<><>::
+test.txt::TextFile::-1::1700053189::0::1::::<><>::
+::res://Scenes/::1700052907
+>>>>>>> 96a781bc4873560f84e3bc7a04481e25f699d5f5
 Ball.gd::GDScript::-1::1700047680::0::1::::<>CharacterBody2D<>::
 Ball.tscn::PackedScene::2736823883254811351::1700047680::0::1::::<><>::res://Scenes/Ball.gd<>uid://bx2dcegbutm0j::::res://B).png
 Main.gd::GDScript::-1::1700047680::0::1::::<>Node<>::
@@ -13,4 +22,8 @@ Paddle.gd::GDScript::-1::1700047680::0::1::::<>CharacterBody2D<>::
 Paddle.tscn::PackedScene::4510112587532384202::1700047680::0::1::::<><>::res://Scenes/Paddle.gd<>uid://bx2dcegbutm0j::::res://B).png
 UI.tscn::PackedScene::6836395561444162230::1700047680::0::1::::<><>::uid://bx2dcegbutm0j::::res://B).png
 World.gd::GDScript::-1::1700047680::0::1::::<>Node<>::
+<<<<<<< HEAD
 World.tscn::PackedScene::9002969975367433513::1700047680::0::1::::<><>::res://Scenes/World.gd<>uid://b5iy5pcb2xit3::::res://Scenes/Paddle.tscn<>uid://bx2dcegbutm0j::::res://B).png<>uid://be80dbp2b6dxv::::res://Scenes/Ball.tscn
+=======
+World.tscn::PackedScene::9002969975367433513::1700052907::0::1::::<><>::res://Scenes/World.gd<>uid://b5iy5pcb2xit3::::res://Scenes/Paddle.tscn<>uid://bx2dcegbutm0j::::res://B).png<>uid://be80dbp2b6dxv::::res://Scenes/Ball.tscn
+>>>>>>> 96a781bc4873560f84e3bc7a04481e25f699d5f5

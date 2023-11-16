@@ -1,1 +1,7 @@
 res://Scenes/World.tscn
+<<<<<<< HEAD
+=======
+res://Scenes/Paddle.tscn
+res://Scenes/Ball.tscn
+res://Scenes/MainMenu.tscn
+>>>>>>> 96a781bc4873560f84e3bc7a04481e25f699d5f5
