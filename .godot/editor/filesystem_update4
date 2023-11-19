@@ -1,4 +1,3 @@
-res://Scenes/World.tscn
-res://Scenes/Paddle.tscn
-res://Scenes/Ball.tscn
 res://Scenes/MainMenu.tscn
+res://Scenes/MainMenu.gd
+res://Item.tscn
