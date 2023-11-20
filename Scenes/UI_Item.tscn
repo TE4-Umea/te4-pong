@@ -1,16 +1,16 @@
 [gd_scene load_steps=3 format=3 uid="uid://cyrntu3r8663l"]
 
-[ext_resource type="Texture2D" uid="uid://bx2dcegbutm0j" path="res://B).png" id="1_pkdqr"]
-[ext_resource type="Script" path="res://Item.gd" id="1_x7w5b"]
+[ext_resource type="Script" path="res://Scenes/UI_Item.gd" id="1_qcyxt"]
+[ext_resource type="Texture2D" uid="uid://bx2dcegbutm0j" path="res://B).png" id="2_fntyx"]
 
-[node name="Item" type="Control"]
+[node name="UI_Item" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_x7w5b")
+script = ExtResource("1_qcyxt")
 
 [node name="BackPanel" type="ColorRect" parent="."]
 layout_mode = 1
@@ -52,7 +52,7 @@ offset_right = 52.5
 offset_bottom = 53.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_pkdqr")
+texture = ExtResource("2_fntyx")
 expand_mode = 1
 
 [node name="ItemName" type="RichTextLabel" parent="BackPanel"]
@@ -78,7 +78,7 @@ offset_bottom = -13.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Button" type="Button" parent="."]
+[node name="YesButton" type="Button" parent="."]
 layout_mode = 0
 offset_left = 403.0
 offset_top = 521.0
@@ -87,7 +87,7 @@ offset_bottom = 593.0
 theme_override_font_sizes/font_size = 40
 text = "YES"
 
-[node name="Button2" type="Button" parent="."]
+[node name="NoButton" type="Button" parent="."]
 layout_mode = 0
 offset_left = 610.0
 offset_top = 521.0
@@ -95,3 +95,6 @@ offset_right = 756.0
 offset_bottom = 593.0
 theme_override_font_sizes/font_size = 40
 text = "NO"
+
+[connection signal="pressed" from="YesButton" to="." method="_on_yes_button_pressed"]
+[connection signal="pressed" from="NoButton" to="." method="_on_no_button_pressed"]
