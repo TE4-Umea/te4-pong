@@ -168,7 +168,7 @@ speed = 500.0
 side = "p2"
 
 [node name="Ball" parent="." instance=ExtResource("3_62d1g")]
-position = Vector2(984, 552)
+position = Vector2(576, 324)
 speed = 700.0
 
 [connection signal="pauseSignal" from="." to="p1" method="_on_world_pause_signal"]
