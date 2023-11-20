@@ -6,10 +6,10 @@
 [ext_resource type="PackedScene" uid="uid://be80dbp2b6dxv" path="res://Scenes/Ball.tscn" id="3_62d1g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5vdgs"]
-size = Vector2(1184, 16)
+size = Vector2(1184, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_22hlc"]
-size = Vector2(1184, 16)
+size = Vector2(1184, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1kfys"]
 size = Vector2(16, 680)
@@ -25,13 +25,13 @@ collision_layer = 4
 collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Norr"]
-position = Vector2(576, -8)
+position = Vector2(576, -24)
 shape = SubResource("RectangleShape2D_5vdgs")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Norr"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Norr/StaticBody2D"]
-position = Vector2(576, -8)
+position = Vector2(576, -24)
 shape = SubResource("RectangleShape2D_5vdgs")
 
 [node name="Bottom" type="Area2D" parent="."]
@@ -40,13 +40,13 @@ collision_layer = 4
 collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom"]
-position = Vector2(576, -8)
+position = Vector2(576, 4)
 shape = SubResource("RectangleShape2D_22hlc")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Bottom"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom/StaticBody2D"]
-position = Vector2(576, -8)
+position = Vector2(576, 4)
 shape = SubResource("RectangleShape2D_22hlc")
 
 [node name="Kanye" type="Area2D" parent="."]
@@ -161,14 +161,14 @@ collision_mask = 5
 speed = 500.0
 
 [node name="p2" parent="." instance=ExtResource("1_lert0")]
-position = Vector2(1080, 320)
+position = Vector2(1080, 520)
 collision_layer = 5
 collision_mask = 5
 speed = 500.0
 side = "p2"
 
 [node name="Ball" parent="." instance=ExtResource("3_62d1g")]
-position = Vector2(576, 320)
+position = Vector2(984, 552)
 speed = 700.0
 
 [connection signal="pauseSignal" from="." to="p1" method="_on_world_pause_signal"]

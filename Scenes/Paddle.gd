@@ -3,7 +3,7 @@ extends CharacterBody2D
 @export var speed : float = 300.0
 @export var side = 'p1'
 
-var max_bounce_angle = 0.3490658504					#20 grader
+var max_bounce_angle = 0.5235987756 		#30
 var paused = false
 var recently_hit = false
 

@@ -9,13 +9,11 @@ func _ready():
 
 func _on_norr_body_entered(body):
 	if !body.is_in_group('paddles'):
-		print("HIT")
 		body.direction.y *= -1
 
 
 func _on_bottom_body_entered(body):
 	if !body.is_in_group('paddles'):
-		print("HIT")
 		body.direction.y *= -1
 
 
