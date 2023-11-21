@@ -1,6 +1,3 @@
 res://Scenes/MainMenu.tscn
-res://Item.tscn
-res://Item.gd
-res://UI_Item.tscn
 res://Scenes/UI_Item.tscn
 res://Scenes/UI_Item.gd

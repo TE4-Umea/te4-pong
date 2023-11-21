@@ -54,7 +54,9 @@ func set_decsription(text):
 	decript.append_text(text)
 
 func _on_yes_button_pressed():
+	print("hello i am yes")
 	yes_button_pressed.emit()
 
 func _on_no_button_pressed():
+	print("hello i am no")	
 	no_button_pressed.emit()
