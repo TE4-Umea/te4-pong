@@ -1,6 +1,11 @@
 res://Scenes/MainMenu.tscn
-res://Item.tscn
-res://Item.gd
-res://UI_Item.tscn
-res://Scenes/UI_Item.tscn
-res://Scenes/UI_Item.gd
+res://Scenes/Ball.tscn
+res://Scenes/Paddle.tscn
+res://Scenes/World.tscn
+res://Scenes/Map_Point.tscn
+res://Scenes/Map_Point.gd
+res://Scenes/Map_Init.tscn
+res://Scenes/Map_Init.gd
+res://Scenes/OverworldMap.tscn
+res://Scenes/Map_Node.tscn
+res://MapNode.gd

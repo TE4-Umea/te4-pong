@@ -1,3 +1,6 @@
+Marker2D
+Node2D
+Node
 Button
 RichTextLabel
 Label
@@ -13,5 +16,4 @@ Sprite2D
 Area2D
 Timer
 StaticBody2D
-Node2D
 CharacterBody2D
