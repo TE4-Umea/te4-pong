@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://d1jdun1b61cjp"]
 
-[ext_resource type="Script" path="res://Scenes/World.gd" id="1_i0ao4"]
-[ext_resource type="PackedScene" uid="uid://b5iy5pcb2xit3" path="res://Scenes/Paddle.tscn" id="1_lert0"]
-[ext_resource type="Texture2D" uid="uid://bx2dcegbutm0j" path="res://B).png" id="2_cqfwg"]
-[ext_resource type="PackedScene" uid="uid://be80dbp2b6dxv" path="res://Scenes/Ball.tscn" id="3_62d1g"]
+[ext_resource type="Script" path="res://Scenes/Map/World.gd" id="1_i0ao4"]
+[ext_resource type="PackedScene" uid="uid://b5iy5pcb2xit3" path="res://Scenes/Player/Paddle.tscn" id="1_lert0"]
+[ext_resource type="Texture2D" uid="uid://bx2dcegbutm0j" path="res://Assets/Img/B).png" id="2_cqfwg"]
+[ext_resource type="PackedScene" uid="uid://be80dbp2b6dxv" path="res://Scenes/Ball/Ball.tscn" id="3_62d1g"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5vdgs"]
 size = Vector2(1184, 48)

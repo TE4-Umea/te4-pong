@@ -55,7 +55,6 @@ func set_decsription(text):
 
 func _on_yes_button_pressed():
 	print("hello i am yes")
-	print("test")	
 	yes_button_pressed.emit()
 
 func _on_no_button_pressed():
