@@ -13,19 +13,25 @@ size = Vector2(20, 132)
 script = ExtResource("1_yyuuv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0.0247495, -0.0126443)
+position = Vector2(8.01602, 63.9967)
 rotation = -1.5708
 scale = Vector2(0.558923, 0.0691016)
 texture = ExtResource("2_wwu6y")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(7.99127, 64.0094)
 shape = SubResource("RectangleShape2D_73suw")
 
 [node name="Area2D" type="Area2D" parent="."]
+position = Vector2(7.99127, 64.0094)
 collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_kuvxx")
 
+[node name="RecentHitTimer" type="Timer" parent="."]
+wait_time = 0.1
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="RecentHitTimer" to="." method="_on_recent_hit_timer_timeout"]
