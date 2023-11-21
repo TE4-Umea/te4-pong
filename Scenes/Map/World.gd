@@ -50,7 +50,7 @@ func pauseGame():
 func _on_play_again_pressed():
 	Main.p1_score = 0
 	Main.p2_score = 0
-	get_tree().change_scene_to_file("res://Scenes/World.tscn")
+	get_tree().change_scene_to_file("res://Scenes/Map/World.tscn")
 
 
 func _on_main_menu_pressed():
