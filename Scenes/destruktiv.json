@@ -1,0 +1,72 @@
+[
+  {
+	"name": "name",
+	"desc": "desc",
+	"ability": "ability",
+	"rarity": "rarity",
+	"element": "element",
+	"stats": {
+	  "damage": 0,
+	  "hp": 0,
+	  "luck": 0,
+	  "movment_speed": 0,
+	  "ball_speed": 0
+	}
+  },
+  {
+	"name": "Jim",
+	"desc": "It's him",
+	"ability": "JIM",
+	"rarity": "normal",
+	"element": "fire",
+	"stats": {
+	  "damage": 10,
+	  "hp": 1,
+	  "luck": 0.1,
+	  "movment_speed": 100,
+	  "ball_speed": 44
+	}
+  },
+  {
+	"name": "Baba",
+	"desc": "¤jimæ ¥hater€",
+	"ability": "spa",
+	"rarity": "i dont know",
+	"element": "epic",
+	"stats": {
+	  "damage": 0,
+	  "hp": 2,
+	  "luck": 0.5,
+	  "movment_speed": 90,
+	  "ball_speed": 0.6
+	}
+  },
+  {
+	"name": "@Skaba",
+	"desc": "[]12123{}()awd¥ ¤ € æ",
+	"ability": "",
+	"rarity": "09b ",
+	"element": "yes",
+	"stats": {
+	  "damage": 0,
+	  "hp": 100,
+	  "luck": 0,
+	  "movment_speed": 0,
+	  "ball_speed": 0
+	}
+  },
+  {
+	"name": 0,
+	"desc": 123,
+	"ability": 51,
+	"rarity": 123,
+	"element": "?banana",
+	"stats": {
+	  "damage": "hawd",
+	  "hp": "fw",
+	  "luck": "fawd",
+	  "movment_speed": "klawd",
+	  "ball_speed": "öawdp?"
+	}
+  }
+]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cyrntu3r8663l"]
 
-[ext_resource type="Script" path="res://Scenes/UI_Item.gd" id="1_qcyxt"]
-[ext_resource type="Texture2D" uid="uid://bx2dcegbutm0j" path="res://B).png" id="2_fntyx"]
+[ext_resource type="Script" path="res://Scenes/UI_Item.gd" id="1_yi61t"]
+[ext_resource type="Texture2D" uid="uid://bx2dcegbutm0j" path="res://B).png" id="2_bth7i"]
 
 [node name="UI_Item" type="Control"]
 layout_mode = 3
@@ -10,7 +10,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_qcyxt")
+script = ExtResource("1_yi61t")
 
 [node name="BackPanel" type="ColorRect" parent="."]
 layout_mode = 1
@@ -52,7 +52,7 @@ offset_right = 52.5
 offset_bottom = 53.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_fntyx")
+texture = ExtResource("2_bth7i")
 expand_mode = 1
 
 [node name="ItemName" type="RichTextLabel" parent="BackPanel"]
