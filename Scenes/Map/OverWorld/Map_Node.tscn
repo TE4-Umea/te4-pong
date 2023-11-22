@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpll6eubtvmb"]
+
+[ext_resource type="Script" path="res://Scenes/Map/OverWorld/MapNode.gd" id="1_ryves"]
+
+[node name="MapNode" type="Marker2D" groups=["map_node"]]
+script = ExtResource("1_ryves")
+
+[node name="Label" type="Label" parent="."]
+offset_top = -24.0
+offset_right = 40.0
+offset_bottom = -1.0

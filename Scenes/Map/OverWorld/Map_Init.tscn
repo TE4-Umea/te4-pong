@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c0a41qpfebny"]
 
-[ext_resource type="Script" path="res://Scenes/Map/OwerWorld/Map_Init.gd" id="1_4vrbc"]
+[ext_resource type="Script" path="res://Scenes/Map/OverWorld/Map_Init.gd" id="1_4vrbc"]
 
 [node name="MapInit" type="Marker2D"]
 script = ExtResource("1_4vrbc")
