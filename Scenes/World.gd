@@ -26,6 +26,7 @@ func _on_bottom_body_entered(body):
 		body.direction.y *= -1
 
 
+
 func _on_kanye_body_entered(body):
 	Main.p2_score += 1
 	$Control/Label2.text = str("x" + str(Main.p2_score))
