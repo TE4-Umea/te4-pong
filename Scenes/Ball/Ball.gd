@@ -4,8 +4,8 @@ var direction = Vector2.ZERO
 var paused = false
 
 func _ready():
-	direction.y = [1, -1].pick_random()
-	direction.x = [1, -1].pick_random()
+	direction.y = randf_range[1.0, -1.0]
+	direction.x = [-1].pick_random()
 
 func _process(delta):
 	if position.y < 0 or position.y > get_viewport_rect().size.y:
