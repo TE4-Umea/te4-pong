@@ -2,12 +2,23 @@ extends Node
 
 var data_file_path = "res://Scenes/Item/destruktiv.json"
 
-func load_json_file(filPath : String, id):
-	if FileAccess.file_exists(filPath):
-		var dataFile = FileAccess.open(filPath, FileAccess.READ)
-		var parseResult = JSON.parse_string(dataFile.get_as_text())
-		if parseResult is Array:
-			return parseResult[id]
+func json_file_size():
+	if FileAccess.file_exists(data_file_path):
+		var data_file = FileAccess.open(data_file_path, FileAccess.READ)
+		var parse_result = JSON.parse_string(data_file.get_as_text())
+		if parse_result is Array:
+			return parse_result.size() - 1
+		else:
+			print("Error cant get size")
+	else:
+		print("file no exist!")
+
+func load_json_file(fil_path : String, id):
+	if FileAccess.file_exists(fil_path):
+		var data_file = FileAccess.open(fil_path, FileAccess.READ)
+		var parse_result = JSON.parse_string(data_file.get_as_text())
+		if parse_result is Array:
+			return parse_result[id]
 		else:
 			print("Error reading file!")
 	else:

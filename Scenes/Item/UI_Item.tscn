@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cyrntu3r8663l"]
+[gd_scene load_steps=4 format=3 uid="uid://cyrntu3r8663l"]
 
 [ext_resource type="Script" path="res://Scenes/Item/UI_Item.gd" id="1_yi61t"]
 [ext_resource type="Texture2D" uid="uid://bx2dcegbutm0j" path="res://Assets/Img/B).png" id="2_bth7i"]
+[ext_resource type="PackedScene" uid="uid://bim0pljk3s16v" path="res://Scenes/Item/json_data.tscn" id="3_32wix"]
 
 [node name="UI_Item" type="Control"]
 layout_mode = 3
@@ -95,6 +96,8 @@ offset_right = 756.0
 offset_bottom = 593.0
 theme_override_font_sizes/font_size = 40
 text = "NO"
+
+[node name="JsonData" parent="." instance=ExtResource("3_32wix")]
 
 [connection signal="pressed" from="YesButton" to="." method="_on_yes_button_pressed"]
 [connection signal="pressed" from="NoButton" to="." method="_on_no_button_pressed"]
