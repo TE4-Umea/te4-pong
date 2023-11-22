@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cyrntu3r8663l"]
 
-[ext_resource type="Script" path="res://Scenes/UI_Item.gd" id="1_yi61t"]
-[ext_resource type="Texture2D" uid="uid://bx2dcegbutm0j" path="res://B).png" id="2_bth7i"]
+[ext_resource type="Script" path="res://Scenes/Item/UI_Item.gd" id="1_yi61t"]
+[ext_resource type="Texture2D" uid="uid://bx2dcegbutm0j" path="res://Assets/Img/B).png" id="2_bth7i"]
 
 [node name="UI_Item" type="Control"]
 layout_mode = 3

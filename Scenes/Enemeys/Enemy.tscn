@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://ti5dnrlnocox"]
 
-[ext_resource type="Script" path="res://Scenes/Enemy.gd" id="1_4u4h7"]
-[ext_resource type="Texture2D" uid="uid://bx2dcegbutm0j" path="res://B).png" id="2_20i51"]
+[ext_resource type="Script" path="res://Scenes/Enemeys/Enemy.gd" id="1_4u4h7"]
+[ext_resource type="Texture2D" uid="uid://bx2dcegbutm0j" path="res://Assets/Img/B).png" id="2_20i51"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1il5r"]
 width = 228

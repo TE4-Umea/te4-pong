@@ -11,13 +11,13 @@ config_version=5
 [application]
 
 config/name="Pong"
-run/main_scene="res://Scenes/OverworldMap.tscn"
+run/main_scene="res://Scenes/Map/OwerWorld/OverworldMap.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="res://Assets/Img/icon.svg"
 
 [autoload]
 
-Main="*res://Scenes/Main.gd"
+Main="*res://Scenes/Map/Main.gd"
 
 [display]
 
