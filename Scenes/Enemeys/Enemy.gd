@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var floating_text = preload("res://Scenes/floating_text.tscn")
+var floating_text = preload("res://Scenes/Enemeys/floating_text.tscn")
 
 @export var speed : float = 300.0
 @export var enemy_name = "alexandro"
@@ -11,7 +11,7 @@ var damage = 10
 var movement_speed = 300
 var fire_rate = 10
 var paused = false
-var BULLET = preload("res://Scenes/Ball.tscn")
+var BULLET = preload("res://Scenes/Ball/Ball.tscn")
 
 func shoot():
 	print("shoot")
