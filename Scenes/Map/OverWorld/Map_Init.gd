@@ -1,7 +1,7 @@
 extends Marker2D
-@export var length : int = 7
-@export var x_gap : int = 64
-@export var y_gap : int = 64
+@export var length : int = 3
+@export var x_gap : int = 128
+@export var y_gap : int = 192
 
 @onready var map_node : PackedScene = preload("res://Scenes/Map/OverWorld/Map_Node.tscn")
 

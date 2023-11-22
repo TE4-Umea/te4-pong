@@ -1,11 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://cpll6eubtvmb"]
+[gd_scene load_steps=4 format=3 uid="uid://cpll6eubtvmb"]
 
 [ext_resource type="Script" path="res://Scenes/Map/OverWorld/MapNode.gd" id="1_ryves"]
+[ext_resource type="Texture2D" uid="uid://bx2dcegbutm0j" path="res://Assets/Img/B).png" id="2_00245"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_arw60"]
+size = Vector2(32, 32)
 
 [node name="MapNode" type="Marker2D" groups=["map_node"]]
 script = ExtResource("1_ryves")
 
-[node name="Label" type="Label" parent="."]
-offset_top = -24.0
-offset_right = 40.0
-offset_bottom = -1.0
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1.43051e-06, -1.90735e-06)
+scale = Vector2(0.139738, 0.139738)
+texture = ExtResource("2_00245")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_arw60")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]
