@@ -2,16 +2,20 @@ extends Control
 var labol_color = "blue"
 var pros_color = "green"
 var cons_color = "red"
-
 signal yes_button_pressed
 signal no_button_pressed
 
 
 func _ready():
-	set_label_name("awdawdawdawd")
+	var json = $JsonData
+	var json_size = json.json_file_size()
+	var random_item = (randi_range(0, json_size))
+	
+	set_label_name(json.get_json_name(random_item))
 	# För pros(grön) använd = ¥text€
 	# För cons(röd) använd = ¤textæ
-	set_decsription("hej ¥luck€ ¤deathæ ¥ajnwdkjn€ ¤awdawdæ")
+	set_decsription(json.get_json_desc(random_item))
+
 
 func set_label_name(name):
 	var label_name = $BackPanel/ItemName
