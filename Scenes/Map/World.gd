@@ -15,7 +15,8 @@ func spawn_ball(x,y):
 func _ready():
 	screensize = get_viewport().get_visible_rect().size
 	#$enemy.shoot()
-	$shielded_enemy.shoot()
+	#$shielded_enemy.shoot()
+	$fast_enemy.shoot()
 
 func _on_norr_body_entered(body):
 	if !body.is_in_group('paddles'):

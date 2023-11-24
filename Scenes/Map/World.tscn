@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Scenes/Map/World.gd" id="1_a8amt"]
 [ext_resource type="Texture2D" uid="uid://bx2dcegbutm0j" path="res://Assets/Img/B).png" id="2_uic7l"]
 [ext_resource type="PackedScene" uid="uid://b5iy5pcb2xit3" path="res://Scenes/Player/Paddle.tscn" id="3_5a22m"]
-[ext_resource type="PackedScene" uid="uid://fworrtukuh2s" path="res://Scenes/Enemeys/shielded_enemy.tscn" id="5_kmq1q"]
+[ext_resource type="PackedScene" uid="uid://35kb3ptp4syg" path="res://Scenes/Enemeys/fast_enemy.tscn" id="4_vypgt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5vdgs"]
 size = Vector2(1184, 48)
@@ -160,8 +160,8 @@ collision_layer = 5
 collision_mask = 5
 speed = 500.0
 
-[node name="shielded_enemy" parent="." instance=ExtResource("5_kmq1q")]
-position = Vector2(1005, 329)
+[node name="fast_enemy" parent="." instance=ExtResource("4_vypgt")]
+position = Vector2(979, 236)
 
 [connection signal="body_entered" from="Norr" to="." method="_on_norr_body_entered"]
 [connection signal="body_entered" from="Bottom" to="." method="_on_bottom_body_entered"]

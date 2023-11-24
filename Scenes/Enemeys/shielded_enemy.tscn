@@ -14,7 +14,7 @@ size = Vector2(222, 228)
 size = Vector2(228, 231)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ckjk"]
-size = Vector2(6.5, 230)
+size = Vector2(6.5, 216)
 
 [node name="shielded_enemy" type="CharacterBody2D"]
 position = Vector2(236, 109)
@@ -53,8 +53,15 @@ position = Vector2(-232, 0)
 collision_layer = 4
 collision_mask = 2
 
+[node name="Sprite2D" type="Sprite2D" parent="Area2D2"]
+modulate = Color(0.0156863, 0.454902, 1, 1)
+position = Vector2(100.26, -0.784058)
+rotation = -1.5708
+scale = Vector2(0.944967, 0.0304319)
+texture = ExtResource("2_hqnbd")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
-position = Vector2(100, 0)
+position = Vector2(100, -1)
 shape = SubResource("RectangleShape2D_8ckjk")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout" flags=18]
