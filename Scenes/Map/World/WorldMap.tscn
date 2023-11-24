@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5io42hl1yngq"]
+
+[ext_resource type="Script" path="res://Scenes/Map/World/Walker.gd" id="1_0m7ej"]
+
+[node name="WorldMap" type="Node"]
+
+[node name="Walker" type="Node2D" parent="."]
+position = Vector2(576, 320)
+script = ExtResource("1_0m7ej")
