@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c4nuo3d75aepi"]
+[gd_scene load_steps=3 format=3 uid="uid://c4nuo3d75aepi"]
 
 [ext_resource type="Texture2D" uid="uid://bx2dcegbutm0j" path="res://Assets/Img/B).png" id="1_tlinf"]
+[ext_resource type="Theme" uid="uid://hdu1ggqw5xvg" path="res://Theme/button_default.tres" id="2_2eeiv"]
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -73,6 +74,7 @@ offset_left = 448.0
 offset_top = 384.0
 offset_right = 704.0
 offset_bottom = 448.0
+theme = ExtResource("2_2eeiv")
 text = "PLAY AGAIN"
 
 [node name="MainMenu" type="Button" parent="."]
@@ -82,4 +84,5 @@ offset_left = 448.0
 offset_top = 456.0
 offset_right = 704.0
 offset_bottom = 520.0
+theme = ExtResource("2_2eeiv")
 text = "MAIN MENU"

@@ -56,10 +56,10 @@
 	}
   },
   {
-	"name": 0,
-	"desc": 123,
-	"ability": 51,
-	"rarity": 123,
+	"name": "0",
+	"desc": "123",
+	"ability": "51",
+	"rarity": "123",
 	"element": "?banana",
 	"stats": {
 	  "damage": "hawd",
