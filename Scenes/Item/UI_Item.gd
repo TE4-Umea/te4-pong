@@ -71,11 +71,8 @@ func _on_no_button_pressed():
 func _on_ui_swich_item_remove_button():
 	$UI_SwichItem.hide()
 	$Item.show()
-	print(global.player_items)
 	var item_storage = []
 	item_storage.append(random_item)
-	print(global.player_items)
 	global.update_player_items(item_storage)
-	print(global.player_items)
 	yes_button_pressed.emit()
 	

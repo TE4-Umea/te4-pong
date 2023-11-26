@@ -39,6 +39,4 @@ func delet_item(button_true):
 		global.player_items.pop_back()
 	var index = button_true.find(true, 0)
 	global.player_items.remove_at(index)
-	print("print 3")
-	print(global.player_items)
 
