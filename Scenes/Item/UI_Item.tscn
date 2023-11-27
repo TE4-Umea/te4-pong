@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://cyrntu3r8663l"]
+[gd_scene load_steps=6 format=3 uid="uid://cyrntu3r8663l"]
 
 [ext_resource type="Script" path="res://Scenes/Item/UI_Item.gd" id="1_yi61t"]
 [ext_resource type="Texture2D" uid="uid://bx2dcegbutm0j" path="res://Assets/Img/B).png" id="2_bth7i"]
 [ext_resource type="PackedScene" uid="uid://bim0pljk3s16v" path="res://Scenes/Item/json_data.tscn" id="3_32wix"]
+[ext_resource type="Theme" uid="uid://hdu1ggqw5xvg" path="res://Theme/button_default.tres" id="3_alrf4"]
+[ext_resource type="PackedScene" uid="uid://dsxw43c4p3wjp" path="res://Scenes/Item/ui_swich_item.tscn" id="5_gdp18"]
 
 [node name="UI_Item" type="Control"]
 layout_mode = 3
@@ -13,23 +15,27 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_yi61t")
 
-[node name="BackPanel" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 8
+[node name="Item" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BackPanel" type="ColorRect" parent="Item"]
+layout_mode = 2
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -177.0
-offset_top = -284.0
-offset_right = 177.0
-offset_bottom = 162.0
+offset_left = 379.0
+offset_top = 20.0
+offset_right = 733.0
+offset_bottom = 466.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.152941, 0.152941, 0.152941, 1)
 metadata/_edit_lock_ = true
 
-[node name="ImagePanel" type="ColorRect" parent="BackPanel"]
+[node name="ImagePanel" type="ColorRect" parent="Item/BackPanel"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -40,7 +46,7 @@ offset_right = 98.5
 offset_bottom = 275.0
 grow_horizontal = 2
 
-[node name="Image" type="TextureRect" parent="BackPanel/ImagePanel"]
+[node name="Image" type="TextureRect" parent="Item/BackPanel/ImagePanel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -56,7 +62,7 @@ grow_vertical = 2
 texture = ExtResource("2_bth7i")
 expand_mode = 1
 
-[node name="ItemName" type="RichTextLabel" parent="BackPanel"]
+[node name="ItemName" type="RichTextLabel" parent="Item/BackPanel"]
 layout_mode = 0
 offset_left = 78.0
 offset_top = 15.0
@@ -65,7 +71,7 @@ offset_bottom = 76.0
 bbcode_enabled = true
 scroll_active = false
 
-[node name="Decription" type="RichTextLabel" parent="BackPanel"]
+[node name="Decription" type="RichTextLabel" parent="Item/BackPanel"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -79,25 +85,32 @@ offset_bottom = -13.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="YesButton" type="Button" parent="."]
-layout_mode = 0
+[node name="YesButton" type="Button" parent="Item"]
+layout_mode = 2
 offset_left = 403.0
 offset_top = 521.0
 offset_right = 549.0
 offset_bottom = 593.0
+theme = ExtResource("3_alrf4")
 theme_override_font_sizes/font_size = 40
 text = "YES"
 
-[node name="NoButton" type="Button" parent="."]
-layout_mode = 0
+[node name="NoButton" type="Button" parent="Item"]
+layout_mode = 2
 offset_left = 610.0
 offset_top = 521.0
 offset_right = 756.0
 offset_bottom = 593.0
+theme = ExtResource("3_alrf4")
 theme_override_font_sizes/font_size = 40
 text = "NO"
 
 [node name="JsonData" parent="." instance=ExtResource("3_32wix")]
 
-[connection signal="pressed" from="YesButton" to="." method="_on_yes_button_pressed"]
-[connection signal="pressed" from="NoButton" to="." method="_on_no_button_pressed"]
+[node name="UI_SwichItem" parent="." instance=ExtResource("5_gdp18")]
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="Item/YesButton" to="." method="_on_yes_button_pressed"]
+[connection signal="pressed" from="Item/NoButton" to="." method="_on_no_button_pressed"]
+[connection signal="remove_button" from="UI_SwichItem" to="." method="_on_ui_swich_item_remove_button"]
