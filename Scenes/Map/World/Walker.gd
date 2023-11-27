@@ -2,7 +2,10 @@ extends Node2D
 
 const DIRECTIONS = [Vector2.RIGHT, Vector2.UP, Vector2.LEFT, Vector2.DOWN]
 
+signal done_with_map
+
 var map_steps = []
+var map_position = Vector2.ZERO
 
 @export var steps = 40
 @export var step_size = 16
@@ -13,7 +16,7 @@ func _ready():
 
 
 func _generate_map():
-	map_steps.append(position)
+	map_steps.append(map_position)
 	var last_dir = Vector2.ZERO
 	var steps_in_dir = 0
 	var step = 1
@@ -24,17 +27,9 @@ func _generate_map():
 			if steps_in_dir >= 2:
 				steps_in_dir = 0
 				dir *= -1
-		position = position + dir * step_size
-		if position not in map_steps:
-			map_steps.append(position)
+		map_position = map_position + dir
+		if map_position not in map_steps:
+			map_steps.append(map_position)
 			step += 1
 		last_dir = dir
-
-func _draw():
-	position = Vector2.ZERO
-	for step in map_steps:
-		draw_rect(Rect2(step.x, step.y, step_size, step_size), Color.AQUAMARINE, false)
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+	done_with_map.emit(map_steps)
