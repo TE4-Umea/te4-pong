@@ -67,6 +67,7 @@ script = ExtResource("1_pu3eo")
 [node name="Walker" type="Node2D" parent="."]
 position = Vector2(576, 320)
 script = ExtResource("1_0m7ej")
+steps = 15
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_nlcyy")
