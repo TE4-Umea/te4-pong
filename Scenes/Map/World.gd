@@ -26,24 +26,22 @@ func _on_bottom_body_entered(body):
 
 
 func _on_kanye_body_entered(body):
-	Main.p2_score += 1
-	$Control/Label2.text = str("x" + str(Main.p2_score))
-	
+	global.player_hp -= 25
+	$ProgressBar.value = global.player_hp
 	await get_tree().create_timer(1).timeout
 	
 	body.queue_free()
-	if Main.p2_score >= maxScore:
-		$Control/Label3.text = ("Player 2 won")
+	if global.player_hp < 1:
+		$Control/Label3.text = ("du dog :c")
 		pauseGame()
 
 func _on_left_body_entered(body):#!left
-	Main.p1_score += 1
-	$Control/Label.text = str("x" + str(Main.p1_score))
+	global.p1_score = 1
 	
 	await get_tree().create_timer(1).timeout
 	
 	body.queue_free()
-	if Main.p1_score >= maxScore:
+	if global.p1_score >= maxScore:
 		$Control/Label3.text = ("Player 1 won")
 		pauseGame()
 	
@@ -55,12 +53,14 @@ func pauseGame():
 	pauseSignal.emit()
 
 func _on_play_again_pressed():
-	Main.p1_score = 0
-	Main.p2_score = 0
+	global.player_hp = 100
+	global.p1_score = 0
+	global.p2_score = 0
 	get_tree().change_scene_to_file("res://Scenes/Map/World.tscn")
 
 
 func _on_main_menu_pressed():
-	Main.p1_score = 0
-	Main.p2_score = 0
+	global.player_hp = 100
+	global.p1_score = 0
+	global.p2_score = 0
 	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")

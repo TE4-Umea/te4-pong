@@ -27,7 +27,7 @@ func _physics_process(delta):
 
 func shoot():
 	print("shoot")
-	owner.spawn_ball(position.x - $Area2D/CollisionShape2D.shape.size.x/2 - Main.ball_size.x/2-1, position.y)
+	owner.spawn_ball(position.x - $Area2D/CollisionShape2D.shape.size.x/2 - global.ball_size.x/2-1, position.y)
 	$Timer.wait_time = [0.5,1,2].pick_random()
 	$Timer.start()
 

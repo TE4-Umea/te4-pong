@@ -4,7 +4,7 @@ var direction = Vector2.ZERO
 var paused = false
 
 func _ready():
-	Main.ball_size = $CollisionShape2D.shape.size
+	global.ball_size = $CollisionShape2D.shape.size
 	direction.y = randf_range(-1.0, 1.0)
 	direction.x = [-1].pick_random()
 
