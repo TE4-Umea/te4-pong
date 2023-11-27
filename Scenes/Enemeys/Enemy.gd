@@ -14,7 +14,6 @@ var paused = false
 var BULLET = preload("res://Scenes/Ball/Ball.tscn")
 
 func shoot():
-	print("shoot")
 	owner.spawn_ball(owner.screensize.x -305, owner.screensize.y / 2)
 	$Timer.wait_time = [0.5,1,2].pick_random()
 	$Timer.start()
@@ -30,14 +29,12 @@ func take_damage(dmg):
 		die()
 
 func die():
-	print("removing enemy")
 	queue_free()
 
 
 func _on_area_2d_body_entered(body):
 	body.queue_free()
 	take_damage(25)
-	print(hp)
 
 
 func _on_timer_timeout():

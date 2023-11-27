@@ -18,6 +18,7 @@ config/icon="res://Assets/Img/icon.svg"
 [autoload]
 
 global="*res://Scenes/Map/Main.gd"
+player_item="*res://Scenes/Item/Item.gd"
 
 [display]
 

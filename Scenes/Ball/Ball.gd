@@ -2,6 +2,7 @@ extends CharacterBody2D
 @export var speed : float = 300.0
 var direction = Vector2.ZERO
 var paused = false
+var damege
 
 func _ready():
 	direction.y = randf_range(-1.0, 1.0)
@@ -21,3 +22,4 @@ func _physics_process(delta):
 
 func _on_world_pause_signal():
 	paused = true
+
