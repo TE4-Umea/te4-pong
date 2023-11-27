@@ -161,7 +161,7 @@ collision_mask = 5
 speed = 500.0
 
 [node name="fast_enemy" parent="." instance=ExtResource("4_vypgt")]
-position = Vector2(979, 236)
+position = Vector2(1013, 217)
 
 [connection signal="body_entered" from="Norr" to="." method="_on_norr_body_entered"]
 [connection signal="body_entered" from="Bottom" to="." method="_on_bottom_body_entered"]

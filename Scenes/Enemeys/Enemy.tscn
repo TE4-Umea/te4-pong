@@ -28,7 +28,11 @@ stretch_margin_left = 1
 texture_progress = SubResource("NoiseTexture2D_1il5r")
 tint_progress = Color(1, 0.137255, 0, 1)
 
+[node name="MovementTimer" type="Timer" parent="."]
+autostart = true
+
 [node name="Timer" type="Timer" parent="."]
+autostart = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0.25, -1)
@@ -47,5 +51,6 @@ collision_mask = 2
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_clax8")
 
+[connection signal="timeout" from="MovementTimer" to="." method="_on_movement_timer_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

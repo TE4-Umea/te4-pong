@@ -14,17 +14,13 @@ func spawn_ball(x,y):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screensize = get_viewport().get_visible_rect().size
-	#$enemy.shoot()
-	#$shielded_enemy.shoot()
-	$fast_enemy.shoot()
 
 func _on_norr_body_entered(body):
-	if !body.is_in_group('paddles'):
+	if body.is_in_group('ball'):
 		body.direction.y *= -1
 
-
 func _on_bottom_body_entered(body):
-	if !body.is_in_group('paddles'):
+	if body.is_in_group('ball'):
 		body.direction.y *= -1
 
 
