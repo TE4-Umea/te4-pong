@@ -17,7 +17,7 @@ config/icon="res://Assets/Img/icon.svg"
 
 [autoload]
 
-Main="*res://Scenes/Map/Main.gd"
+global="*res://Scenes/Map/Main.gd"
 
 [display]
 
