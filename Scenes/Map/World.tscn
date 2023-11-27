@@ -82,43 +82,11 @@ offset_bottom = 648.0
 texture = ExtResource("2_uic7l")
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = 80.0
-offset_top = 24.0
-offset_right = 184.0
-offset_bottom = 88.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "x 0"
-autowrap_mode = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="Label2" type="Label" parent="Control"]
-layout_mode = 0
-offset_left = 1088.0
-offset_top = 24.0
-offset_right = 1152.0
-offset_bottom = 88.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "x 0"
-autowrap_mode = 2
-metadata/_edit_use_anchors_ = true
-
 [node name="TextureRect" type="TextureRect" parent="Control"]
 layout_mode = 0
 offset_left = 40.0
 offset_top = 16.0
 offset_right = 80.0
-offset_bottom = 56.0
-texture = ExtResource("2_uic7l")
-expand_mode = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="TextureRect2" type="TextureRect" parent="Control"]
-layout_mode = 0
-offset_left = 1048.0
-offset_top = 16.0
-offset_right = 1088.0
 offset_bottom = 56.0
 texture = ExtResource("2_uic7l")
 expand_mode = 2
@@ -166,6 +134,14 @@ position = Vector2(-277, 262)
 
 [node name="shielded_enemy" parent="." instance=ExtResource("4_60crn")]
 position = Vector2(974, 336)
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+modulate = Color(1, 0, 0, 1)
+offset_left = 82.0
+offset_top = 24.0
+offset_right = 447.0
+offset_bottom = 51.0
+value = 100.0
 
 [connection signal="body_entered" from="Norr" to="." method="_on_norr_body_entered"]
 [connection signal="body_entered" from="Bottom" to="." method="_on_bottom_body_entered"]
