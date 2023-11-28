@@ -8,6 +8,9 @@ var max_bounce_angle = 0.5235987756 #30
 var paused = false
 var recently_hit = false
 
+func _ready():
+	player_item.signal_player_for_item.connect(self.grab_item)
+
 func _physics_process(delta):
 	var direction
 	if !paused:
@@ -51,10 +54,13 @@ func _on_area_2d_body_entered(body):
 		recently_hit = true
 		$RecentHitTimer.start()
 
-
 func _on_world_pause_signal():
 	paused = true
 
-
 func _on_recent_hit_timer_timeout():
 	recently_hit = false
+
+func grab_item():
+	print("have item")
+	var item = player_item.give_item_to_player()
+	print(item)
