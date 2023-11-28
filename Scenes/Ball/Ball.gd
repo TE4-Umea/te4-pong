@@ -5,6 +5,7 @@ var paused = false
 var damege
 
 func _ready():
+	global.ball_size = $CollisionShape2D.shape.size
 	direction.y = randf_range(-1.0, 1.0)
 	direction.x = [-1].pick_random()
 
