@@ -5,6 +5,7 @@ signal pauseSignal
 var BALL = preload("res://Scenes/Ball/Ball.tscn")
 
 func spawn_ball(x,y):
+	print("spawning ball")
 	var ball =  BALL.instantiate()
 	ball.global_position = Vector2(x,y)
 	ball.direction.x = -1
@@ -13,33 +14,29 @@ func spawn_ball(x,y):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screensize = get_viewport().get_visible_rect().size
-	$enemy.shoot()
 
 func _on_norr_body_entered(body):
-	if !body.is_in_group('paddles'):
+	if body.is_in_group('ball'):
 		body.direction.y *= -1
 
-
 func _on_bottom_body_entered(body):
-	if !body.is_in_group('paddles'):
+	if body.is_in_group('ball'):
 		body.direction.y *= -1
 
 
 
 func _on_kanye_body_entered(body):
-	global.p2_score += 1
-	$Control/Label2.text = str("x" + str(global.p2_score))
-	
+	global.player_hp -= 25
+	$ProgressBar.value = global.player_hp
 	await get_tree().create_timer(1).timeout
 	
 	body.queue_free()
-	if global.p2_score >= maxScore:
-		$Control/Label3.text = ("Player 2 won")
+	if global.player_hp < 1:
+		$Control/Label3.text = ("du dog :c")
 		pauseGame()
 
 func _on_left_body_entered(body):#!left
-	global.p1_score += 1
-	$Control/Label.text = str("x" + str(global.p1_score))
+	global.p1_score = 1
 	
 	await get_tree().create_timer(1).timeout
 	
@@ -56,13 +53,14 @@ func pauseGame():
 	pauseSignal.emit()
 
 func _on_play_again_pressed():
+	global.player_hp = 100
 	global.p1_score = 0
 	global.p2_score = 0
 	get_tree().change_scene_to_file("res://Scenes/Map/World.tscn")
 
 
 func _on_main_menu_pressed():
+	global.player_hp = 100
 	global.p1_score = 0
 	global.p2_score = 0
 	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
-
