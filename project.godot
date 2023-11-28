@@ -17,8 +17,10 @@ config/icon="res://Assets/Img/icon.svg"
 
 [autoload]
 
+Main="*res://Scenes/Map/Main.gd"
 global="*res://Scenes/Map/Main.gd"
 player_item="*res://Scenes/Item/Item.gd"
+MapManager="*res://Scenes/Map/MapManager.gd"
 
 [display]
 

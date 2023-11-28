@@ -10,9 +10,9 @@ var map_position = Vector2.ZERO
 @export var steps = 40
 @export var step_size = 16
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	_generate_map()
+## Called when the node enters the scene tree for the first time.
+#func _ready():
+#	_generate_map()
 
 
 func _generate_map():
@@ -21,6 +21,7 @@ func _generate_map():
 	var steps_in_dir = 0
 	var step = 1
 	while step < steps:
+		randomize()
 		var dir = DIRECTIONS.pick_random()
 		if last_dir == dir:
 			steps_in_dir += 1
@@ -32,4 +33,5 @@ func _generate_map():
 			map_steps.append(map_position)
 			step += 1
 		last_dir = dir
-	done_with_map.emit(map_steps)
+	return map_steps
+	#done_with_map.emit(map_steps)

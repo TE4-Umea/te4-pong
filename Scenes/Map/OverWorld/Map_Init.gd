@@ -7,8 +7,13 @@ extends Marker2D
 
 var point_position
 var positions_to_draw : Array[Vector2] = []
+var create_new_maps = false
+var index
 
 func _ready():
+	index = -1
+	if not MapManager.world_maps:
+		create_new_maps = true
 	point_position = Vector2(64, get_viewport_rect().size.y / 2)
 	_add_point(point_position, -1, 1)
 	for index in range(length):
@@ -24,6 +29,7 @@ func _ready():
 	_add_point(point_position, length, 1)
 
 func _add_point(position_for_point : Vector2, column : int, id : int):
+	index+=1
 	point_position.y += y_gap
 	var m = map_node.instantiate()
 	add_child(m)
@@ -31,6 +37,11 @@ func _add_point(position_for_point : Vector2, column : int, id : int):
 	m.column = column
 	m.id = id
 	positions_to_draw.append(m.position)
+	if create_new_maps:
+		m.map = $"../Walker"._generate_map()
+		MapManager.world_maps.append(m.map)
+	else:
+		m.map = MapManager.world_maps[index]
 
 func _process(delta):
 	pass

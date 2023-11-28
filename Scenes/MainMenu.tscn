@@ -39,4 +39,13 @@ offset_bottom = 512.0
 theme = ExtResource("3_f88gh")
 text = "PLAY"
 
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 520.0
+offset_right = 704.0
+offset_bottom = 584.0
+text = "OVERWORLD MAP"
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
