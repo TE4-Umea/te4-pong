@@ -1,6 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://d1jdun1b61cjp"]
 
 [ext_resource type="Script" path="res://Scenes/Map/World.gd" id="1_a8amt"]
+[ext_resource type="PackedScene" uid="uid://cyrntu3r8663l" path="res://Scenes/Item/UI_Item.tscn" id="2_pjynm"]
 [ext_resource type="Texture2D" uid="uid://bx2dcegbutm0j" path="res://Assets/Img/B).png" id="2_uic7l"]
 [ext_resource type="PackedScene" uid="uid://b5iy5pcb2xit3" path="res://Scenes/Player/Paddle.tscn" id="3_5a22m"]
 [ext_resource type="PackedScene" uid="uid://be80dbp2b6dxv" path="res://Scenes/Ball/Ball.tscn" id="5_8pphb"]
@@ -123,6 +124,13 @@ offset_right = 704.0
 offset_bottom = 520.0
 text = "MAIN MENU"
 
+[node name="UI_Item" parent="." instance=ExtResource("2_pjynm")]
+z_index = 100
+offset_left = -6.0
+offset_top = -1.0
+offset_right = -6.0
+offset_bottom = -1.0
+
 [node name="p1" parent="." instance=ExtResource("3_5a22m")]
 position = Vector2(72, 320)
 collision_layer = 5
@@ -163,3 +171,4 @@ autostart = true
 [connection signal="pressed" from="Control/PlayAgain" to="." method="_on_play_again_pressed"]
 [connection signal="pressed" from="Control/MainMenu" to="." method="_on_main_menu_pressed"]
 [connection signal="timeout" from="ProgressBar2/stamina_timer" to="." method="_on_stamina_timer_timeout"]
+[connection signal="yes_button_pressed" from="UI_Item" to="." method="_on_ui_item_yes_button_pressed"]

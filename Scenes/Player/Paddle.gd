@@ -2,10 +2,14 @@ extends CharacterBody2D
 
 @export var speed : float = 300.0
 @export var side = 'p1'
+var damage = 10
 
-var max_bounce_angle = 0.5235987756 		#30
+var max_bounce_angle = 0.5235987756 #30
 var paused = false
 var recently_hit = false
+
+func _ready():
+	player_item.signal_player_for_item.connect(self.grab_item)
 
 func _physics_process(delta):
 	var direction
@@ -27,7 +31,6 @@ func get_axis(up, down):
 
 
 func _on_area_2d_body_entered(body):
-	
 	var body_x_direction = body.direction.x
 	var body_collision : CollisionShape2D = body.get_node("CollisionShape2D")
 	var body_height = body_collision.shape.get_rect().size.y
@@ -48,6 +51,15 @@ func _on_area_2d_body_entered(body):
 	body.direction = Vector2(cos(bounceAngle) * dir, sin(bounceAngle))
 	global.side = side 
 
+
 func _on_world_pause_signal():
 	paused = true
 
+
+func _on_recent_hit_timer_timeout():
+	recently_hit = false
+
+func grab_item():
+	print("have item")
+	var item = player_item.give_item_to_player()
+	print(item)
