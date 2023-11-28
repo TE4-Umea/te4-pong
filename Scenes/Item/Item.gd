@@ -11,6 +11,8 @@ var luck
 var movment_speed
 var ball_speed
 
+signal signal_player_for_item
+
 func set_player_item(item):
 	player_item = item
 	print(player_item)
@@ -24,3 +26,8 @@ func set_all_item_info():
 	luck = player_item[5]
 	movment_speed = player_item[6]
 	ball_speed = player_item[7]
+	emit_signal("signal_player_for_item")
+
+func give_item_to_player():
+	return [item_name, ability, element, damage, hp, luck, movment_speed, ball_speed]
+	player_item = []

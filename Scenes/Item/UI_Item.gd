@@ -73,7 +73,7 @@ func _on_yes_button_pressed():
 		player_item.set_player_item(item_stats)
 		player_item.set_all_item_info()
 		yes_button_pressed.emit()
-		$Item.hide()		
+		$Item.hide()
 	else: 
 		$Item.hide()
 		$UI_SwichItem.start()
