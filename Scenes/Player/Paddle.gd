@@ -48,14 +48,13 @@ func _on_area_2d_body_entered(body):
 	else:
 		dir = -1
 	
-	if not recently_hit:
-		body.direction = Vector2(cos(bounceAngle) * dir, sin(bounceAngle))
-		global.side = side 
-		recently_hit = true
-		$RecentHitTimer.start()
+	body.direction = Vector2(cos(bounceAngle) * dir, sin(bounceAngle))
+	global.side = side 
+
 
 func _on_world_pause_signal():
 	paused = true
+
 
 func _on_recent_hit_timer_timeout():
 	recently_hit = false
