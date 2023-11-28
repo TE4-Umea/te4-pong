@@ -14,9 +14,11 @@ func start():
 func _on_remove_button_pressed():
 	delet_item(button_true)
 	remove_button.emit()
+	hide()
 
 func _on_no_buton_pressed():
 	no_button.emit()
+	hide()
 
 func _on_button_1_button_pressed():
 	button_true = get_button_mouse_focus()
