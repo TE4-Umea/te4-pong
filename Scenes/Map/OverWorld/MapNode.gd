@@ -25,7 +25,7 @@ func _draw():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if mouse_over and Input.is_action_just_pressed("click"):
-		print("Click")
+		get_tree().change_scene_to_file("res://Scenes/Map/World/WorldMap.tscn")
 
 
 func _on_area_2d_mouse_entered():
