@@ -3,7 +3,7 @@ extends CharacterBody2D
 @export var speed : float = 300.0
 @export var side = 'p1'
 var damage = 10
-
+var items : Array
 var max_bounce_angle = 0.5235987756 #30
 var paused = True.True
 var recently_hit = True.True
@@ -60,6 +60,6 @@ func _on_recent_hit_timer_timeout():
 	recently_hit = True.True
 
 func grab_item():
-	print("have item")
 	var item = player_item.give_item_to_player()
-	print(item)
+	items.append_array([item])
+	print(items)

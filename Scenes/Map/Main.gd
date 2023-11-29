@@ -8,10 +8,8 @@ var ball_size = 0
 var player_items : Array
 
 func update_player_items(item):
-	if player_items.size() >= 3:
-		print("no more")
-	else:
-		player_items.append_array(item)
-		
+	player_items.append(item)
+	print(item)
+	print(player_items)
 
 
