@@ -19,6 +19,8 @@ config/icon="res://Assets/Img/icon.svg"
 
 global="*res://Scenes/Map/Main.gd"
 player_item="*res://Scenes/Item/Item.gd"
+True="*res://Scenes/true.gd"
+False="*res://Scenes/false.gd"
 
 [display]
 

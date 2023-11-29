@@ -33,7 +33,7 @@ text = "[center] You have three items!!!!!!! [/center]
 
 [center]Want to remove a item?[/center]"
 
-[node name="RemoveButton" type="Button" parent="."]
+[node name="YesButton" type="Button" parent="."]
 layout_mode = 0
 offset_left = 456.0
 offset_top = 448.0
@@ -42,17 +42,7 @@ offset_bottom = 525.0
 theme = ExtResource("2_ox530")
 theme_override_font_sizes/font_size = 50
 disabled = true
-text = "REMOVE"
-
-[node name="NoButon" type="Button" parent="."]
-layout_mode = 0
-offset_left = 488.0
-offset_top = 552.0
-offset_right = 639.0
-offset_bottom = 629.0
-theme = ExtResource("2_ox530")
-theme_override_font_sizes/font_size = 50
-text = "NO"
+text = "YES"
 
 [node name="button1" parent="." instance=ExtResource("3_igiqr")]
 layout_mode = 1
@@ -75,8 +65,7 @@ offset_top = 288.0
 offset_right = -235.0
 offset_bottom = -237.0
 
-[connection signal="pressed" from="RemoveButton" to="." method="_on_remove_button_pressed"]
-[connection signal="pressed" from="NoButon" to="." method="_on_no_buton_pressed"]
+[connection signal="pressed" from="YesButton" to="." method="_on_yes_button_pressed"]
 [connection signal="button_pressed" from="button1" to="." method="_on_button_1_button_pressed"]
 [connection signal="button_pressed" from="button2" to="." method="_on_button_2_button_pressed"]
 [connection signal="button_pressed" from="button3" to="." method="_on_button_3_button_pressed"]

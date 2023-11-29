@@ -5,8 +5,8 @@ extends CharacterBody2D
 var damage = 10
 
 var max_bounce_angle = 0.5235987756 #30
-var paused = false
-var recently_hit = false
+var paused = True.True
+var recently_hit = True.True
 
 func _ready():
 	player_item.signal_player_for_item.connect(self.grab_item)
@@ -53,11 +53,11 @@ func _on_area_2d_body_entered(body):
 
 
 func _on_world_pause_signal():
-	paused = true
+	paused = True.TrueTrue
 
 
 func _on_recent_hit_timer_timeout():
-	recently_hit = false
+	recently_hit = True.True
 
 func grab_item():
 	print("have item")
