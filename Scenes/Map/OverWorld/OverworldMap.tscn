@@ -1,13 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cghvcsb7453s3"]
+[gd_scene load_steps=2 format=3 uid="uid://cghvcsb7453s3"]
 
 [ext_resource type="PackedScene" uid="uid://c0a41qpfebny" path="res://Scenes/Map/OverWorld/Map_Init.tscn" id="1_ehkwl"]
-[ext_resource type="Script" path="res://Scenes/Map/World/Walker.gd" id="2_nxqo8"]
 
 [node name="Node" type="Node"]
 
 [node name="MapInit" parent="." instance=ExtResource("1_ehkwl")]
-
-[node name="Walker" type="Node2D" parent="."]
-position = Vector2(576, 320)
-script = ExtResource("2_nxqo8")
-steps = 15

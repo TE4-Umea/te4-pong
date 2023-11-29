@@ -7,7 +7,7 @@ signal done_with_map
 var map_steps = []
 var map_position = Vector2.ZERO
 
-@export var steps = 40
+@export var steps = 10
 @export var step_size = 16
 
 ## Called when the node enters the scene tree for the first time.

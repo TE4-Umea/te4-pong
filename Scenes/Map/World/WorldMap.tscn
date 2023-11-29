@@ -1,6 +1,5 @@
-[gd_scene load_steps=6 format=3 uid="uid://b5io42hl1yngq"]
+[gd_scene load_steps=5 format=3 uid="uid://b5io42hl1yngq"]
 
-[ext_resource type="Script" path="res://Scenes/Map/World/Walker.gd" id="1_0m7ej"]
 [ext_resource type="Script" path="res://Scenes/Map/World/WorldMap.gd" id="1_pu3eo"]
 [ext_resource type="Texture2D" uid="uid://bx2dcegbutm0j" path="res://Assets/Img/B).png" id="2_bqdmv"]
 
@@ -64,14 +63,7 @@ sources/0 = SubResource("TileSetAtlasSource_w6q3w")
 [node name="WorldMap" type="Node"]
 script = ExtResource("1_pu3eo")
 
-[node name="Walker" type="Node2D" parent="."]
-position = Vector2(576, 320)
-script = ExtResource("1_0m7ej")
-steps = 15
-
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_nlcyy")
 cell_quadrant_size = 32
 format = 2
-
-[connection signal="done_with_map" from="Walker" to="." method="_on_walker_done_with_map"]
