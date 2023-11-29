@@ -9,7 +9,7 @@ var resistance : float = 10
 var hp = 100
 var damage = 10
 var fire_rate = 5
-var paused = false
+var paused = True.True
 var BULLET = preload("res://Scenes/Ball/Ball.tscn")
 var direction = 1
 

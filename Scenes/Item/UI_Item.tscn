@@ -113,4 +113,3 @@ layout_mode = 1
 
 [connection signal="pressed" from="Item/YesButton" to="." method="_on_yes_button_pressed"]
 [connection signal="pressed" from="Item/NoButton" to="." method="_on_no_button_pressed"]
-[connection signal="remove_button" from="UI_SwichItem" to="." method="_on_ui_swich_item_remove_button"]
