@@ -61,5 +61,15 @@ func _on_recent_hit_timer_timeout():
 
 func grab_item():
 	var item = player_item.give_item_to_player()
-	items.append_array([item])
-	print(items)
+	var already_have_item = false
+	items = global.player_items_copy
+	
+	for i in range(items.size()):
+		if items[i].count(item[0]) > 0:
+			items[i][10] += 1
+			already_have_item = true
+	
+	if (!already_have_item):
+		items.append_array([item])
+	
+	global.updete_player_items_copy(items)

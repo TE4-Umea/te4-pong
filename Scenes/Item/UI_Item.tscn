@@ -99,3 +99,4 @@ offset_bottom = -10.0
 [connection signal="button1" from="UI_SwichItem" to="." method="_on_ui_swich_item_button_1"]
 [connection signal="button2" from="UI_SwichItem" to="." method="_on_ui_swich_item_button_2"]
 [connection signal="button3" from="UI_SwichItem" to="." method="_on_ui_swich_item_button_3"]
+[connection signal="yes_button" from="UI_SwichItem" to="." method="_on_ui_swich_item_yes_button"]

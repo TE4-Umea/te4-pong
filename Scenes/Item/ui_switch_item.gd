@@ -26,13 +26,13 @@ func on_item_start(item, item_index):
 
 func _on_yes_button_pressed():
 	if(button_true[0]):
-		global.update_player_items($button1.item_index)
+		global.update_player_items_index($button1.item_index)
 		player_item.set_player_item($button1.item_stats)
 	elif (button_true[1]):
-		global.update_player_items($button2.item_index)
+		global.update_player_items_index($button2.item_index)
 		player_item.set_player_item($button2.item_stats)
 	else:
-		global.update_player_items($button3.item_index)
+		global.update_player_items_index($button3.item_index)
 		player_item.set_player_item($button3.item_stats)
 	
 	yes_button.emit()

@@ -4,7 +4,7 @@ var pros_color = "green"
 var cons_color = "red"
 signal yes_button_pressed
 signal no_button_pressed
-var random_item
+var random_item_index
 var item_stats : Array = []
 var item : Array
 var item_index : Array
@@ -14,14 +14,17 @@ func _ready():
 	item_stats = []
 	var json = $JsonData
 	var json_size = json.json_file_size()
-	random_item = (randi_range(0, json_size))
-	add_to_item_stats(json, random_item)
-	item.append_array([item_stats])
-	item.append_array([item_stats])
-	item.append_array([item_stats])
-	item_index = [1,2,3]
-	give_data_to_switch()
 	
+	# Ska göra till en loop för knapparna
+	for i in range(3):  
+		random_item_index = (randi_range(0, json_size))
+		while (item_index.count(random_item_index) > 0):
+			random_item_index = (randi_range(0, json_size))
+		add_to_item_stats(json, random_item_index)
+		item.append_array([item_stats])
+		item_index.append(random_item_index)
+	give_data_to_switch()
+
 func set_label_name(name):
 	var label_name = $Item/BackPanel/ItemName
 	label_name.clear()
@@ -64,17 +67,20 @@ func set_decsription(text):
 	
 	decript.append_text(text)
 
-func add_to_item_stats(json, random_item):
-	item_stats.append(json.get_json_name(random_item))
-	item_stats.append(json.get_json_desc(random_item))
-	item_stats.append(json.get_json_ability(random_item))
-	item_stats.append(json.get_json_rarity(random_item))	
-	item_stats.append(json.get_json_element(random_item))
-	item_stats.append(json.get_json_damage(random_item))
-	item_stats.append(json.get_json_hp(random_item))
-	item_stats.append(json.get_json_luck(random_item))
-	item_stats.append(json.get_json_movment_speed(random_item))
-	item_stats.append(json.get_json_ball_speed(random_item))
+func add_to_item_stats(json, random_item_index):
+	item_stats = []
+	item_stats.append(json.get_json_name(random_item_index))
+	item_stats.append(json.get_json_desc(random_item_index))
+	item_stats.append(json.get_json_ability(random_item_index))
+	item_stats.append(json.get_json_rarity(random_item_index))
+	item_stats.append(json.get_json_element(random_item_index))
+	item_stats.append(json.get_json_damage(random_item_index))
+	item_stats.append(json.get_json_hp(random_item_index))
+	item_stats.append(json.get_json_luck(random_item_index))
+	item_stats.append(json.get_json_movment_speed(random_item_index))
+	item_stats.append(json.get_json_ball_speed(random_item_index))
+	#If you find a duplicet it upgrades that items stats 
+	item_stats.append(1)
 
 func give_data_to_switch():
 	var switch = $UI_SwichItem
@@ -91,3 +97,8 @@ func _on_ui_swich_item_button_2():
 func _on_ui_swich_item_button_3():
 	set_label_name($UI_SwichItem.send_name)
 	set_decsription($UI_SwichItem.send_desc)
+
+
+func _on_ui_swich_item_yes_button():
+	pass
+	#hide()
