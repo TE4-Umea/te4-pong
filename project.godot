@@ -17,8 +17,8 @@ config/icon="res://Assets/Img/icon.svg"
 
 [autoload]
 
-global="*res://Scenes/Map/Main.gd"
-player_item="*res://Scenes/Item/Item.gd"
+global="*res://Scenes/Main.gd"
+player_item="*res://Scenes/Item.gd"
 True="*res://Scenes/true.gd"
 False="*res://Scenes/false.gd"
 
