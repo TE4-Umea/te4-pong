@@ -45,7 +45,7 @@ func die():
 
 func _on_area_2d_body_entered(body):
 	body.queue_free()
-	take_damage(25)
+	take_damage(body.damage)
 
 
 func _on_timer_timeout():
