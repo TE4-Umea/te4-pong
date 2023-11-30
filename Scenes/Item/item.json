@@ -34,8 +34,8 @@
 	"rarity": "i dont know",
 	"element": "epic",
 	"stats": {
-	  "damage": 0,
-	  "hp": 2,
+	  "damage": 10,
+	  "hp": 1,
 	  "luck": 0.5,
 	  "movment_speed": 90,
 	  "ball_speed": 0.6
@@ -62,11 +62,11 @@
 	"rarity": "123",
 	"element": "?banana",
 	"stats": {
-	  "damage": "hawd",
-	  "hp": "fw",
-	  "luck": "fawd",
-	  "movment_speed": "klawd",
-	  "ball_speed": "öawdp?"
+	  "damage": 123,
+	  "hp": 2,
+	  "luck": 9,
+	  "movment_speed": 20,
+	  "ball_speed": 0
 	}
   }
 ]

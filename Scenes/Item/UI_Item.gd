@@ -11,6 +11,7 @@ var item_index : Array
 
 
 func _ready():
+	hide()
 	item_stats = []
 	var json = $JsonData
 	var json_size = json.json_file_size()
@@ -24,6 +25,9 @@ func _ready():
 		item.append_array([item_stats])
 		item_index.append(random_item_index)
 	give_data_to_switch()
+
+func show_ui_item():
+	show()
 
 func set_label_name(name):
 	var label_name = $Item/BackPanel/ItemName
@@ -98,7 +102,5 @@ func _on_ui_swich_item_button_3():
 	set_label_name($UI_SwichItem.send_name)
 	set_decsription($UI_SwichItem.send_desc)
 
-
 func _on_ui_swich_item_yes_button():
-	pass
-	#hide()
+	hide()
