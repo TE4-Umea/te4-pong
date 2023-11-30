@@ -27,4 +27,4 @@ func _ready():
 
 func _process(delta):
 	if Input.is_action_just_pressed("click"):
-		get_tree().change_scene_to_file("res://Scenes/Map/OverWorld/OverworldMap.tscn")
+		get_tree().change_scene_to_file("res://Scenes/Map/Overworld/Overworld.tscn")

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://brapjlmy1ervw"]
+
+[ext_resource type="Script" path="res://Scenes/Map/Overworld/MapNode.gd" id="1_3ty8w"]
+[ext_resource type="Texture2D" uid="uid://bx2dcegbutm0j" path="res://Assets/Img/B).png" id="1_p84it"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hu754"]
+size = Vector2(32, 32)
+
+[node name="Area2D" type="Area2D" groups=["map_node"]]
+script = ExtResource("1_3ty8w")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(3.8147e-06, 3.8147e-06)
+scale = Vector2(0.139738, 0.137931)
+texture = ExtResource("1_p84it")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_hu754")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

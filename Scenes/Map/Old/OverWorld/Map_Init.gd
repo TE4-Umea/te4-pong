@@ -22,7 +22,7 @@ func _ready():
 	if not MapManager.world_maps:
 		create_new_maps = true
 	point_position = Vector2(64, get_viewport_rect().size.y / 2)
-	_add_point(point_position, -1, 1)
+	_add_point(point_position, -1, 1, true)
 	for index in range(length):
 		point_position = Vector2(point_position.x + x_gap, get_viewport_rect().size.y / 2)
 		var points_in_column = 3
@@ -31,11 +31,11 @@ func _ready():
 			points_in_column = 2
 			point_position.y += y_gap/2
 		for point in range(points_in_column):
-			_add_point(point_position, index, point)
+			_add_point(point_position, index, point, false)
 	point_position = Vector2(point_position.x + x_gap, get_viewport_rect().size.y / 2)
-	_add_point(point_position, length, 1)
+	_add_point(point_position, length, 1, false)
 
-func _add_point(position_for_point : Vector2, column : int, id : int):
+func _add_point(position_for_point : Vector2, column : int, id : int, active : bool):
 	index+=1
 	point_position.y += y_gap
 	var m = map_node.instantiate()
@@ -43,6 +43,7 @@ func _add_point(position_for_point : Vector2, column : int, id : int):
 	m.position = position_for_point
 	m.column = column
 	m.id = id
+	m.active = active
 	positions_to_draw.append(m.position)
 	if create_new_maps:
 		_generate_map()
