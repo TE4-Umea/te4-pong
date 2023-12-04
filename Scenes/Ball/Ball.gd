@@ -2,12 +2,14 @@ extends CharacterBody2D
 @export var speed : float = 300.0
 var direction = Vector2.ZERO
 var paused = false
-var damage
+var direx = -1
+var direxy = randf_range(-1.0, 1.0)
+var damage = 0
 
 func _ready():
 	global.ball_size = $CollisionShape2D.shape.size
-	direction.y = randf_range(-1.0, 1.0)
-	direction.x = [-1].pick_random()
+	direction.y = direxy
+	direction.x = direx
 
 func _process(delta):
 	if position.y < 0 or position.y > get_viewport_rect().size.y:
