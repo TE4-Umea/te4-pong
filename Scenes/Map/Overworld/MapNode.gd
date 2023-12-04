@@ -15,27 +15,22 @@ var map_position = Vector2.ZERO
 
 func _ready():
 	if MapManager.world_maps.size()-1 < id:
-		randomize()
 		_generate_map()
 		MapManager.node_state.insert(id, active)
 		MapManager.chosen_state.insert(id, chosen)
 	else:
-		map = MapManager.world_maps[id]
 		active = MapManager.node_state[id]
 		chosen = MapManager.chosen_state[id]
-	MapManager.current_map = map
 
 func _draw():
-	if chosen and not active:
+	if chosen:
 		$Sprite2D.modulate = Color.GREEN
 	elif active:
 		$Sprite2D.modulate = Color.YELLOW
 	else:
 		$Sprite2D.modulate = Color.DIM_GRAY
 	for node in connected:
-		if node.active or node.chosen and active:
-			draw_line(position-position, node.position-position, Color.YELLOW, 2)
-		elif node.chosen and chosen:
+		if node.chosen and active or chosen:
 			draw_line(position-position, node.position-position, Color.GREEN, 2)
 		else:
 			draw_line(position-position, node.position-position, Color.WEB_GRAY, 1)
@@ -57,6 +52,7 @@ func _process(delta):
 		if sibling:
 			sibling.active = false
 			MapManager.node_state[sibling.id] = false
+		MapManager.current_map = MapManager.world_maps[id]
 		get_tree().change_scene_to_file("res://Scenes/Map/World/WorldMap.tscn")
 
 func _generate_map():
