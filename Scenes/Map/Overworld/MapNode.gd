@@ -14,24 +14,28 @@ var map = []
 var map_position = Vector2.ZERO
 
 func _ready():
-	if MapManager.world_maps.size()-1 < id :
+	if MapManager.world_maps.size()-1 < id:
+		randomize()
 		_generate_map()
-		for node in range(get_tree().get_nodes_in_group("map_node").size()):
-			MapManager.node_state.append(false)
+		MapManager.node_state.insert(id, active)
+		MapManager.chosen_state.insert(id, chosen)
 	else:
 		map = MapManager.world_maps[id]
 		active = MapManager.node_state[id]
+		chosen = MapManager.chosen_state[id]
 	MapManager.current_map = map
 
 func _draw():
-	if chosen:
+	if chosen and not active:
 		$Sprite2D.modulate = Color.GREEN
 	elif active:
 		$Sprite2D.modulate = Color.YELLOW
 	else:
 		$Sprite2D.modulate = Color.DIM_GRAY
 	for node in connected:
-		if node.active and active:
+		if node.active or node.chosen and active:
+			draw_line(position-position, node.position-position, Color.YELLOW, 2)
+		elif node.chosen and chosen:
 			draw_line(position-position, node.position-position, Color.GREEN, 2)
 		else:
 			draw_line(position-position, node.position-position, Color.WEB_GRAY, 1)
@@ -39,17 +43,20 @@ func _draw():
 func _process(delta):
 	if mouse_over and Input.is_action_just_pressed("click") and active and not chosen:
 		chosen = true
-		active = true
-		MapManager.node_state.insert(id, active)
+		active = false
+		MapManager.node_state[id] = active
+		MapManager.chosen_state[id] = chosen
 		for node in connected:
 			for route in connected:
 				if node != route:
 					node.sibling = route
 			node.active = true
+			MapManager.node_state[node.id] = true
 		for node in get_tree().get_nodes_in_group("map_node"):
 			node.queue_redraw()
 		if sibling:
 			sibling.active = false
+			MapManager.node_state[sibling.id] = false
 		get_tree().change_scene_to_file("res://Scenes/Map/World/WorldMap.tscn")
 
 func _generate_map():
@@ -59,7 +66,6 @@ func _generate_map():
 	var steps_in_dir = 0
 	var step = 1
 	while step < world_size:
-		randomize()
 		var dir = DIRECTIONS.pick_random()
 		if last_dir == dir:
 			steps_in_dir += 1
