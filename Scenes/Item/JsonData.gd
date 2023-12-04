@@ -49,3 +49,15 @@ func get_json_element(id):
 
 func get_json_damage(id):
 	return get_json_stats("damage", id)
+
+func get_json_hp(id):
+	return get_json_stats("hp", id)
+
+func get_json_luck(id):
+	return get_json_stats("luck", id)
+
+func get_json_movment_speed(id):
+	return get_json_stats("movment_speed", id)
+
+func get_json_ball_speed(id):
+	return get_json_stats("ball_speed", id)
