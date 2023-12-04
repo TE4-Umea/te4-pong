@@ -7,11 +7,13 @@ var floating_text = preload("res://Scenes/Enemeys/floating_text.tscn")
 var weakness = "ljus"
 var resistance : float = 10
 var hp = 100
-var damage = 10
-var fire_rate = 5
+var damage = 25
+var fire_rate = [0.5,1,2]
 var paused = false
 var BULLET = preload("res://Scenes/Ball/Ball.tscn")
 var direction = 1
+var min_degrees = -1
+var max_degrees = 1
 
 func _physics_process(delta):
 	if !paused:
@@ -25,8 +27,9 @@ func _physics_process(delta):
 		move_and_slide()
 
 func shoot():
-	owner.spawn_ball(position.x - $Area2D/CollisionShape2D.shape.size.x/2 - global.ball_size.x, position.y)
-	$Timer.wait_time = [0.5,1,2].pick_random()
+	print(owner)
+	owner.spawn_ball(position.x - $Area2D/CollisionShape2D.shape.size.x/2 - global.ball_size.x, position.y, -1 , randf_range(min_degrees, max_degrees),damage)
+	$Timer.wait_time = fire_rate.pick_random()
 	$Timer.start()
 
 func take_damage(dmg):
@@ -45,7 +48,7 @@ func die():
 
 func _on_area_2d_body_entered(body):
 	body.queue_free()
-	take_damage(25)
+	take_damage(body.damage)
 
 
 func _on_timer_timeout():
@@ -53,4 +56,4 @@ func _on_timer_timeout():
 
 func _on_movement_timer_timeout():
 	direction *= -1
-	$MovementTimer.wait_time = RandomNumberGenerator.new().randf_range(1, fire_rate)
+	$MovementTimer.wait_time = RandomNumberGenerator.new().randf_range(1, 5)

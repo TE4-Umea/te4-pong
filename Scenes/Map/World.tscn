@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://Scenes/Map/World.gd" id="1_a8amt"]
 [ext_resource type="Texture2D" uid="uid://bx2dcegbutm0j" path="res://Assets/Img/B).png" id="2_uic7l"]
 [ext_resource type="PackedScene" uid="uid://b5iy5pcb2xit3" path="res://Scenes/Player/Paddle.tscn" id="3_5a22m"]
+[ext_resource type="PackedScene" uid="uid://bcql4dsu7c1lt" path="res://Scenes/Enemeys/hel.tscn" id="5_2jbsl"]
 [ext_resource type="PackedScene" uid="uid://be80dbp2b6dxv" path="res://Scenes/Ball/Ball.tscn" id="5_8pphb"]
-[ext_resource type="PackedScene" uid="uid://c01b1hf0pv15n" path="res://Scenes/Enemeys/fat_enemy.tscn" id="5_jib6x"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5vdgs"]
 size = Vector2(1184, 48)
@@ -132,9 +132,6 @@ speed = 500.0
 [node name="Ball" parent="." instance=ExtResource("5_8pphb")]
 position = Vector2(-277, 262)
 
-[node name="fat_enemy" parent="." instance=ExtResource("5_jib6x")]
-position = Vector2(916, 408)
-
 [node name="ProgressBar" type="ProgressBar" parent="."]
 modulate = Color(1, 0, 0, 1)
 offset_left = 82.0
@@ -155,6 +152,9 @@ show_percentage = false
 [node name="stamina_timer" type="Timer" parent="ProgressBar2"]
 wait_time = 0.1
 autostart = true
+
+[node name="Hel" parent="." instance=ExtResource("5_2jbsl")]
+position = Vector2(903, 317)
 
 [connection signal="body_entered" from="Norr" to="." method="_on_norr_body_entered"]
 [connection signal="body_entered" from="Bottom" to="." method="_on_bottom_body_entered"]
