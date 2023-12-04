@@ -11,7 +11,7 @@ var item_index : Array
 
 
 func _ready():
-	hide()
+	#hide()
 	item_stats = []
 	var json = $JsonData
 	var json_size = json.json_file_size()

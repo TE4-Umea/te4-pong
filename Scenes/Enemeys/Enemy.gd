@@ -30,6 +30,7 @@ func shoot():
 	$Timer.start()
 
 func take_damage(dmg):
+	
 	if dmg*(1-resistance/100)<=hp:
 		hp-=dmg*(1-resistance/100)
 		$TextureProgressBar.value = hp
@@ -42,10 +43,40 @@ func take_damage(dmg):
 func die():
 	queue_free()
 
+func element_effect(element):
+	match element:
+		"fire":
+			element_fire()
+		"ice":
+			element_ice()
+		"light":
+			element_light()
+		"darkness":
+			element_darkness()
+		"lightning":
+			element_lightning()
+		_:
+			print("no elemento")
+
+func element_fire():
+	print("fire")
+
+func element_ice():
+	print("ice")
+
+func element_light():
+	print("light")
+
+func element_darkness():
+	print("darkness")
+
+func element_lightning():
+	print("lightning")
 
 func _on_area_2d_body_entered(body):
 	body.queue_free()
 	take_damage(body.damage)
+	element_effect(body.element)
 
 
 func _on_timer_timeout():

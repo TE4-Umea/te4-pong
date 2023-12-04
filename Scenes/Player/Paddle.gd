@@ -7,6 +7,7 @@ var hp : float
 var luck : float
 var movment_speed : float
 var ball_speed : float
+var element
 var items : Array
 var max_bounce_angle = 0.5235987756 #30
 var paused = True.True
@@ -40,7 +41,7 @@ func get_axis(up, down):
 
 func _on_area_2d_body_entered(body):
 	# Send info to ball 
-	body.collided_with_player(damage)
+	body.collided_with_player(damage, element)
 	
 	var body_x_direction = body.direction.x
 	var body_collision : CollisionShape2D = body.get_node("CollisionShape2D")
@@ -89,6 +90,7 @@ func grab_item():
 
 func update_player_stats(index):
 	var item_upgrade = items[index][10]
+	element = items[index][4]
 	damage += items[index][5] * item_upgrade
 	hp += items[index][6] * item_upgrade
 	luck += items[index][7] * item_upgrade

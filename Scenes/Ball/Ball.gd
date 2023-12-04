@@ -3,6 +3,7 @@ extends CharacterBody2D
 var direction = Vector2.ZERO
 var paused = false
 var damage
+var element
 
 func _ready():
 	global.ball_size = $CollisionShape2D.shape.size
@@ -24,6 +25,7 @@ func _physics_process(delta):
 func _on_world_pause_signal():
 	paused = true
 
-func collided_with_player(player_damage):
+func collided_with_player(player_damage, player_element):
 	print("collided_with_player")
 	damage = player_damage
+	element = player_element
