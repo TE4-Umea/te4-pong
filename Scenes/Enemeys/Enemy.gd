@@ -28,7 +28,6 @@ func _physics_process(delta):
 		move_and_slide()
 
 func shoot():
-	print(owner)
 	owner.spawn_ball(position.x - $Area2D/CollisionShape2D.shape.size.x/2 - global.ball_size.x, position.y, -1 , randf_range(min_degrees, max_degrees),damage)
 	$Timer.wait_time = fire_rate.pick_random()
 	$Timer.start()
@@ -71,10 +70,13 @@ func element_effect(element):
 			print("no elemento")
 
 func element_fire():
-	print("fire")
 	# tick damage
-	$FireTickTimer.start()
-	$FireBrunTimer.start()
+	#$FireTickTimer.start()'
+	if($FireBrunTimer.is_stopped()):
+		$FireBrunTimer.start()
+		$FireTickTimer.start()
+	else:
+		$FireBrunTimer.start()
 
 
 func element_ice():
