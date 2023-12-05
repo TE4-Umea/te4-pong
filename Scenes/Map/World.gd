@@ -13,7 +13,7 @@ func spawn_ball(x,y,direx,direxy,damage):
 	ball.damage = damage
 	add_child(ball)
 
-# Called when the node enters the scene tree for the first time.
+# Called when the node enters the scene tree for thesss first time.
 func _ready():
 	screensize = get_viewport().get_visible_rect().size
 

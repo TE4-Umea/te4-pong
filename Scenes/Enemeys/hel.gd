@@ -5,7 +5,6 @@ var stage = 1
 func spawn_minion():
 	var enemy =  ENEMY.instantiate()
 	enemy.global_position = Vector2(position.x - $Area2D/CollisionShape2D.shape.size.x/2 - global.ball_size.x, position.y)
-	print(owner)
 	owner.add_child(enemy)
 
 func _ready():
@@ -36,7 +35,6 @@ func take_damage(dmg):
 			die()
 
 func shoot():
-	print(owner)
 	owner.spawn_ball(position.x - $Area2D/CollisionShape2D.shape.size.x/2 - global.ball_size.x, position.y, -1 , randf_range(min_degrees, max_degrees),damage)
 	$Timer.wait_time = fire_rate.pick_random()
 	$Timer.start()

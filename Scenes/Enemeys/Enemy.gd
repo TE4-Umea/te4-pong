@@ -2,9 +2,10 @@ extends CharacterBody2D
 
 var floating_text = preload("res://Scenes/Enemeys/floating_text.tscn")
 
-@export var speed : float = 300.0
-var slow_speed = 1
 @export var enemy_name = "alexandro"
+@export var speed : float = 300.0
+@export var can_be_stund = true
+var slow_speed : float = 0
 var weakness = "ljus"
 var resistance : float = 10
 var enemy_element
@@ -17,23 +18,24 @@ var direction = 1
 var fire_damage = 10
 var min_degrees = -1
 var max_degrees = 1
+var can_shoot = true
 
 func _physics_process(delta):
 	if !paused:
 		if position.y < 2 + $Area2D/CollisionShape2D.shape.size.y/2 or position.y > get_viewport_rect().size.y - $Area2D/CollisionShape2D.shape.size.y/2-2:
 			direction *= -1
 		if direction:
-			velocity.y = direction * (speed * slow_speed)
+			velocity.y = direction * (speed * (1-slow_speed/100))
 		else:
 			velocity.y = move_toward(velocity.y, 0, speed)
 		
 		move_and_slide()
 
 func shoot():
-	print(owner)
-	owner.spawn_ball(position.x - $Area2D/CollisionShape2D.shape.size.x/2 - global.ball_size.x, position.y, -1 , randf_range(min_degrees, max_degrees),damage)
-	$Timer.wait_time = fire_rate.pick_random()
-	$Timer.start()
+	if(can_shoot): 
+		owner.spawn_ball(position.x - $Area2D/CollisionShape2D.shape.size.x/2 - global.ball_size.x, position.y, -1 , randf_range(min_degrees, max_degrees),damage)
+		$Timer.wait_time = fire_rate.pick_random()
+		$Timer.start()
 
 func take_damage(dmg):
 	
@@ -73,19 +75,16 @@ func element_effect(element):
 			print("no elemento")
 
 func element_fire():
-	print("fire")
-	# tick damage
-	$FireTickTimer.start()
-	$FireBrunTimer.start()
-
+	if($FireBrunTimer.is_stopped()):
+		$FireBrunTimer.start()
+		$FireTickTimer.start()
+	else:
+		$FireBrunTimer.start()
 
 func element_ice():
-	print("ice")
-	# slows and extra damage
 	$IceSlowTimer.start()
-	slow_speed = 0.75
+	slow_speed = 30
  
-
 
 func element_lightning():
 	print("lightning")
@@ -108,9 +107,10 @@ func element_water():
 
 
 func element_light():
-	print("light")
-	# chans for stun
-
+	if(can_be_stund):
+		$LightStunTimer.start()
+		can_shoot = false
+		slow_speed = 100
 
 func element_darkness():
 	print("darkness")
@@ -147,4 +147,9 @@ func _on_fire_tick_timer_timeout():
 
 
 func _on_ice_slow_timer_timeout():
-	slow_speed = 1
+	slow_speed = 0
+
+
+func _on_light_stun_timer_timeout():
+	can_shoot = true
+	slow_speed = 0

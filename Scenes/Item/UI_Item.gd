@@ -51,7 +51,6 @@ func set_decsription(text):
 		word_index2 = text.find("</green>", word_index1)
 		var test = text.substr(word_index1, word_index2 - word_index1)
 		test = test.to_upper()
-		print(test)
 		text = text.replacen(test, test)
 	
 	word_index1 = 0
@@ -70,7 +69,6 @@ func set_decsription(text):
 	text = text.replace("</red>", "[/color]")
 
 	text = "[font_size={15}]" + text + " [/font_size]"	
-	print(text)
 	decript.append_text(text)
 
 func add_to_item_stats(json, random_item_index):
