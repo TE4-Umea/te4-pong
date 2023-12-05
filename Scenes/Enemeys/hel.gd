@@ -8,7 +8,7 @@ func spawn_minion():
 	owner.add_child(enemy)
 
 func _ready():
-	resistance = 75
+	resistance = 0
 	fire_rate = [0.5,1,2]
 	min_degrees = -1
 	max_degrees = 1
@@ -25,13 +25,14 @@ func take_damage(dmg):
 	else:
 		if(stage==1):
 			stage+=1
+			resistance = 95
 			hp = 100
 			$TextureProgressBar.value = hp
 			$TextureProgressBar.tint_progress = Color("#0000ff")
 			fire_rate = [0.05]
 			min_degrees = 0
 			max_degrees = 0
-			damage = 2
+			damage = 5
 		else:
 			die()
 

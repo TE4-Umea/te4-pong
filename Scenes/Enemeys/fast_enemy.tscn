@@ -47,6 +47,7 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_clax8")
 
+
 [node name="FireTickTimer" type="Timer" parent="."]
 wait_time = 0.5
 
@@ -65,3 +66,7 @@ wait_time = 3.0
 [connection signal="timeout" from="FireBrunTimer" to="." method="_on_fire_brun_timer_timeout"]
 [connection signal="timeout" from="LightStunTimer" to="." method="_on_light_stun_timer_timeout"]
 [connection signal="timeout" from="IceSlowTimer" to="." method="_on_ice_slow_timer_timeout"]
+=======
+[connection signal="timeout" from="MovementTimer" to="." method="_on_movement_timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout" flags=18]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered" flags=18]
