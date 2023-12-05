@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://bcql4dsu7c1lt"]
+[gd_scene load_steps=7 format=3 uid="uid://djkwh0k2pwtxb"]
 
 [ext_resource type="Script" path="res://Scenes/Enemeys/hel.gd" id="1_lde8c"]
 [ext_resource type="Texture2D" uid="uid://bx2dcegbutm0j" path="res://Assets/Img/B).png" id="2_qi7d7"]
@@ -62,7 +62,15 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_clax8")
 
+[node name="FireTickTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="FireBrunTimer" type="Timer" parent="."]
+wait_time = 3.0
+
 [connection signal="timeout" from="MovementTimer" to="." method="_on_movement_timer_timeout" flags=18]
 [connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout" flags=18]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered" flags=18]
+[connection signal="timeout" from="FireTickTimer" to="." method="_on_fire_tick_timer_timeout"]
+[connection signal="timeout" from="FireBrunTimer" to="." method="_on_fire_brun_timer_timeout"]

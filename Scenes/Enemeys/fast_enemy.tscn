@@ -56,3 +56,5 @@ wait_time = 3.0
 [connection signal="timeout" from="MovementTimer" to="." method="_on_movement_timer_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout" flags=18]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered" flags=18]
+[connection signal="timeout" from="FireTickTimer" to="." method="_on_fire_tick_timer_timeout"]
+[connection signal="timeout" from="FireBrunTimer" to="." method="_on_fire_brun_timer_timeout"]
