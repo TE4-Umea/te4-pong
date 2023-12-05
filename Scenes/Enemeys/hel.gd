@@ -5,7 +5,6 @@ var stage = 1
 func spawn_minion():
 	var enemy =  ENEMY.instantiate()
 	enemy.global_position = Vector2(position.x - $Area2D/CollisionShape2D.shape.size.x/2 - global.ball_size.x, position.y)
-	print(owner)
 	owner.add_child(enemy)
 
 func _ready():
@@ -16,11 +15,12 @@ func _ready():
 	damage = 25
 
 func take_damage(dmg):
-	if dmg*(1-resistance/100)<hp:
-		hp-=dmg*(1-resistance/100)
+	var new_resistance : float = round(resistance * pow(0.99, darkness_stack))
+	if dmg*(1-new_resistance/100)<=hp:
+		hp-=dmg*(1-new_resistance/100)
 		$TextureProgressBar.value = hp
 		var text = floating_text.instantiate()
-		text.amount = dmg*(1-resistance/100)
+		text.amount = dmg*(1-new_resistance/100)
 		add_child(text)
 	else:
 		if(stage==1):

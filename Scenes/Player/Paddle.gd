@@ -17,7 +17,6 @@ func _ready():
 	player_item.signal_player_for_item.connect(self.grab_item)
 	if (items.size() > 0): 
 		for i in items.size():
-			print(i)
 			update_player_stats(i)
 
 func _physics_process(delta):
