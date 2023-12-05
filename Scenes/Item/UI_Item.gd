@@ -38,37 +38,39 @@ func set_label_name(name):
 	name + "[/b][/center][/color][/font_size]")
 
 func set_decsription(text):
-	text = "[font_size={15}] " + text + " [/font_size]"
 	var decript = $Item/BackPanel/Decription
 	decript.clear()
 	var text_lengt = len(text)
-	var count_pros = text.count("¥", 0, text_lengt )
-	var count_cons = text.count("€", 0, text_lengt )
+	var count_pros = text.count("<green>", 0, text_lengt )
+	var count_cons = text.count("<red>", 0, text_lengt )
 	var word_index1 = 0
 	var word_index2 = 0
 	
 	for n in range(count_pros):
-		word_index1 = text.find("¥", word_index1) + 1
-		word_index2 = text.find("€", word_index1)
+		word_index1 = text.find("<green>", word_index1) + 7
+		word_index2 = text.find("</green>", word_index1)
 		var test = text.substr(word_index1, word_index2 - word_index1)
 		test = test.to_upper()
+		print(test)
 		text = text.replacen(test, test)
 	
 	word_index1 = 0
 	word_index2 = 0
 	
 	for n in range(count_cons):
-		word_index1 = text.find("¤", word_index1) + 1
-		word_index2 = text.find("æ", word_index1)
+		word_index1 = text.find("<red>", word_index1) + 5
+		word_index2 = text.find("</red>", word_index1)
 		var test = text.substr(word_index1, word_index2 - word_index1)
 		test = test.to_upper()
 		text = text.replacen(test, test)
 	
-	text = text.replace("¥", "[color=" + pros_color + "]" )
-	text = text.replace("€", "[/color]")
-	text = text.replace("¤", "[color=" + cons_color + "]")
-	text = text.replace("æ", "[/color]")
-	
+	text = text.replace("<green>", "[color=" + pros_color + "]" )
+	text = text.replace("</green>", "[/color]")
+	text = text.replace("<red>", "[color=" + cons_color + "]")
+	text = text.replace("</red>", "[/color]")
+
+	text = "[font_size={15}]" + text + " [/font_size]"	
+	print(text)
 	decript.append_text(text)
 
 func add_to_item_stats(json, random_item_index):

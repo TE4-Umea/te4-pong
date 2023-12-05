@@ -3,9 +3,11 @@ extends CharacterBody2D
 var floating_text = preload("res://Scenes/Enemeys/floating_text.tscn")
 
 @export var speed : float = 300.0
+var slow_speed = 1
 @export var enemy_name = "alexandro"
 var weakness = "ljus"
 var resistance : float = 10
+var enemy_element
 var hp = 100
 var damage = 25
 var fire_rate = [0.5,1,2]
@@ -21,7 +23,7 @@ func _physics_process(delta):
 		if position.y < 2 + $Area2D/CollisionShape2D.shape.size.y/2 or position.y > get_viewport_rect().size.y - $Area2D/CollisionShape2D.shape.size.y/2-2:
 			direction *= -1
 		if direction:
-			velocity.y = direction * speed
+			velocity.y = direction * (speed * slow_speed)
 		else:
 			velocity.y = move_toward(velocity.y, 0, speed)
 		
@@ -81,7 +83,10 @@ func element_fire():
 
 func element_ice():
 	print("ice")
-	# slows and extra damage 
+	# slows and extra damage
+	$IceSlowTimer.start()
+	slow_speed = 0.75
+ 
 
 
 func element_lightning():
@@ -117,8 +122,6 @@ func element_darkness():
 func element_spirit():
 	print("spirti")
 	# makes to balls (kanske ska vara i player)
-	$FireTickTimer.start()
-	$FireBrunTimer.start()
 
 
 func _on_area_2d_body_entered(body):
@@ -143,3 +146,7 @@ func _on_fire_brun_timer_timeout():
 
 func _on_fire_tick_timer_timeout():
 	take_damage(fire_damage)
+
+
+func _on_ice_slow_timer_timeout():
+	slow_speed = 1
