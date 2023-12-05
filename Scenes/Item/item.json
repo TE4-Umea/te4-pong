@@ -1,7 +1,7 @@
 [
   {
-	"name": "name",
-	"desc": "desc",
+	"name": "<green>t</green>es<red>t</red>",
+	"desc": "testgin",
 	"ability": "ability",
 	"rarity": "rarity",
 	"element": "element",
@@ -15,7 +15,7 @@
   },
   {
 	"name": "Jim",
-	"desc": "It's him",
+	"desc": "It's him, he applies <green>FIRE STACKS</green> that deal constant damage over time",
 	"ability": "JIM",
 	"rarity": "normal",
 	"element": "fire",
@@ -29,7 +29,7 @@
   },
   {
 	"name": "Baba",
-	"desc": "¤jimæ ¥hater€",
+	"desc": "<red>JIM HATER</red> <green>ICE 🥶</green>",
 	"ability": "spa",
 	"rarity": "i dont know",
 	"element": "ice",
@@ -43,7 +43,7 @@
   },
   {
 	"name": "@Skaba",
-	"desc": "[]12123{}()awd¥ ¤ € æ",
+	"desc": "Applies <green>light</green> on hit",
 	"ability": "",
 	"rarity": "09b ",
 	"element": "light",
@@ -56,8 +56,8 @@
 	}
   },
   {
-	"name": "0",
-	"desc": "123",
+	"name": "Stäng av strömmen",
+	"desc": "Det blev mörkt, apply <green>darkness</green> on hit",
 	"ability": "51",
 	"rarity": "123",
 	"element": "darkness",
