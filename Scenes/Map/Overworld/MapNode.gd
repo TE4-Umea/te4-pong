@@ -1,21 +1,15 @@
 extends Area2D
 
-const DIRECTIONS = [Vector2.RIGHT, Vector2.UP, Vector2.LEFT, Vector2.DOWN]
-
 @export var active = false
-@export var world_size = 10
 @export var connected : Array[Area2D] = []
 @export var id = 0
 
 var sibling
 var chosen = false
 var mouse_over = false
-var map = []
-var map_position = Vector2.ZERO
 
 func _ready():
-	if MapManager.world_maps.size()-1 < id:
-		_generate_map()
+	if MapManager.node_state.size()-1 < id:
 		MapManager.node_state.insert(id, active)
 		MapManager.chosen_state.insert(id, chosen)
 	else:
@@ -41,6 +35,7 @@ func _process(delta):
 		active = false
 		MapManager.node_state[id] = active
 		MapManager.chosen_state[id] = chosen
+		MapManager.world_intensity += 1
 		for node in connected:
 			for route in connected:
 				if node != route:
@@ -52,29 +47,8 @@ func _process(delta):
 		if sibling:
 			sibling.active = false
 			MapManager.node_state[sibling.id] = false
-		MapManager.current_map = MapManager.world_maps[id]
 		Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 		get_tree().change_scene_to_file("res://Scenes/Map/World/WorldMap.tscn")
-
-func _generate_map():
-	map = []
-	map.append(map_position)
-	var last_dir = Vector2.ZERO
-	var steps_in_dir = 0
-	var step = 1
-	while step < world_size:
-		var dir = DIRECTIONS.pick_random()
-		if last_dir == dir:
-			steps_in_dir += 1
-			if steps_in_dir >= 2:
-				steps_in_dir = 0
-				dir *= -1
-		map_position = map_position + dir
-		if map_position not in map:
-			map.append(map_position)
-			step += 1
-		last_dir = dir
-	MapManager.world_maps.insert(id, map)
 
 func _on_mouse_entered():
 	mouse_over = true

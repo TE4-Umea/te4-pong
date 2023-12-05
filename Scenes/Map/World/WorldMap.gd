@@ -1,11 +1,15 @@
 extends Node
 
+const DIRECTIONS = [Vector2.RIGHT, Vector2.UP, Vector2.LEFT, Vector2.DOWN]
+
 @export var tile_scene : PackedScene
 @export var enemy_risk = 25
 @export var enemies = 8
+@export var world_size = 15
 
-var id
+var map_position = Vector2.ZERO
 var map = []
+var id
 var step_size
 var player = Vector2.ZERO
 var unused_tiles = []
@@ -15,8 +19,29 @@ var end
 var key
 var has_key = false
 
+func _generate_map():
+	enemies *= MapManager.world_intensity*2
+	map = []
+	map.append(map_position)
+	var last_dir = Vector2.ZERO
+	var steps_in_dir = 0
+	var step = 1
+	while step < world_size + (MapManager.world_intensity*7):
+		var dir = DIRECTIONS.pick_random()
+		if last_dir == dir:
+			steps_in_dir += 1
+			if steps_in_dir >= 2:
+				steps_in_dir = 0
+				dir *= -1
+		map_position = map_position + dir
+		if map_position not in map:
+			map.append(map_position)
+			step += 1
+		last_dir = dir
+
 func _ready():
-	map = MapManager.current_map
+	_generate_map()
+	MapManager.current_map = map
 	id = MapManager.current_world
 	var key_location = randi_range(1, map.size()-2)
 	for location in map:
