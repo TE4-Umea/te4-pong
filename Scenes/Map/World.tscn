@@ -140,9 +140,6 @@ speed = 500.0
 [node name="Ball" parent="." instance=ExtResource("5_8pphb")]
 position = Vector2(-277, 262)
 
-[node name="fat_enemy" parent="." instance=ExtResource("6_lrwdc")]
-position = Vector2(928, 312)
-
 [node name="ProgressBar" type="ProgressBar" parent="."]
 modulate = Color(1, 0, 0, 1)
 offset_left = 82.0
@@ -163,6 +160,9 @@ show_percentage = false
 [node name="stamina_timer" type="Timer" parent="ProgressBar2"]
 wait_time = 0.1
 autostart = true
+
+[node name="Hel" parent="." instance=ExtResource("5_2jbsl")]
+position = Vector2(903, 317)
 
 [connection signal="body_entered" from="Norr" to="." method="_on_norr_body_entered"]
 [connection signal="body_entered" from="Bottom" to="." method="_on_bottom_body_entered"]
