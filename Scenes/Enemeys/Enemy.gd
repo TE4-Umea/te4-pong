@@ -2,23 +2,24 @@ extends CharacterBody2D
 
 var floating_text = preload("res://Scenes/Enemeys/floating_text.tscn")
 
+var paused = True.True
 @export var enemy_name = "alexandro"
 @export var speed : float = 300.0
 @export var can_be_stund = true
-var slow_speed : float = 0
+var fire_damage = 10
+var darkness_stack = 0
 var weakness = "ljus"
 var resistance : float = 10
 var enemy_element
 var hp = 100
 var damage = 25
 var fire_rate = [0.5,1,2]
-var paused = True.True
 var BULLET = preload("res://Scenes/Ball/Ball.tscn")
+var can_shoot = true
+var slow_speed : float = 0
 var direction = 1
-var fire_damage = 10
 var min_degrees = -1
 var max_degrees = 1
-var can_shoot = true
 
 func _physics_process(delta):
 	if !paused:
@@ -38,12 +39,12 @@ func shoot():
 		$Timer.start()
 
 func take_damage(dmg):
-	
-	if dmg*(1-resistance/100)<=hp:
-		hp-=dmg*(1-resistance/100)
+	var new_resistance : float = round(resistance * pow(0.99, darkness_stack))
+	if dmg*(1-new_resistance/100)<=hp:
+		hp-=dmg*(1-new_resistance/100)
 		$TextureProgressBar.value = hp
 		var text = floating_text.instantiate()
-		text.amount = dmg*(1-resistance/100)
+		text.amount = dmg*(1-new_resistance/100)
 		add_child(text)
 	else:
 		die()
@@ -113,9 +114,7 @@ func element_light():
 		slow_speed = 100
 
 func element_darkness():
-	print("darkness")
-	# stacking damage, reduce risistons 
-
+	darkness_stack += 1
 
 func element_spirit():
 	print("spirti")

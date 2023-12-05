@@ -62,7 +62,7 @@
 	"rarity": "123",
 	"element": "darkness",
 	"stats": {
-	  "damage": 123,
+	  "damage": 0,
 	  "hp": 2,
 	  "luck": 9,
 	  "movment_speed": 20,
