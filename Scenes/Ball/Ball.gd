@@ -2,9 +2,10 @@ extends CharacterBody2D
 @export var speed : float = 300.0
 var direction = Vector2.ZERO
 var paused = false
+var damage
+var element
 var direx = -1
 var direxy = randf_range(-1.0, 1.0)
-var damage = 0
 
 func _ready():
 	global.ball_size = $CollisionShape2D.shape.size
@@ -26,6 +27,6 @@ func _physics_process(delta):
 func _on_world_pause_signal():
 	paused = true
 
-func collided_with_player(player_damage):
-	print("collided_with_player")
+func collided_with_player(player_damage, player_element):
 	damage = player_damage
+	element = player_element

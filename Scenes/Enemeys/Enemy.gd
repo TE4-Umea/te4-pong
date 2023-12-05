@@ -12,6 +12,7 @@ var fire_rate = [0.5,1,2]
 var paused = True.True
 var BULLET = preload("res://Scenes/Ball/Ball.tscn")
 var direction = 1
+var fire_damage = 10
 var min_degrees = -1
 var max_degrees = 1
 
@@ -33,6 +34,7 @@ func shoot():
 	$Timer.start()
 
 func take_damage(dmg):
+	
 	if dmg*(1-resistance/100)<=hp:
 		hp-=dmg*(1-resistance/100)
 		$TextureProgressBar.value = hp
@@ -45,15 +47,97 @@ func take_damage(dmg):
 func die():
 	queue_free()
 
+func element_effect(element):
+	match element:
+		"fire":
+			element_fire()
+		"ice":
+			element_ice()
+		"lightning":
+			element_lightning()
+		"earth":
+			element_earth()
+		"air":
+			element_air()
+		"water":
+			element_water()
+		"light":
+			element_light()
+		"darkness":
+			element_darkness()
+		"spirit":
+			element_spirit()
+		_:
+			print("no elemento")
+
+func element_fire():
+	print("fire")
+	# tick damage
+	$FireTickTimer.start()
+	$FireBrunTimer.start()
+
+
+func element_ice():
+	print("ice")
+	# slows and extra damage 
+
+
+func element_lightning():
+	print("lightning")
+	# chanse for lightning bolt (kanske ska vara i player)
+
+ 
+func element_earth():
+	print("earh")
+	# big rock (kanske ska vara i ball)
+
+
+func element_air():
+	print("air")
+	# buff? (kanske ska vara i player)
+
+
+func element_water():
+	print("water")
+	# shotgun? (kanske ska vara i player)
+
+
+func element_light():
+	print("light")
+	# chans for stun
+
+
+func element_darkness():
+	print("darkness")
+	# stacking damage, reduce risistons 
+
+
+func element_spirit():
+	print("spirti")
+	# makes to balls (kanske ska vara i player)
+	$FireTickTimer.start()
+	$FireBrunTimer.start()
+
 
 func _on_area_2d_body_entered(body):
 	body.queue_free()
 	take_damage(body.damage)
+	element_effect(body.element)
 
 
 func _on_timer_timeout():
 	shoot()
 
+
 func _on_movement_timer_timeout():
 	direction *= -1
 	$MovementTimer.wait_time = RandomNumberGenerator.new().randf_range(1, 5)
+  
+  
+func _on_fire_brun_timer_timeout():
+	$FireTickTimer.stop()
+	$FireBrunTimer.stop()
+
+
+func _on_fire_tick_timer_timeout():
+	take_damage(fire_damage)
