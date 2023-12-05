@@ -53,6 +53,7 @@ func _process(delta):
 			sibling.active = false
 			MapManager.node_state[sibling.id] = false
 		MapManager.current_map = MapManager.world_maps[id]
+		Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 		get_tree().change_scene_to_file("res://Scenes/Map/World/WorldMap.tscn")
 
 func _generate_map():

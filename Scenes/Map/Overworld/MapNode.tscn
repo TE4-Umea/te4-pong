@@ -8,6 +8,7 @@ size = Vector2(32, 32)
 
 [node name="Area2D" type="Area2D" groups=["map_node"]]
 script = ExtResource("1_3ty8w")
+world_size = 20
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(3.8147e-06, 3.8147e-06)
