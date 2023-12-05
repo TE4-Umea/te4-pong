@@ -131,7 +131,7 @@ func _on_timer_timeout():
 
 func _on_movement_timer_timeout():
 	direction *= -1
-  $MovementTimer.wait_time = RandomNumberGenerator.new().randf_range(1, 5)
+	$MovementTimer.wait_time = RandomNumberGenerator.new().randf_range(1, 5)
   
   
 func _on_fire_brun_timer_timeout():
