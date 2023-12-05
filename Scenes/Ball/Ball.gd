@@ -26,6 +26,5 @@ func _on_world_pause_signal():
 	paused = true
 
 func collided_with_player(player_damage, player_element):
-	print("collided_with_player")
 	damage = player_damage
 	element = player_element

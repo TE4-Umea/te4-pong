@@ -68,6 +68,12 @@ texture = ExtResource("2_hqnbd")
 position = Vector2(100, -1)
 shape = SubResource("RectangleShape2D_8ckjk")
 
+[node name="FireTickTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="FireBrunTimer" type="Timer" parent="."]
+wait_time = 3.0
+
 [connection signal="timeout" from="Shield" to="." method="_on_shield_timeout"]
 [connection signal="timeout" from="MovementTimer" to="." method="_on_movement_timer_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout" flags=18]
