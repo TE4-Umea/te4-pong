@@ -5,10 +5,12 @@ signal pauseSignal
 var BALL = preload("res://Scenes/Ball/Ball.tscn")
 var shift = false
 
-func spawn_ball(x,y):
+func spawn_ball(x,y,direx,direxy,damage):
 	var ball =  BALL.instantiate()
 	ball.global_position = Vector2(x,y)
-	ball.direction.x = -1
+	ball.direx = direx
+	ball.direxy = direxy
+	ball.damage = damage
 	add_child(ball)
 
 # Called when the node enters the scene tree for the first time.
@@ -78,6 +80,8 @@ func _on_stamina_timer_timeout():
 func _input(event):
 	if event.is_action_pressed("Shift"):
 		if $ProgressBar2.value > 25:
+			$p1.speed = 1000
 			shift = true
 	elif event.is_action_released("Shift"):
+		$p1.speed = 500
 		shift = false
