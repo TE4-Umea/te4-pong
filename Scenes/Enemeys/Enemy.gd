@@ -23,7 +23,7 @@ var max_degrees = 1
 
 func _physics_process(delta):
 	if !paused:
-		if position.y < 2 + $Area2D/CollisionShape2D.shape.size.y/2 or position.y > get_viewport_rect().size.y - $Area2D/CollisionShape2D.shape.size.y/2-2:
+		if position.y < 2 + $Area2D/CollisionShape2D.shape.size.y/2 or position.y > get_viewport_rect().size.y - $Area2D/CollisionShape2D.shape.size.y/2-10:
 			direction *= -1
 		if direction:
 			velocity.y = direction * (speed * (1-slow_speed/100))
