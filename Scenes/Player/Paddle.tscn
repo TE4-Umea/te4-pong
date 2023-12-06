@@ -1,25 +1,61 @@
-[gd_scene load_steps=5 format=3 uid="uid://b5iy5pcb2xit3"]
+[gd_scene load_steps=10 format=3 uid="uid://b5iy5pcb2xit3"]
 
 [ext_resource type="Script" path="res://Scenes/Player/Paddle.gd" id="1_yyuuv"]
-[ext_resource type="Texture2D" uid="uid://bx2dcegbutm0j" path="res://Assets/Img/B).png" id="2_wwu6y"]
+[ext_resource type="Texture2D" uid="uid://egv2g5xu7fly" path="res://Assets/Img/Skeletal Rat Boss.png" id="2_dyqr1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jdkgc"]
+atlas = ExtResource("2_dyqr1")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xvxpn"]
+atlas = ExtResource("2_dyqr1")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_apohg"]
+atlas = ExtResource("2_dyqr1")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iccmy"]
+atlas = ExtResource("2_dyqr1")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qswp8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jdkgc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xvxpn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_apohg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iccmy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_73suw"]
-size = Vector2(16, 128)
+size = Vector2(16, 88)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kuvxx"]
-size = Vector2(20, 132)
+size = Vector2(20, 96)
 
 [node name="Paddle" type="CharacterBody2D" groups=["paddles"]]
 script = ExtResource("1_yyuuv")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(8.01602, 63.9967)
-rotation = -1.5708
-scale = Vector2(0.558923, 0.0691016)
-texture = ExtResource("2_wwu6y")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-24, 64)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_qswp8")
+autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(7.99127, 64.0094)
+position = Vector2(7.99127, 68)
 shape = SubResource("RectangleShape2D_73suw")
 
 [node name="Area2D" type="Area2D" parent="."]
@@ -28,6 +64,7 @@ collision_layer = 4
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 3.9906)
 shape = SubResource("RectangleShape2D_kuvxx")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

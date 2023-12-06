@@ -8,7 +8,7 @@ func spawn_minion():
 	owner.add_child(enemy)
 
 func _ready():
-	resistance = 0
+	resistance = 75
 	fire_rate = [0.5,1,2]
 	min_degrees = -1
 	max_degrees = 1

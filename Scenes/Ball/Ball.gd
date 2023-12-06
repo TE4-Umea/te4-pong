@@ -11,10 +11,15 @@ func _ready():
 	global.ball_size = $CollisionShape2D.shape.size
 	direction.y = direxy
 	direction.x = direx
+	$AnimatedSprite2D.rotation_degrees = rad_to_deg(direction.x*direction.y)-90*direction.x
 
 func _process(delta):
 	if position.y < 0 or position.y > get_viewport_rect().size.y:
 		direction.y *= -1
+		if(direction.x == -1):
+			$AnimatedSprite2D.rotation_degrees = rad_to_deg(direction.x*direction.y)-90*direction.x
+		else:
+			$AnimatedSprite2D.rotation_degrees = rad_to_deg(direction.x*direction.y)-90
 
 func _physics_process(delta):
 	if !paused:
