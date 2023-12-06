@@ -1,0 +1,49 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3v18p47u2k67"]
+
+[ext_resource type="PackedScene" uid="uid://brapjlmy1ervw" path="res://Scenes/Map/Overworld/MapNode.tscn" id="1_ygq0s"]
+
+[node name="Overworld" type="Node"]
+
+[node name="Hel" parent="." node_paths=PackedStringArray("connected") instance=ExtResource("1_ygq0s")]
+position = Vector2(576, 512)
+active = true
+connected = [NodePath("../Jotunheimr"), NodePath("../Nioavellir")]
+
+[node name="Jotunheimr" parent="." node_paths=PackedStringArray("connected") instance=ExtResource("1_ygq0s")]
+position = Vector2(400, 449)
+connected = [NodePath("../Muspelheim"), NodePath("../Midgard")]
+id = 1
+
+[node name="Nioavellir" parent="." node_paths=PackedStringArray("connected") instance=ExtResource("1_ygq0s")]
+position = Vector2(768, 448)
+connected = [NodePath("../Midgard"), NodePath("../Niflheim")]
+id = 2
+
+[node name="Muspelheim" parent="." node_paths=PackedStringArray("connected") instance=ExtResource("1_ygq0s")]
+position = Vector2(384, 353)
+connected = [NodePath("../Alfheim")]
+id = 3
+
+[node name="Midgard" parent="." node_paths=PackedStringArray("connected") instance=ExtResource("1_ygq0s")]
+position = Vector2(576, 336)
+connected = [NodePath("../Alfheim"), NodePath("../Vanaheim")]
+id = 4
+
+[node name="Niflheim" parent="." node_paths=PackedStringArray("connected") instance=ExtResource("1_ygq0s")]
+position = Vector2(784, 352)
+connected = [NodePath("../Vanaheim")]
+id = 5
+
+[node name="Alfheim" parent="." node_paths=PackedStringArray("connected") instance=ExtResource("1_ygq0s")]
+position = Vector2(432, 240)
+connected = [NodePath("../Asgard")]
+id = 6
+
+[node name="Vanaheim" parent="." node_paths=PackedStringArray("connected") instance=ExtResource("1_ygq0s")]
+position = Vector2(720, 241)
+connected = [NodePath("../Asgard")]
+id = 7
+
+[node name="Asgard" parent="." instance=ExtResource("1_ygq0s")]
+position = Vector2(576, 144)
+id = 8

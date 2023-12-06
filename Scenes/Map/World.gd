@@ -67,7 +67,6 @@ func _on_main_menu_pressed():
 	global.p2_score = 0
 	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
 
-
 func _on_stamina_timer_timeout():
 	if shift and $ProgressBar2.value > 0:
 		$p1.speed = 1000

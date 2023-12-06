@@ -1,77 +1,48 @@
-[gd_scene load_steps=6 format=3 uid="uid://b5io42hl1yngq"]
+[gd_scene load_steps=7 format=3 uid="uid://b5io42hl1yngq"]
 
-[ext_resource type="Script" path="res://Scenes/Map/World/Walker.gd" id="1_0m7ej"]
 [ext_resource type="Script" path="res://Scenes/Map/World/WorldMap.gd" id="1_pu3eo"]
 [ext_resource type="Texture2D" uid="uid://bx2dcegbutm0j" path="res://Assets/Img/B).png" id="2_bqdmv"]
+[ext_resource type="PackedScene" uid="uid://bm7fwutrwv2lh" path="res://Scenes/Map/World/MapTile.tscn" id="2_d70xm"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_w6q3w"]
-texture = ExtResource("2_bqdmv")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-1:0/0 = 0
-2:0/0 = 0
-3:0/0 = 0
-4:0/0 = 0
-5:0/0 = 0
-6:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-2:1/0 = 0
-3:1/0 = 0
-4:1/0 = 0
-5:1/0 = 0
-6:1/0 = 0
-0:2/0 = 0
-1:2/0 = 0
-2:2/0 = 0
-3:2/0 = 0
-4:2/0 = 0
-5:2/0 = 0
-6:2/0 = 0
-0:3/0 = 0
-1:3/0 = 0
-2:3/0 = 0
-3:3/0 = 0
-4:3/0 = 0
-5:3/0 = 0
-6:3/0 = 0
-0:4/0 = 0
-1:4/0 = 0
-2:4/0 = 0
-3:4/0 = 0
-4:4/0 = 0
-5:4/0 = 0
-6:4/0 = 0
-0:5/0 = 0
-1:5/0 = 0
-2:5/0 = 0
-3:5/0 = 0
-4:5/0 = 0
-5:5/0 = 0
-6:5/0 = 0
-0:6/0 = 0
-1:6/0 = 0
-2:6/0 = 0
-3:6/0 = 0
-4:6/0 = 0
-5:6/0 = 0
-6:6/0 = 0
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_qua2t"]
+size = Vector2(16, 16)
 
-[sub_resource type="TileSet" id="TileSet_nlcyy"]
-tile_size = Vector2i(32, 32)
-sources/0 = SubResource("TileSetAtlasSource_w6q3w")
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wlfsu"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ho3b0"]
+size = Vector2(32, 32)
 
 [node name="WorldMap" type="Node"]
 script = ExtResource("1_pu3eo")
+tile_scene = ExtResource("2_d70xm")
+enemy_risk = 60
+enemies = 10
 
-[node name="Walker" type="Node2D" parent="."]
-position = Vector2(576, 320)
-script = ExtResource("1_0m7ej")
-steps = 15
+[node name="Key" type="Area2D" parent="."]
+z_index = 5
 
-[node name="TileMap" type="TileMap" parent="."]
-tile_set = SubResource("TileSet_nlcyy")
-cell_quadrant_size = 32
-format = 2
+[node name="Sprite2D" type="Sprite2D" parent="Key"]
+position = Vector2(24, 24)
+texture = SubResource("PlaceholderTexture2D_qua2t")
 
-[connection signal="done_with_map" from="Walker" to="." method="_on_walker_done_with_map"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Key"]
+position = Vector2(24, 24)
+shape = SubResource("RectangleShape2D_wlfsu")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+z_index = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(24, 24)
+scale = Vector2(0.139738, 0.137931)
+texture = ExtResource("2_bqdmv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(24, 24)
+shape = SubResource("RectangleShape2D_ho3b0")
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position_smoothing_enabled = true
+
+[connection signal="body_entered" from="Key" to="." method="_on_key_body_entered"]
