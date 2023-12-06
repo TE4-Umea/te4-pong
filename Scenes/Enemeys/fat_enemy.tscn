@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=3 uid="uid://c01b1hf0pv15n"]
+
+[ext_resource type="Script" path="res://Scenes/Enemeys/fat_enemy.gd" id="1_865ug"]
+[ext_resource type="Texture2D" uid="uid://bx2dcegbutm0j" path="res://Assets/Img/B).png" id="2_i2ejl"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_d6atd"]
+size = Vector2(384, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3obk3"]
+size = Vector2(384, 384)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_clax8"]
+size = Vector2(384, 384)
+
+[node name="fat_enemy" type="CharacterBody2D"]
+position = Vector2(288, 128)
+script = ExtResource("1_865ug")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+modulate = Color(1, 0, 0, 1)
+offset_left = -192.0
+offset_top = -208.0
+offset_right = 192.0
+offset_bottom = -198.0
+value = 100.0
+texture_progress = SubResource("PlaceholderTexture2D_d6atd")
+metadata/_edit_use_anchors_ = true
+
+[node name="MovementTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1.67686, 1.65517)
+texture = ExtResource("2_i2ejl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_3obk3")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_clax8")
+
+[node name="FireTickTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="FireBrunTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="LightStunTimer" type="Timer" parent="."]
+
+[node name="IceSlowTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="timeout" from="MovementTimer" to="." method="_on_movement_timer_timeout" flags=18]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout" flags=18]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered" flags=18]
+[connection signal="timeout" from="FireTickTimer" to="." method="_on_fire_tick_timer_timeout"]
+[connection signal="timeout" from="FireBrunTimer" to="." method="_on_fire_brun_timer_timeout"]
+[connection signal="timeout" from="LightStunTimer" to="." method="_on_light_stun_timer_timeout"]
+[connection signal="timeout" from="IceSlowTimer" to="." method="_on_ice_slow_timer_timeout"]

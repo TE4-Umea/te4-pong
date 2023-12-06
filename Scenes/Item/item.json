@@ -1,0 +1,72 @@
+[
+  {
+	"name": "<green>t</green>es<red>t</red>",
+	"desc": "testgin",
+	"ability": "ability",
+	"rarity": "rarity",
+	"element": "element",
+	"stats": {
+	  "damage": 0,
+	  "hp": 0,
+	  "luck": 0,
+	  "movment_speed": 0,
+	  "ball_speed": 0
+	}
+  },
+  {
+	"name": "Jim",
+	"desc": "It's him, he applies <green>FIRE STACKS</green> that deal constant damage over time",
+	"ability": "JIM",
+	"rarity": "normal",
+	"element": "fire",
+	"stats": {
+	  "damage": 10,
+	  "hp": 1,
+	  "luck": 0.1,
+	  "movment_speed": 100,
+	  "ball_speed": 44
+	}
+  },
+  {
+	"name": "Baba",
+	"desc": "<red>JIM HATER</red> applies <green>ICE 🥶</green> on hit",
+	"ability": "spa",
+	"rarity": "i dont know",
+	"element": "ice",
+	"stats": {
+	  "damage": 10,
+	  "hp": 1,
+	  "luck": 0.5,
+	  "movment_speed": 90,
+	  "ball_speed": 0.6
+	}
+  },
+  {
+	"name": "@Skaba",
+	"desc": "Applies <green>light</green> on hit",
+	"ability": "",
+	"rarity": "09b ",
+	"element": "light",
+	"stats": {
+	  "damage": 0,
+	  "hp": 100,
+	  "luck": 0,
+	  "movment_speed": 0,
+	  "ball_speed": 0
+	}
+  },
+  {
+	"name": "Stäng av strömmen",
+	"desc": "Det blev mörkt, apply <green>darkness</green> on hit",
+	"ability": "51",
+	"rarity": "123",
+	"element": "darkness",
+	"stats": {
+	  "damage": 0,
+	  "hp": 2,
+	  "luck": 9,
+	  "movment_speed": 20,
+	  "ball_speed": 0
+	}
+  }
+]

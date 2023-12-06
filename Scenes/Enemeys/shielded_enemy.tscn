@@ -3,9 +3,8 @@
 [ext_resource type="Script" path="res://Scenes/Enemeys/shielded_enemy.gd" id="1_s5xda"]
 [ext_resource type="Texture2D" uid="uid://bx2dcegbutm0j" path="res://Assets/Img/B).png" id="2_hqnbd"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1il5r"]
-width = 228
-height = 100
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_5igd7"]
+size = Vector2(229, 10)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3obk3"]
 size = Vector2(222, 228)
@@ -21,15 +20,16 @@ position = Vector2(236, 109)
 script = ExtResource("1_s5xda")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+modulate = Color(1, 0, 0, 1)
 offset_left = -114.0
-offset_top = -131.0
-offset_right = 114.0
-offset_bottom = -31.0
-scale = Vector2(1, 0.1)
+offset_top = -133.0
+offset_right = 115.0
+offset_bottom = -125.0
 value = 100.0
-stretch_margin_left = 1
-texture_progress = SubResource("NoiseTexture2D_1il5r")
-tint_progress = Color(1, 0.137255, 0, 1)
+texture_progress = SubResource("PlaceholderTexture2D_5igd7")
+
+[node name="Shield" type="Timer" parent="."]
+wait_time = 3.0
 
 [node name="MovementTimer" type="Timer" parent="."]
 autostart = true
@@ -52,7 +52,7 @@ collision_mask = 2
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_clax8")
 
-[node name="Area2D2" type="Area2D" parent="."]
+[node name="Area2D2" type="Area2D" parent="." groups=["shield"]]
 position = Vector2(-232, 0)
 collision_layer = 4
 collision_mask = 2
@@ -68,7 +68,23 @@ texture = ExtResource("2_hqnbd")
 position = Vector2(100, -1)
 shape = SubResource("RectangleShape2D_8ckjk")
 
+[node name="FireTickTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="FireBrunTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="LightStunTimer" type="Timer" parent="."]
+
+[node name="IceSlowTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="timeout" from="Shield" to="." method="_on_shield_timeout"]
 [connection signal="timeout" from="MovementTimer" to="." method="_on_movement_timer_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout" flags=18]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered" flags=18]
 [connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]
+[connection signal="timeout" from="FireTickTimer" to="." method="_on_fire_tick_timer_timeout"]
+[connection signal="timeout" from="FireBrunTimer" to="." method="_on_fire_brun_timer_timeout"]
+[connection signal="timeout" from="LightStunTimer" to="." method="_on_light_stun_timer_timeout"]
+[connection signal="timeout" from="IceSlowTimer" to="." method="_on_ice_slow_timer_timeout"]

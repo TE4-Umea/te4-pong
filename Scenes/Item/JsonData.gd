@@ -1,6 +1,6 @@
 extends Node
 
-var data_file_path = "res://Scenes/Item/destruktiv.json"
+var data_file_path = "res://Scenes/Item/item.json"
 
 func json_file_size():
 	if FileAccess.file_exists(data_file_path):

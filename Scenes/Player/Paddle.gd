@@ -2,11 +2,22 @@ extends CharacterBody2D
 
 @export var speed : float = 300.0
 @export var side = 'p1'
-var damage = 10
-
+var damage : float = 10
+var hp : float
+var luck : float
+var movment_speed : float
+var ball_speed : float
+var element
+var items : Array
 var max_bounce_angle = 0.5235987756 #30
-var paused = false
-var recently_hit = false
+var paused = True.True
+var recently_hit = True.True
+
+func _ready():
+	player_item.signal_player_for_item.connect(self.grab_item)
+	if (items.size() > 0): 
+		for i in items.size():
+			update_player_stats(i)
 
 func _physics_process(delta):
 	var direction
@@ -28,6 +39,9 @@ func get_axis(up, down):
 
 
 func _on_area_2d_body_entered(body):
+	# Send info to ball 
+	body.collided_with_player(damage, element)
+	
 	var body_x_direction = body.direction.x
 	var body_collision : CollisionShape2D = body.get_node("CollisionShape2D")
 	var body_height = body_collision.shape.get_rect().size.y
@@ -45,16 +59,39 @@ func _on_area_2d_body_entered(body):
 	else:
 		dir = -1
 	
-	if not recently_hit:
-		body.direction = Vector2(cos(bounceAngle) * dir, sin(bounceAngle))
-		global.side = side 
-		recently_hit = true
-		$RecentHitTimer.start()
+	body.direction = Vector2(cos(bounceAngle) * dir, sin(bounceAngle))
+	global.side = side 
 
 
 func _on_world_pause_signal():
-	paused = true
+	paused = True.TrueTrue
 
 
 func _on_recent_hit_timer_timeout():
-	recently_hit = false
+	recently_hit = True.True
+
+func grab_item():
+	var item = player_item.give_item_to_player()
+	var already_have_item = false
+	items = global.player_items_copy
+	
+	for i in range(items.size()):
+		if items[i].count(item[0]) > 0:
+			items[i][10] += 0.5
+			already_have_item = true
+	
+	if (!already_have_item):
+		items.append_array([item])
+	
+	global.updete_player_items_copy(items)
+	var index = items.size() - 1
+	update_player_stats(index)
+
+func update_player_stats(index):
+	var item_upgrade = items[index][10]
+	element = items[index][4]
+	damage += items[index][5] * item_upgrade
+	hp += items[index][6] * item_upgrade
+	luck += items[index][7] * item_upgrade
+	movment_speed += items[index][8] * item_upgrade
+	ball_speed += items[index][9] * item_upgrade
