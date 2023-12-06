@@ -60,18 +60,14 @@ func element_effect(element):
 			element_ice()
 		"lightning":
 			element_lightning()
-		"earth":
-			element_earth()
+		"light":
+			element_light()
 		"air":
 			element_air()
 		"water":
 			element_water()
-		"light":
-			element_light()
 		"darkness":
 			element_darkness()
-		"spirit":
-			element_spirit()
 		_:
 			print("no elemento")
 

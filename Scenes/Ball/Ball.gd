@@ -30,3 +30,16 @@ func _on_world_pause_signal():
 func collided_with_player(player_damage, player_element):
 	damage = player_damage
 	element = player_element
+	
+func element_effect(element):
+	match element:
+		"earth":
+			element_earth()
+		"spirit":
+			element_spirit()
+
+func element_earth():
+	pass
+
+func element_spirit():
+	pass
