@@ -18,9 +18,9 @@ var offset : int
 var end
 var key
 var has_key = false
+var key_index
 
 func _generate_map():
-	enemies *= MapManager.world_intensity*2
 	map = []
 	map.append(map_position)
 	var last_dir = Vector2.ZERO
@@ -40,10 +40,20 @@ func _generate_map():
 		last_dir = dir
 
 func _ready():
-	_generate_map()
-	MapManager.current_map = map
-	id = MapManager.current_world
-	var key_location = randi_range(1, map.size()-2)
+	if MapManager.saved == true:
+		map = MapManager.current_map
+		id = MapManager.current_world
+		key_index = MapManager.key_index
+		end = MapManager.end_pos
+		key = MapManager.key_pos
+		has_key = MapManager.has_key
+		enemies = MapManager.enemies
+	else:
+		_generate_map()
+		MapManager.current_map = map
+		id = MapManager.current_world
+		key_index = randi_range(1, map.size()-2)
+	
 	for location in map:
 		var tile : Area2D = tile_scene.instantiate()
 		add_child(tile)
@@ -55,18 +65,36 @@ func _ready():
 		tile.position = Vector2(x+(location.x * offset), y+(location.y * offset))
 		
 		if map.find(location) == 0:
-			player = location
-			$Player.position = tile.position
-			tile.modulate = Color.GREEN
+			if not MapManager.saved:
+				player = location
+				$Player.position = tile.position
+			else:
+				player = MapManager.player_pos
+				$Player.position = MapManager.player_global_pos + Vector2(x, y)
+#			tile.modulate = Color.GREEN
 		elif map.find(location) == map.size()-1:
 			tile.modulate = Color.RED
 			end = location
-		elif map.find(location) == key_location:
-			key = location
-			tile.modulate = Color.YELLOW
+		elif map.find(location) == key_index:
+			#key = location
+			if not has_key:
+				$Key.position = tile.position
+			else:
+				$Key.queue_free()
+#			tile.modulate = Color.YELLOW
 		else:
 			unused_tiles.append(location)
-			tile.modulate = Color.DIM_GRAY
+#			tile.modulate = Color.DIM_GRAY
+
+func _save():
+	MapManager.saved = true
+	MapManager.key_index = key_index
+	MapManager.end_pos = end
+	MapManager.key_pos = key
+	MapManager.has_key = has_key
+	MapManager.player_pos = player
+	MapManager.player_global_pos = Vector2(player.x * offset, player.y * offset)
+	MapManager.enemies = enemies
 
 func _move(direction):
 	if player + direction in map:
@@ -75,14 +103,17 @@ func _move(direction):
 		if player == key and not has_key:
 			print("Picked up Key")
 			has_key = true
+			_save()
 		elif player == end:
 			if has_key:
+				MapManager.saved = false
 				get_tree().change_scene_to_file("res://Scenes/Map/Overworld/Overworld.tscn")
 		else:
 			var random = randi_range(0, 100)
 			if random < enemy_risk and enemies > 0:
 				enemies -= 1
 				print("ENEMY")
+			_save()
 
 func _process(delta):
 	if Input.is_action_just_pressed("P1_UP"):
@@ -93,3 +124,11 @@ func _process(delta):
 		_move(Vector2.LEFT)
 	elif Input.is_action_just_pressed("P1_RIGHT"):
 		_move(Vector2.RIGHT)
+#	elif Input.is_action_just_pressed("click"):
+#		get_tree().change_scene_to_file("res://Scenes/Map/World/WorldMap.tscn")
+
+
+func _on_key_body_entered(body):
+	has_key = true
+	_save()
+	$Key.queue_free()

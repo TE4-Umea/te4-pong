@@ -1,8 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://b5io42hl1yngq"]
+[gd_scene load_steps=7 format=3 uid="uid://b5io42hl1yngq"]
 
 [ext_resource type="Script" path="res://Scenes/Map/World/WorldMap.gd" id="1_pu3eo"]
 [ext_resource type="Texture2D" uid="uid://bx2dcegbutm0j" path="res://Assets/Img/B).png" id="2_bqdmv"]
 [ext_resource type="PackedScene" uid="uid://bm7fwutrwv2lh" path="res://Scenes/Map/World/MapTile.tscn" id="2_d70xm"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_qua2t"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wlfsu"]
+size = Vector2(16, 16)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ho3b0"]
 size = Vector2(32, 32)
@@ -13,17 +19,30 @@ tile_scene = ExtResource("2_d70xm")
 enemy_risk = 60
 enemies = 10
 
+[node name="Key" type="Area2D" parent="."]
+z_index = 5
+
+[node name="Sprite2D" type="Sprite2D" parent="Key"]
+position = Vector2(24, 24)
+texture = SubResource("PlaceholderTexture2D_qua2t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Key"]
+position = Vector2(24, 24)
+shape = SubResource("RectangleShape2D_wlfsu")
+
 [node name="Player" type="CharacterBody2D" parent="."]
 z_index = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
-position = Vector2(16, 16)
+position = Vector2(24, 24)
 scale = Vector2(0.139738, 0.137931)
 texture = ExtResource("2_bqdmv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(16, 16)
+position = Vector2(24, 24)
 shape = SubResource("RectangleShape2D_ho3b0")
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position_smoothing_enabled = true
+
+[connection signal="body_entered" from="Key" to="." method="_on_key_body_entered"]
