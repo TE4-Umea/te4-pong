@@ -27,7 +27,7 @@ particles_anim_h_frames = 1
 particles_anim_v_frames = 1
 particles_anim_loop = false
 
-[node name="World" type="Node"]
+[node name="World" type="Node" groups=["world"]]
 script = ExtResource("1_a8amt")
 
 [node name="Norr" type="Area2D" parent="."]
