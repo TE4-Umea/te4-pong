@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://c3v18p47u2k67"]
+[gd_scene load_steps=5 format=3 uid="uid://c3v18p47u2k67"]
 
 [ext_resource type="PackedScene" uid="uid://brapjlmy1ervw" path="res://Scenes/Map/Overworld/MapNode.tscn" id="1_ygq0s"]
+[ext_resource type="PackedScene" uid="uid://fworrtukuh2s" path="res://Scenes/Enemeys/shielded_enemy.tscn" id="2_0n318"]
+[ext_resource type="PackedScene" uid="uid://c01b1hf0pv15n" path="res://Scenes/Enemeys/fat_enemy.tscn" id="3_fw3iw"]
+[ext_resource type="PackedScene" uid="uid://bcql4dsu7c1lt" path="res://Scenes/Enemeys/hel.tscn" id="4_hxaoi"]
 
 [node name="Overworld" type="Node"]
 
@@ -8,6 +11,8 @@
 position = Vector2(576, 512)
 active = true
 connected = [NodePath("../Jotunheimr"), NodePath("../Nioavellir")]
+enemies = Array[PackedScene]([ExtResource("2_0n318"), ExtResource("3_fw3iw")])
+boss = ExtResource("4_hxaoi")
 
 [node name="Jotunheimr" parent="." node_paths=PackedStringArray("connected") instance=ExtResource("1_ygq0s")]
 position = Vector2(400, 449)

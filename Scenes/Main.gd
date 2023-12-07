@@ -7,7 +7,10 @@ var p2_score = 0
 var ball_size = 0
 var player_items_index : Array
 var player_items_copy : Array
-var enemy_type = "enemy"
+var enemy = "enemy"
+var enemy_list = []
+var boss = ""
+var is_boss = false
 
 func update_player_items_index(item_index):
 	player_items_index.append(item_index)

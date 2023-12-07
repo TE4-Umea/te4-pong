@@ -3,6 +3,8 @@ extends Area2D
 @export var active = false
 @export var connected : Array[Area2D] = []
 @export var id = 0
+@export var enemies : Array[PackedScene] = []
+@export var boss : PackedScene
 
 var sibling
 var chosen = false
@@ -33,6 +35,9 @@ func _process(delta):
 	if mouse_over and Input.is_action_just_pressed("click") and active and not chosen:
 		chosen = true
 		active = false
+		global.is_boss = false
+		global.enemy_list = enemies
+		global.boss = boss
 		MapManager.node_state[id] = active
 		MapManager.chosen_state[id] = chosen
 		MapManager.world_intensity += 1

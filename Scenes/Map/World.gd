@@ -15,6 +15,13 @@ func spawn_ball(x,y,direx,direxy,damage):
 
 # Called when the node enters the scene tree for thesss first time.
 func _ready():
+	var enemy
+	if global.is_boss:
+		enemy = global.boss.instantiate()
+	else:
+		enemy = global.enemy.instantiate()
+	add_child(enemy)
+	enemy.position = $Spawner.position
 	screensize = get_viewport().get_visible_rect().size
 
 func _on_norr_body_entered(body):
@@ -30,7 +37,7 @@ func _on_bottom_body_entered(body):
 func _on_kanye_body_entered(body):
 	global.player_hp -= 25
 	$ProgressBar.value = global.player_hp
-	await get_tree().create_timer(1).timeout
+#	await get_tree().create_timer(1).timeout
 	
 	body.queue_free()
 	if global.player_hp < 1:
@@ -40,7 +47,7 @@ func _on_kanye_body_entered(body):
 func _on_left_body_entered(body):#!left
 	global.p1_score = 1
 	
-	await get_tree().create_timer(1).timeout
+#	await get_tree().create_timer(1).timeout
 	
 	body.queue_free()
 	if global.p1_score >= maxScore:
@@ -65,6 +72,12 @@ func _on_main_menu_pressed():
 	global.player_hp = 100
 	global.p1_score = 0
 	global.p2_score = 0
+	MapManager.current_map = []
+	MapManager.current_world = null
+	MapManager.current_layout = []
+	MapManager.saved = false
+	MapManager.node_state = []
+	MapManager.chosen_state = []
 	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
 
 func _on_stamina_timer_timeout():
