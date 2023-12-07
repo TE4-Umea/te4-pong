@@ -107,12 +107,14 @@ func _move(direction):
 		elif player == end:
 			if has_key:
 				MapManager.saved = false
-				get_tree().change_scene_to_file("res://Scenes/Map/Overworld/Overworld.tscn")
+				global.is_boss = true
+				get_tree().change_scene_to_file("res://Scenes/Map/World.tscn")
 		else:
 			var random = randi_range(0, 100)
 			if random < enemy_risk and enemies > 0:
 				enemies -= 1
-				print("ENEMY")
+				global.enemy = global.enemy_list.pick_random()
+				get_tree().change_scene_to_file("res://Scenes/Map/World.tscn")
 			_save()
 
 func _process(delta):
