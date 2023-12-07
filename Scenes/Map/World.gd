@@ -27,11 +27,12 @@ func _ready():
 func _on_norr_body_entered(body):
 	if body.is_in_group('ball'):
 		body.direction.y *= -1
+		body.get_node( "AnimatedSprite2D" ).rotation_degrees = 0
 
 func _on_bottom_body_entered(body):
 	if body.is_in_group('ball'):
 		body.direction.y *= -1
-
+		body.get_node( "AnimatedSprite2D" ).rotation_degrees = 0
 
 
 func _on_kanye_body_entered(body):

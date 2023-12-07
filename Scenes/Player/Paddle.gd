@@ -52,6 +52,7 @@ func _on_area_2d_body_entered(body):
 	var normalizedDist = dist/(collision_height/2)
 	
 	var bounceAngle = -1 * normalizedDist * max_bounce_angle
+	body.get_node( "AnimatedSprite2D" ).rotation_degrees = rad_to_deg(bounceAngle)-90
 	
 	var dir
 	if body_x_direction < 0:
