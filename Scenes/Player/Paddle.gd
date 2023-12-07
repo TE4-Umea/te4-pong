@@ -40,7 +40,6 @@ func get_axis(up, down):
 
 func _on_area_2d_body_entered(body):
 	# Send info to ball 
-	body.collided_with_player(damage, element)
 	
 	var body_x_direction = body.direction.x
 	var body_collision : CollisionShape2D = body.get_node("CollisionShape2D")
@@ -61,6 +60,7 @@ func _on_area_2d_body_entered(body):
 		dir = -1
 	
 	body.direction = Vector2(cos(bounceAngle) * dir, sin(bounceAngle))
+	body.collided_with_player(damage, element)
 	global.side = side 
 
 

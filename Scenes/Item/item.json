@@ -1,7 +1,7 @@
 [
   {
-	"name": "<green>t</green>es<red>t</red>",
-	"desc": "testgin",
+	"name": "kiwi bird",
+	"desc": "it does <red>nothing</red>",
 	"ability": "ability",
 	"rarity": "rarity",
 	"element": "element",
@@ -67,6 +67,76 @@
 	  "luck": 9,
 	  "movment_speed": 20,
 	  "ball_speed": 0
+	}
+  },
+  {
+	"name": "Paraply",
+	"desc": "Du deflectade blixten på fienden :OOOO wooow, application <green>lightning</green> on hit",
+	"ability": "51",
+	"rarity": "123",
+	"element": "lightning",
+	"stats": {
+	  "damage": 10,
+	  "hp": 2,
+	  "luck": 9,
+	  "movment_speed": 20,
+	  "ball_speed": 0
+	}
+  },
+  {
+	"name": "Vatten pistol",
+	"desc": "Gain a chance to <green>crit</green> on enemy hits",
+	"ability": "51",
+	"rarity": "123",
+	"element": "water",
+	"stats": {
+	  "damage": 10,
+	  "hp": 2,
+	  "luck": 9,
+	  "movment_speed": 20,
+	  "ball_speed": 0
+	}
+  },
+  {
+	"name": "punchroll",
+	"desc": "When you deflect enemy bullets you create a second <green>spirit</green> ball",
+	"ability": "51",
+	"rarity": "123",
+	"element": "spirit",
+	"stats": {
+	  "damage": 10,
+	  "hp": 2,
+	  "luck": 9,
+	  "movment_speed": 20,
+	  "ball_speed": 0
+	}
+  },
+  {
+	"name": "kool sten 😎",
+	"desc": "Makes your balls <green>big</green>",
+	"ability": "51",
+	"rarity": "123",
+	"element": "earth",
+	"stats": {
+	  "damage": 25,
+	  "hp": 2,
+	  "luck": 9,
+	  "movment_speed": 20,
+	  "ball_speed": -5
+	}
+  },
+  {
+	"name": "Helium ballong",
+	"desc": "Det är steroider i ballongen <green>wow!</green>",
+	"ability": "51",
+	"rarity": "123",
+	"element": "wind",
+	"stats": {
+	  "damage": 50,
+	  "hp": 50,
+	  "luck": 50,
+	  "movment_speed": 50,
+	  "ball_speed": 50
 	}
   }
 ]
