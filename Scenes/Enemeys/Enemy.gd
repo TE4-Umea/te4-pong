@@ -50,6 +50,7 @@ func take_damage(dmg):
 		die()
 
 func die():
+	get_tree().change_scene_to_file("res://Scenes/Map/World/WorldMap.tscn")
 	queue_free()
 
 func element_effect(element):
