@@ -14,10 +14,8 @@ var paused = True.True
 var recently_hit = True.True
 
 func _ready():
-	print("player has started")
 	items = global.player_items_copy	
 	player_item.signal_player_for_item.connect(self.grab_item)
-	print(items)
 	if (items.size() > 0): 
 		for i in items.size():
 			update_player_stats(i)
@@ -62,7 +60,6 @@ func _on_area_2d_body_entered(body):
 		dir = -1
 	
 	body.direction = Vector2(cos(bounceAngle) * dir, sin(bounceAngle))
-	print(damage)
 	body.collided_with_player(damage, element)
 	global.side = side 
 
@@ -76,7 +73,6 @@ func _on_recent_hit_timer_timeout():
 
 func grab_item():
 	var item = player_item.give_item_to_player()
-	print(item)
 	var already_have_item = false
 	items = global.player_items_copy
 	
