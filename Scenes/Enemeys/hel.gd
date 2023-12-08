@@ -37,7 +37,7 @@ func take_damage(dmg):
 			die()
 
 func shoot():
-	owner.spawn_ball(position.x - $Area2D/CollisionShape2D.shape.size.x/2 - global.ball_size.x, position.y, -1 , randf_range(min_degrees, max_degrees),damage)
+	get_tree().get_first_node_in_group("world").spawn_ball(position.x - $Area2D/CollisionShape2D.shape.size.x/2 - global.ball_size.x, position.y, -1 , randf_range(min_degrees, max_degrees),damage)
 	$Timer.wait_time = fire_rate.pick_random()
 	$Timer.start()
 

@@ -7,7 +7,7 @@ var paused = True.True
 @export var speed : float = 300.0
 @export var can_be_stund = true
 var fire_damage = 10
-var darkness_stack : float = 0
+var darkness_stack = 0
 var weakness = "ljus"
 var resistance : float = 10
 var enemy_element
@@ -23,7 +23,7 @@ var max_degrees = 1
 
 func _physics_process(delta):
 	if !paused:
-		if position.y < 2 + $Area2D/CollisionShape2D.shape.size.y/2 or position.y > get_viewport_rect().size.y - $Area2D/CollisionShape2D.shape.size.y/2-10:
+		if position.y < 2 + $Area2D/CollisionShape2D.shape.size.y/2 or position.y > get_viewport_rect().size.y - $Area2D/CollisionShape2D.shape.size.y/2-2:
 			direction *= -1
 		if direction:
 			velocity.y = direction * (speed * (1-slow_speed/100))
@@ -51,7 +51,6 @@ func take_damage(dmg):
 
 func die():
 	get_tree().change_scene_to_file("res://Scenes/Map/World/WorldMap.tscn")
-	queue_free()
 
 func element_effect(element):
 	match element:
@@ -75,14 +74,12 @@ func element_effect(element):
 func element_fire():
 	if($FireBrunTimer.is_stopped()):
 		$FireBrunTimer.start()
-		$Sprite2D.modulate = Color(1,0.5,0.5)
 		$FireTickTimer.start()
 	else:
 		$FireBrunTimer.start()
 
 func element_ice():
 	$IceSlowTimer.start()
-	$Sprite2D.modulate = Color(.5,.5,1)
 	slow_speed = 30
  
 
@@ -107,19 +104,13 @@ func element_water():
 
 
 func element_light():
-	var random = [1,2,3].pick_random()
-	if(random == 1):
-		if(can_be_stund):
-			$Sprite2D.modulate = Color(2,2,2)
-			$LightStunTimer.start()
-			can_shoot = false
-			slow_speed = 100
+	if(can_be_stund):
+		$LightStunTimer.start()
+		can_shoot = false
+		slow_speed = 100
 
 func element_darkness():
 	darkness_stack += 1
-	var darkness_modulate : float = 1 - darkness_stack/100
-	$Sprite2D.modulate = Color(darkness_modulate,darkness_modulate,darkness_modulate)
-
 
 func element_spirit():
 	print("spirti")
@@ -142,7 +133,6 @@ func _on_movement_timer_timeout():
   
   
 func _on_fire_brun_timer_timeout():
-	$Sprite2D.modulate = Color(1,1,1)
 	$FireTickTimer.stop()
 	$FireBrunTimer.stop()
 
@@ -152,11 +142,9 @@ func _on_fire_tick_timer_timeout():
 
 
 func _on_ice_slow_timer_timeout():
-	$Sprite2D.modulate = Color(1,1,1)
 	slow_speed = 0
 
 
 func _on_light_stun_timer_timeout():
-	$Sprite2D.modulate = Color(1,1,1)
 	can_shoot = true
 	slow_speed = 0
