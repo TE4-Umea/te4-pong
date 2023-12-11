@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://darcr8ymhfsa1"]
+[gd_scene load_steps=3 format=3 uid="uid://darcr8ymhfsa1"]
 
 [ext_resource type="Script" path="res://Scenes/MainMenu.gd" id="1_46qfw"]
 [ext_resource type="Texture2D" uid="uid://dfqb3mmy2r7ee" path="res://Assets/Img/background_glacial_mountains.png" id="2_58pii"]
-[ext_resource type="Theme" uid="uid://hdu1ggqw5xvg" path="res://Theme/button_default.tres" id="3_f88gh"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -29,17 +28,7 @@ text = "RAT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 0
-offset_left = 448.0
-offset_top = 384.0
-offset_right = 704.0
-offset_bottom = 448.0
-theme = ExtResource("3_f88gh")
-theme_override_font_sizes/font_size = 40
-text = "PLAY"
-
-[node name="Button2" type="Button" parent="."]
+[node name="button3" type="Button" parent="."]
 layout_mode = 0
 offset_left = 448.0
 offset_top = 464.0
@@ -48,5 +37,4 @@ offset_bottom = 528.0
 theme_override_font_sizes/font_size = 50
 text = "PLAY"
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="button3" to="." method="_on_button_2_pressed"]
