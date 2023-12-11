@@ -1,9 +1,9 @@
 [
   {
-	"name": "kiwi bird",
-	"desc": "it does <red>nothing</red>",
+	"name": "ˈməsˌtaSH",
+	"desc": "it does <red>nothing</red>, trust",
 	"ability": "ability",
-	"rarity": "rarity",
+	"rarity": "normal",
 	"element": "element",
 	"stats": {
 	  "damage": 0,
@@ -14,9 +14,9 @@
 	}
   },
   {
-	"name": "Jim",
-	"desc": "It's him, he applies <green>FIRE STACKS</green> that deal constant damage over time",
-	"ability": "JIM",
+	"name": "Hel's Fire",
+	"desc": "Applies <green>FIRE STACKS</green> that deal constant damage over time",
+	"ability": "Hel Fire",
 	"rarity": "normal",
 	"element": "fire",
 	"stats": {
@@ -28,10 +28,10 @@
 	}
   },
   {
-	"name": "Baba",
-	"desc": "<red>JIM HATER</red> applies <green>ICE 🥶</green> on hit",
-	"ability": "spa",
-	"rarity": "i dont know",
+	"name": "Jötunn hand",
+	"desc": "Applies <green>ICE 🥶</green> on hit",
+	"ability": "Jötunn hand",
+	"rarity": "normal",
 	"element": "ice",
 	"stats": {
 	  "damage": 10,
@@ -42,10 +42,10 @@
 	}
   },
   {
-	"name": "@Skaba",
+	"name": "Ljósálfar arrow",
 	"desc": "Applies <green>light</green> on hit",
-	"ability": "",
-	"rarity": "09b ",
+	"ability": "Light arrow",
+	"rarity": "normal",
 	"element": "light",
 	"stats": {
 	  "damage": 0,
@@ -56,10 +56,10 @@
 	}
   },
   {
-	"name": "Stäng av strömmen",
-	"desc": "Det blev mörkt, apply <green>darkness</green> on hit",
-	"ability": "51",
-	"rarity": "123",
+	"name": "Dökkálfar arrow",
+	"desc": "Applies <green>darkness</green> on hit",
+	"ability": "Dark arrow",
+	"rarity": "normal",
 	"element": "darkness",
 	"stats": {
 	  "damage": 0,
@@ -70,10 +70,10 @@
 	}
   },
   {
-	"name": "Paraply",
-	"desc": "Du deflectade blixten på fienden :OOOO wooow, application <green>lightning</green> on hit",
-	"ability": "51",
-	"rarity": "123",
+	"name": "Mjöllnir's lightning",
+	"desc": "Fires a lightning bolt",
+	"ability": "Lightning shot",
+	"rarity": "normal",
 	"element": "lightning",
 	"stats": {
 	  "damage": 10,
@@ -84,10 +84,10 @@
 	}
   },
   {
-	"name": "Vatten pistol",
+	"name": "Njord's water pistol",
 	"desc": "Gain a chance to <green>crit</green> on enemy hits",
-	"ability": "51",
-	"rarity": "123",
+	"ability": "Water pistol",
+	"rarity": "normal",
 	"element": "water",
 	"stats": {
 	  "damage": 10,
@@ -98,10 +98,10 @@
 	}
   },
   {
-	"name": "punchroll",
+	"name": "Vættir ball",
 	"desc": "When you deflect enemy bullets you create a second <green>spirit</green> ball",
-	"ability": "51",
-	"rarity": "123",
+	"ability": "Vættir ball",
+	"rarity": "normal",
 	"element": "spirit",
 	"stats": {
 	  "damage": 10,
@@ -112,10 +112,10 @@
 	}
   },
   {
-	"name": "kool sten 😎",
+	"name": "Hrungnir's toy",
 	"desc": "Makes your balls <green>big</green>",
-	"ability": "51",
-	"rarity": "123",
+	"ability": "Big ball",
+	"rarity": "normal",
 	"element": "earth",
 	"stats": {
 	  "damage": 25,
@@ -126,10 +126,10 @@
 	}
   },
   {
-	"name": "Helium ballong",
-	"desc": "Det är steroider i ballongen <green>wow!</green>",
-	"ability": "51",
-	"rarity": "123",
+	"name": "Hræsvelgr's scraps",
+	"desc": "The scraps are stronger than the <green>stronges steriodes</green>",
+	"ability": "Hræsvelgr scraps",
+	"rarity": "normal",
 	"element": "wind",
 	"stats": {
 	  "damage": 50,
