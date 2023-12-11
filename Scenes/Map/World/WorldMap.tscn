@@ -16,7 +16,6 @@ size = Vector2(32, 32)
 [node name="WorldMap" type="Node"]
 script = ExtResource("1_pu3eo")
 tile_scene = ExtResource("2_d70xm")
-enemy_risk = 60
 enemies = 10
 
 [node name="Key" type="Area2D" parent="."]
