@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bm7fwutrwv2lh"]
+[gd_scene load_steps=4 format=3 uid="uid://dc2hmwdxl7plj"]
 
 [ext_resource type="Script" path="res://Scenes/Map/World/MapTile.gd" id="1_fy5yb"]
 [ext_resource type="Texture2D" uid="uid://bx2dcegbutm0j" path="res://Assets/Img/B).png" id="1_ibyp5"]

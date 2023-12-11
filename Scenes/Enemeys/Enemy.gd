@@ -40,7 +40,7 @@ func shoot():
 
 func take_damage(dmg):
 	var new_resistance : float = round(resistance * pow(0.99, darkness_stack))
-	if dmg*(1-new_resistance/100)<=hp:
+	if dmg*(1-new_resistance/100)<hp:
 		hp-=dmg*(1-new_resistance/100)
 		$TextureProgressBar.value = hp
 		var text = floating_text.instantiate()
@@ -50,7 +50,10 @@ func take_damage(dmg):
 		die()
 
 func die():
-	get_tree().change_scene_to_file("res://Scenes/Map/World/WorldMap.tscn")
+	queue_free()
+	get_tree().paused = true
+	get_tree().get_first_node_in_group("item_selection").show()
+	#get_tree().change_scene_to_file("res://Scenes/Map/World/WorldMap.tscn")
 
 func element_effect(element):
 	match element:

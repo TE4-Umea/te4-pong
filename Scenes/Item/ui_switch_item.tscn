@@ -4,7 +4,7 @@
 [ext_resource type="Theme" uid="uid://hdu1ggqw5xvg" path="res://Theme/button_default.tres" id="2_ox530"]
 [ext_resource type="PackedScene" uid="uid://dqa5y0rjx8m0e" path="res://Scenes/Item/item_base.tscn" id="3_igiqr"]
 
-[node name="UI_SwitchItem" type="Control"]
+[node name="UI_SwitchItem" type="Control" groups=["item_select"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

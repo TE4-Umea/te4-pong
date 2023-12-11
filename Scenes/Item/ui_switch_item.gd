@@ -10,6 +10,10 @@ var button_true
 var send_index
 var send_name
 var send_desc
+var boss = false
+
+func _ready():
+	process_mode = Node.PROCESS_MODE_WHEN_PAUSED
 
 func on_item_start(item, item_index):
 	give_buttons_item = item
@@ -35,6 +39,13 @@ func _on_yes_button_pressed():
 		global.update_player_items_index($button3.item_index)
 		player_item.set_player_item($button3.item_stats)
 	
+	print(boss)
+	if(boss):
+		boss = !boss
+		get_tree().change_scene_to_file("res://Scenes/Map/Overworld/Overworld.tscn")
+	else:
+		get_tree().change_scene_to_file("res://Scenes/Map/World/WorldMap.tscn")
+	get_tree().paused = false
 	yes_button.emit()
 
 func _on_button_1_button_pressed():

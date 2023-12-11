@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/Map/World/WorldMap.gd" id="1_pu3eo"]
 [ext_resource type="Texture2D" uid="uid://bx2dcegbutm0j" path="res://Assets/Img/B).png" id="2_bqdmv"]
-[ext_resource type="PackedScene" path="res://Scenes/Map/World/MapTile.tscn" id="2_d70xm"]
+[ext_resource type="PackedScene" uid="uid://dc2hmwdxl7plj" path="res://Scenes/Map/World/MapTile.tscn" id="2_d70xm"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_qua2t"]
 size = Vector2(16, 16)

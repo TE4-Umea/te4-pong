@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bim0pljk3s16v" path="res://Scenes/Item/json_data.tscn" id="3_32wix"]
 [ext_resource type="PackedScene" uid="uid://dsxw43c4p3wjp" path="res://Scenes/Item/ui_switch_item.tscn" id="5_gdp18"]
 
-[node name="UI_Item" type="Control"]
+[node name="UI_Item" type="Control" groups=["item_selection"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

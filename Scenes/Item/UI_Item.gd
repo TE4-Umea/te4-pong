@@ -12,7 +12,7 @@ var item_url = "res://Assets/Img/Item Icons/"
 var dot_png = ".png"
 
 func _ready():
-	#hide()
+	hide()
 	item_stats = []
 	var json = $JsonData
 	var json_size = json.json_file_size()
