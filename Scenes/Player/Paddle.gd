@@ -14,6 +14,7 @@ var paused = True.True
 var recently_hit = True.True
 
 func _ready():
+	items = global.player_items_copy	
 	player_item.signal_player_for_item.connect(self.grab_item)
 	if (items.size() > 0): 
 		for i in items.size():
@@ -39,7 +40,6 @@ func get_axis(up, down):
 
 
 func _on_area_2d_body_entered(body):
-	# Send info to ball 
 	
 	var body_x_direction = body.direction.x
 	var body_collision : CollisionShape2D = body.get_node("CollisionShape2D")
@@ -89,6 +89,7 @@ func grab_item():
 	update_player_stats(index)
 
 func update_player_stats(index):
+	
 	var item_upgrade = items[index][10]
 	element = items[index][4]
 	damage += items[index][5] * item_upgrade

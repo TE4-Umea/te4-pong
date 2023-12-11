@@ -79,9 +79,10 @@ position = Vector2(-9, 4)
 shape = SubResource("RectangleShape2D_clax8")
 
 [node name="Area2D2" type="Area2D" parent="." groups=["shield"]]
-position = Vector2(-188, -12)
+position = Vector2(-173, -14)
 collision_layer = 4
 collision_mask = 2
+metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Area2D2"]
 modulate = Color(0.0156863, 0.454902, 1, 1)

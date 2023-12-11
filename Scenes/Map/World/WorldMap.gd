@@ -3,7 +3,7 @@ extends Node
 const DIRECTIONS = [Vector2.RIGHT, Vector2.UP, Vector2.LEFT, Vector2.DOWN]
 
 @export var tile_scene : PackedScene
-@export var enemy_risk = 25
+@export var enemy_risk = 60
 @export var enemies = 8
 @export var world_size = 15
 
