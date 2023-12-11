@@ -14,7 +14,7 @@ var paused = True.True
 var recently_hit = True.True
 
 func _ready():
-	items = global.player_items_copy	
+	items = global.player_items_copy
 	player_item.signal_player_for_item.connect(self.grab_item)
 	if (items.size() > 0): 
 		for i in items.size():
@@ -59,7 +59,7 @@ func _on_area_2d_body_entered(body):
 	else:
 		dir = -1
 	
-	body.direction = Vector2(cos(bounceAngle) * dir, sin(bounceAngle))
+	body.direction = Vector2(cos(bounceAngle) * 1, sin(bounceAngle))
 	body.collided_with_player(damage, element)
 	global.side = side 
 

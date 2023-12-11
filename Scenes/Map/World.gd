@@ -42,8 +42,11 @@ func _on_kanye_body_entered(body):
 	
 	body.queue_free()
 	if global.player_hp < 1:
-		$Control/Label3.text = ("du dog :c")
+		global.player_items_copy = []
+		global.player_items_index = []
+		$Control/Label3.text = ("you died :c")
 		pauseGame()
+		get_tree().paused = true
 
 func _on_left_body_entered(body):#!left
 	global.p1_score = 1
@@ -58,11 +61,15 @@ func _on_left_body_entered(body):#!left
 
 func pauseGame():
 	$Control/Label3.visible = true
-	$Control/PlayAgain.visible = true
+	$Control/Label3.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+	$Control/PlayAgain.visible = false
+	$Control/PlayAgain.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
 	$Control/MainMenu.visible = true
+	$Control/MainMenu.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
 	pauseSignal.emit()
 
 func _on_play_again_pressed():
+	get_tree().paused = false
 	global.player_hp = 100
 	global.p1_score = 0
 	global.p2_score = 0
@@ -70,6 +77,7 @@ func _on_play_again_pressed():
 
 
 func _on_main_menu_pressed():
+	get_tree().paused = false
 	global.player_hp = 100
 	global.p1_score = 0
 	global.p2_score = 0
