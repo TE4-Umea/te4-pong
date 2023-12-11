@@ -3,8 +3,8 @@
 [ext_resource type="Script" path="res://Scenes/Map/World.gd" id="1_a8amt"]
 [ext_resource type="Texture2D" uid="uid://md0p4wsg2nhe" path="res://Assets/Img/background_3.png" id="2_7nace"]
 [ext_resource type="PackedScene" uid="uid://cyrntu3r8663l" path="res://Scenes/Item/UI_Item.tscn" id="2_pjynm"]
-[ext_resource type="Texture2D" uid="uid://bx2dcegbutm0j" path="res://Assets/Img/B).png" id="2_uic7l"]
 [ext_resource type="PackedScene" uid="uid://b5iy5pcb2xit3" path="res://Scenes/Player/Paddle.tscn" id="3_5a22m"]
+[ext_resource type="Texture2D" uid="uid://crc22omccnsfq" path="res://Assets/Img/LukasLogo(1).png" id="3_33vie"]
 [ext_resource type="PackedScene" uid="uid://be80dbp2b6dxv" path="res://Scenes/Ball/Ball.tscn" id="5_8pphb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5vdgs"]
@@ -84,12 +84,15 @@ texture = ExtResource("2_7nace")
 metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="Control"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.05
+anchor_bottom = -0.05
 offset_left = 40.0
 offset_top = 16.0
 offset_right = 80.0
 offset_bottom = 56.0
-texture = ExtResource("2_uic7l")
+texture = ExtResource("3_33vie")
 expand_mode = 2
 metadata/_edit_use_anchors_ = true
 

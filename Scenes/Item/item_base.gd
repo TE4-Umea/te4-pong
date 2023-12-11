@@ -8,8 +8,6 @@ var item_url = "res://Assets/Img/Item Icons/"
 var item_name
 var dot_png = ".png"
 
-func _ready():
-	print("get image")
 
 func _on_button_focus_entered():
 	mouse_focus = True.TrueTrue

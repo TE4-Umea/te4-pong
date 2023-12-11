@@ -15,6 +15,7 @@ func spawn_ball(x,y,direx,direxy,damage):
 
 # Called when the node enters the scene tree for thesss first time.
 func _ready():
+	$ProgressBar.value = global.player_hp
 	var enemy
 	if global.is_boss:
 		enemy = global.boss.instantiate()
