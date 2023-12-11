@@ -4,7 +4,7 @@ var target_scene_path = "res://Scenes/Map/World.tscn"
 var loading_status : int
 var progress : Array[float]
 var loaded = false
-var tips_strings = ["Try to deflect the balls.", "Enemies get hurt when they take damage.", "You lose when your HP reaches zero.", "If an enemy seems hard to hit, try to aim a little better."]
+var tips_strings = ["Try to deflect the balls.", "Enemies get hurt when they take damage.", "You lose when your HP reaches zero.", "If an enemy seems hard to hit, try to aim a little better.", "Tim Nilsson"]
 
 @onready var loading_bar : ProgressBar = $LoadingBar
 @onready var label : Label = $Label
