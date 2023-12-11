@@ -8,13 +8,16 @@ var random_item_index
 var item_stats : Array = []
 var item : Array
 var item_index : Array
-
+var item_url = "res://Assets/Img/Item Icons/"
+var dot_png = ".png"
 
 func _ready():
 	#hide()
 	item_stats = []
 	var json = $JsonData
 	var json_size = json.json_file_size()
+	$Item/BackPanel/ItemName.append_text("[font_size={20}][color=" + 
+	labol_color + "][center][b]Select item[/b][/center][/color][/font_size]")
 	
 	# Ska göra till en loop för knapparna
 	for i in range(3):  
@@ -36,6 +39,10 @@ func set_label_name(name):
 	label_name.append_text("[font_size={20}][color=" + 
 	labol_color + "][center][b]" +
 	name + "[/b][/center][/color][/font_size]")
+
+func set_image(image_name):
+	$Item/BackPanel/ImagePanel/Image.texture = load(item_url + image_name + dot_png)
+
 
 func set_decsription(text):
 	var decript = $Item/BackPanel/Decription
@@ -92,14 +99,17 @@ func give_data_to_switch():
 
 func _on_ui_swich_item_button_1():
 	set_label_name($UI_SwichItem.send_name)
+	set_image($UI_SwichItem.send_name)
 	set_decsription($UI_SwichItem.send_desc)
 
 func _on_ui_swich_item_button_2():
 	set_label_name($UI_SwichItem.send_name)
+	set_image($UI_SwichItem.send_name)
 	set_decsription($UI_SwichItem.send_desc)
 
 func _on_ui_swich_item_button_3():
 	set_label_name($UI_SwichItem.send_name)
+	set_image($UI_SwichItem.send_name)
 	set_decsription($UI_SwichItem.send_desc)
 
 func _on_ui_swich_item_yes_button():
