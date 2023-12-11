@@ -1,11 +1,47 @@
-[gd_scene load_steps=6 format=3 uid="uid://35kb3ptp4syg"]
+[gd_scene load_steps=11 format=3 uid="uid://35kb3ptp4syg"]
 
 [ext_resource type="Script" path="res://Scenes/Enemeys/fast_enemy.gd" id="1_r6qfp"]
-[ext_resource type="Texture2D" uid="uid://bx2dcegbutm0j" path="res://Assets/Img/B).png" id="2_ouj6v"]
+[ext_resource type="Texture2D" uid="uid://cvckrnbk63y1t" path="res://Assets/Img/Cave Troll Boss.png" id="2_gqwue"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1il5r"]
 width = 96
 height = 100
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vyjog"]
+atlas = ExtResource("2_gqwue")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_remna"]
+atlas = ExtResource("2_gqwue")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7s7s"]
+atlas = ExtResource("2_gqwue")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2nkh"]
+atlas = ExtResource("2_gqwue")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hmcp2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vyjog")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_remna")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7s7s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r2nkh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3obk3"]
 size = Vector2(96, 96)
@@ -33,9 +69,12 @@ autostart = true
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.419214, 0.418103)
-texture = ExtResource("2_ouj6v")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, -6.68308)
+scale = Vector2(1.875, 1.6974)
+sprite_frames = SubResource("SpriteFrames_hmcp2")
+autoplay = "default"
+frame_progress = 0.120218
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_3obk3")

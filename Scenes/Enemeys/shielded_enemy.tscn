@@ -65,6 +65,7 @@ autostart = true
 position = Vector2(-10, -21)
 scale = Vector2(-7, 7)
 sprite_frames = SubResource("SpriteFrames_wssxw")
+autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-9, 4)
@@ -79,7 +80,7 @@ position = Vector2(-9, 4)
 shape = SubResource("RectangleShape2D_clax8")
 
 [node name="Area2D2" type="Area2D" parent="." groups=["shield"]]
-position = Vector2(-173, -14)
+position = Vector2(-180, -13)
 collision_layer = 4
 collision_mask = 2
 metadata/_edit_group_ = true
