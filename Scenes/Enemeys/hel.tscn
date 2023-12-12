@@ -15,7 +15,7 @@ size = Vector2(208, 400)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_clax8"]
 size = Vector2(208, 400)
 
-[node name="Hel" type="CharacterBody2D"]
+[node name="Hel" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_lde8c")
 
 [node name="Label" type="Label" parent="."]

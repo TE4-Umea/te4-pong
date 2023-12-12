@@ -10,6 +10,7 @@ func _on_area_2d_2_body_entered(body):
 		$Area2D2/CollisionShape2D.shape.size.y = 0
  
 func _ready():
+	size = $CollisionShape2D.shape.size
 	og_size = $Area2D2/CollisionShape2D.shape.size.y
 	og_size2 = $Area2D2/Sprite2D.scale
 	speed = 150

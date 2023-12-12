@@ -48,7 +48,7 @@ size = Vector2(259, 330)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_clax8"]
 size = Vector2(259, 330)
 
-[node name="fat_enemy" type="CharacterBody2D"]
+[node name="fat_enemy" type="CharacterBody2D" groups=["enemy"]]
 position = Vector2(288, 128)
 script = ExtResource("1_865ug")
 
