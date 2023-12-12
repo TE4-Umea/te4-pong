@@ -19,6 +19,7 @@ var end
 var key
 var has_key = false
 var key_index
+var frames = []
 
 func _generate_map():
 	map = []
@@ -57,7 +58,7 @@ func _ready():
 	for location in map:
 		var tile : Area2D = tile_scene.instantiate()
 		add_child(tile)
-		offset = tile.get_child(0).texture.get_width() * tile.get_child(0).scale.x
+		offset = tile.get_child(1).shape.extents.x*2
 		tile.get_child(2).text = str(location)
 		
 		var x = (get_viewport().get_visible_rect().size.x/2)

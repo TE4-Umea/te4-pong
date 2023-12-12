@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dc2hmwdxl7plj"]
+[gd_scene load_steps=4 format=3 uid="uid://bxcyupimuvgog"]
 
 [ext_resource type="Script" path="res://Scenes/Map/World/MapTile.gd" id="1_fy5yb"]
-[ext_resource type="Texture2D" uid="uid://bx2dcegbutm0j" path="res://Assets/Img/B).png" id="1_ibyp5"]
+[ext_resource type="Texture2D" uid="uid://53tyqha8ri40" path="res://Assets/Img/Tilemap.png" id="2_uf2yv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lhoyr"]
 size = Vector2(48, 48)
@@ -11,8 +11,11 @@ script = ExtResource("1_fy5yb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(24, 24)
-scale = Vector2(0.209607, 0.206897)
-texture = ExtResource("1_ibyp5")
+scale = Vector2(3, 3)
+texture = ExtResource("2_uf2yv")
+hframes = 9
+vframes = 8
+frame = 21
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(24, 24)
