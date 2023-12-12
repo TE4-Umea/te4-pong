@@ -20,6 +20,7 @@ var slow_speed : float = 0
 var direction = 1
 var min_degrees = -1
 var max_degrees = 1
+var size = Vector2(0,0)
 
 func _physics_process(delta):
 	if !paused:
