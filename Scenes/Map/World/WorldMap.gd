@@ -22,6 +22,7 @@ var key
 var has_key = false
 var key_index
 var tiles = []
+var can_move = true
 
 func _generate_map():
 	map = []
@@ -111,7 +112,7 @@ func _save():
 	MapManager.enemies = enemies
 
 func _move(direction):
-	if player + direction in map:
+	if player + direction in map and can_move:
 		player += direction
 		$Player.position += Vector2(direction.x * offset, direction.y * offset)
 		if player == key and not has_key:
@@ -120,6 +121,7 @@ func _move(direction):
 			_save()
 		elif player == end:
 			if has_key:
+				_encounter()
 				MapManager.saved = false
 				global.is_boss = true
 				get_tree().change_scene_to_file("res://Scenes/Loading.tscn")
@@ -127,10 +129,18 @@ func _move(direction):
 			randomize()
 			var random = randi_range(0, 100)
 			if random < enemy_risk and enemies > 0:
+				await _encounter()
 				enemies -= 1
 				global.enemy = global.enemy_list.pick_random()
 				get_tree().change_scene_to_file("res://Scenes/Loading.tscn")
 			_save()
+
+func _encounter():
+	can_move = false
+	$Player/ColorRect.visible = true
+	$Player/Camera2D.zoom.x = 1.1
+	$Player/Camera2D.zoom.y = 1.1
+	await get_tree().create_timer(.75).timeout
 
 func _process(delta):
 	if Input.is_action_just_pressed("P1_UP"):
