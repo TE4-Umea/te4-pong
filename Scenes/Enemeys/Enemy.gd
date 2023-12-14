@@ -23,6 +23,11 @@ var min_degrees = -1
 var max_degrees = 1
 var size = Vector2(0,0)
 
+func item_stacking():
+	for n in range(global.player_items_index.size()):
+		if(global.player_items_index[n] == 1):
+			fire_damage *= 2
+
 func _physics_process(delta):
 	if !paused:
 		if position.y < 2 + $Area2D/CollisionShape2D.shape.size.y/2 or position.y > get_viewport_rect().size.y - $Area2D/CollisionShape2D.shape.size.y/2-2:
@@ -45,7 +50,7 @@ func take_damage(dmg):
 	if dmg*(1-new_resistance/100)<hp:
 		hp-=dmg*(1-new_resistance/100)
 		get_tree().get_first_node_in_group("enemy_health").clear()
-		get_tree().get_first_node_in_group("enemy_health").append_text("[center]" + str(hp) + " HP[/center]")
+		get_tree().get_first_node_in_group("enemy_health").append_text("[center]" + str(ceil(hp)) + " HP[/center]")
 		get_tree().get_first_node_in_group("enemy_health_bar").value = hp/max_hp*100
 		var text = floating_text.instantiate()
 		text.amount = dmg*(1-new_resistance/100)
@@ -54,7 +59,7 @@ func take_damage(dmg):
 		die()
 
 func die():
-	global.diff_scale *= 2
+	global.diff_scale *= 1.5
 	queue_free()
 	get_tree().paused = true
 	get_tree().get_first_node_in_group("item_selection").show()
@@ -120,7 +125,9 @@ func element_light():
 		slow_speed = 100
 
 func element_darkness():
-	darkness_stack += 1
+	for n in range(global.player_items_index.size()):
+		if(global.player_items_index[n] == 4):
+			darkness_stack += 5
 
 func element_spirit():
 	print("spirti")

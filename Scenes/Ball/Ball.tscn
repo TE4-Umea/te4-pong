@@ -48,7 +48,7 @@ collision_mask = 0
 script = ExtResource("1_m8ubh")
 speed = 600.0
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["ball_sprite"]]
 rotation = 1.5708
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_qtj5b")

@@ -13,8 +13,20 @@ func spawn_ball(x,y,direx,direxy,damage):
 	ball.damage = damage
 	add_child(ball)
 
+func spawn_spirit_ball(x,y,direx,direxy,damage):
+	var ball =  BALL.instantiate()
+	ball.spirit = true
+	ball.global_position = Vector2(x,y)
+	ball.direx = direx
+	ball.direxy = direxy
+	ball.damage = damage
+	add_child(ball)
+
 # Called when the node enters the scene tree for thesss first time.
 func _ready():
+	$ProgressBar.value = global.player_hp
+	$ProgressBar/RichTextLabel.clear()
+	$ProgressBar/RichTextLabel.append_text("[center]" + str(global.player_hp) + " HP[/center]")
 	var enemy
 	if global.is_boss:
 		enemy = global.boss.instantiate()
