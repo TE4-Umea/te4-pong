@@ -3,9 +3,11 @@ extends Node
 const DIRECTIONS = [Vector2.RIGHT, Vector2.UP, Vector2.LEFT, Vector2.DOWN]
 
 @export var tile_scene : PackedScene
-@export var enemy_risk = 60
+@export var wall_scene : PackedScene
+@export var enemy_risk = 50
 @export var enemies = 8
 @export var world_size = 15
+@export var color_tint = Color.SKY_BLUE
 
 var map_position = Vector2.ZERO
 var map = []
@@ -19,7 +21,7 @@ var end
 var key
 var has_key = false
 var key_index
-var frames = []
+var tiles = []
 
 func _generate_map():
 	map = []
@@ -58,8 +60,9 @@ func _ready():
 	for location in map:
 		var tile : Area2D = tile_scene.instantiate()
 		add_child(tile)
+		tile.modulate = color_tint
+		tiles.append(tile)
 		offset = tile.get_child(1).shape.extents.x*2
-		tile.get_child(2).text = str(location)
 		
 		var x = (get_viewport().get_visible_rect().size.x/2)
 		var y = (get_viewport().get_visible_rect().size.y/2)
@@ -72,9 +75,8 @@ func _ready():
 			else:
 				player = MapManager.player_pos
 				$Player.position = MapManager.player_global_pos + Vector2(x, y)
-#			tile.modulate = Color.GREEN
 		elif map.find(location) == map.size()-1:
-			tile.modulate = Color.RED
+			tile.get_child(0).frame = tile.end_frame
 			end = location
 		elif map.find(location) == key_index:
 			#key = location
@@ -82,10 +84,21 @@ func _ready():
 				$Key.position = tile.position
 			else:
 				$Key.queue_free()
-#			tile.modulate = Color.YELLOW
 		else:
 			unused_tiles.append(location)
-#			tile.modulate = Color.DIM_GRAY
+	
+	# Lägger ut väggar på kanterna
+	var tiles_pos = []
+	for tile in tiles:
+		tiles_pos.append(tile.position)
+	for tile in tiles:
+		for x in range(-1, 2):
+			for y in range(-1, 2):
+				if not tile.position + Vector2(x * offset, y * offset) in tiles_pos:
+					var wall : Area2D = wall_scene.instantiate()
+					add_child(wall)
+					wall.modulate = color_tint
+					wall.position = tile.position + Vector2(x * offset, y * offset)
 
 func _save():
 	MapManager.saved = true
@@ -111,6 +124,7 @@ func _move(direction):
 				global.is_boss = true
 				get_tree().change_scene_to_file("res://Scenes/Loading.tscn")
 		else:
+			randomize()
 			var random = randi_range(0, 100)
 			if random < enemy_risk and enemies > 0:
 				enemies -= 1
