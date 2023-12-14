@@ -6,8 +6,8 @@ func _on_area_2d_2_body_entered(body):
 	if !body.is_in_group('paddles'):
 		body.queue_free()
 		$Shield.start()
-		$Area2D2/Sprite2D.scale = Vector2(0,0)
-		$Area2D2/CollisionShape2D.shape.size.y = 0
+		$Area2D2/Sprite2D.position.y = 5000
+		$Area2D2/CollisionShape2D.position.y = 5000
  
 func _ready():
 	for n in range(global.player_items_index.size()):
@@ -28,5 +28,6 @@ func shoot():
 		$Timer.start()
 
 func _on_shield_timeout():
-	$Area2D2/Sprite2D.scale = og_size2
-	$Area2D2/CollisionShape2D.shape.size.y = og_size
+	$Area2D2/Sprite2D.position.y = $CollisionShape2D.position.y
+	$Area2D2/CollisionShape2D.position.y = $CollisionShape2D.position.y
+
