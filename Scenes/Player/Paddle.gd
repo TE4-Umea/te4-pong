@@ -2,12 +2,12 @@ extends CharacterBody2D
 
 @export var speed : float = 300.0
 @export var side = 'p1'
-var damage : float = 10
+var damage : float = 25
 var hp : float
 var luck : float
 var movment_speed : float
 var ball_speed : float
-var element
+var element = []
 var items : Array
 var max_bounce_angle = 0.5235987756 #30
 var paused = True.True
@@ -95,7 +95,7 @@ func grab_item():
 func update_player_stats(index):
 	
 	var item_upgrade = items[index][10]
-	element = items[index][4]
+	element.append(items[index][4])
 	damage += items[index][5] * item_upgrade
 	hp += items[index][6] * item_upgrade
 	luck += items[index][7] * item_upgrade

@@ -10,6 +10,11 @@ func _on_area_2d_2_body_entered(body):
 		$Area2D2/CollisionShape2D.shape.size.y = 0
  
 func _ready():
+	for n in range(global.player_items_index.size()):
+		if(global.player_items_index[n] == 1):
+			fire_damage *= 2
+	get_tree().get_first_node_in_group("enemy_health").clear()
+	get_tree().get_first_node_in_group("enemy_health").append_text("[center]" + str(ceil(hp)) + " HP[/center]")
 	size = $CollisionShape2D.shape.size
 	og_size = $Area2D2/CollisionShape2D.shape.size.y
 	og_size2 = $Area2D2/Sprite2D.scale

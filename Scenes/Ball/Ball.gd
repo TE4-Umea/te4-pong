@@ -3,7 +3,7 @@ extends CharacterBody2D
 var direction = Vector2.ZERO
 var paused = false
 var damage
-var element
+var element = []
 var direx = -1
 var direxy = randf_range(-1.0, 1.0)
 var image = preload("res://Assets/Img/B).png")
@@ -37,7 +37,8 @@ func _on_world_pause_signal():
 func collided_with_player(player_damage, player_element):
 	damage = player_damage
 	element = player_element
-	element_effect(element)
+	for n in range(element.size()):
+		element_effect(element[n])
 	
 func element_effect(element):
 	match element:
@@ -101,8 +102,6 @@ func element_earth():
 	speed *= .75
 
 func element_spirit():
-	print("sprit")
-	print(owner)
 	$AnimatedSprite2D.modulate = Color(1,0,1)
 	get_tree().get_first_node_in_group("world").spawn_ball(position.x+25,position.y,direction.x,-direction.y,damage/2)
 	pass
