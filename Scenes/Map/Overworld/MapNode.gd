@@ -20,11 +20,12 @@ func _ready():
 
 func _draw():
 	if chosen:
-		$Sprite2D.modulate = Color.GREEN
+		$AnimatedSprite2D.modulate = Color.GREEN
+		$AnimatedSprite2D.play("idle")
 	elif active:
-		$Sprite2D.modulate = Color.YELLOW
+		$AnimatedSprite2D.modulate = Color.WHITE
 	else:
-		$Sprite2D.modulate = Color.DIM_GRAY
+		$AnimatedSprite2D.modulate = Color.DIM_GRAY
 	for node in connected:
 		if node.chosen and active or chosen:
 			draw_line(position-position, node.position-position, Color.GREEN, 2)
@@ -33,6 +34,8 @@ func _draw():
 
 func _process(delta):
 	if mouse_over and Input.is_action_just_pressed("click") and active and not chosen:
+		$AnimatedSprite2D.play("open")
+		await get_tree().create_timer(1).timeout
 		chosen = true
 		active = false
 		global.is_boss = false
