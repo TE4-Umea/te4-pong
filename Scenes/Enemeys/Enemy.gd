@@ -11,7 +11,8 @@ var darkness_stack = 0
 var weakness = "ljus"
 var resistance : float = 10
 var enemy_element
-var hp = 100
+var max_hp = 100 * global.diff_scale
+var hp = max_hp
 var damage = 25
 var fire_rate = [0.5,1,2]
 var BULLET = preload("res://Scenes/Ball/Ball.tscn")
@@ -43,7 +44,9 @@ func take_damage(dmg):
 	var new_resistance : float = round(resistance * pow(0.99, darkness_stack))
 	if dmg*(1-new_resistance/100)<hp:
 		hp-=dmg*(1-new_resistance/100)
-		$TextureProgressBar.value = hp
+		get_tree().get_first_node_in_group("enemy_health").clear()
+		get_tree().get_first_node_in_group("enemy_health").append_text("[center]" + str(hp) + " HP[/center]")
+		get_tree().get_first_node_in_group("enemy_health_bar").value = hp/max_hp*100
 		var text = floating_text.instantiate()
 		text.amount = dmg*(1-new_resistance/100)
 		add_child(text)
@@ -51,6 +54,7 @@ func take_damage(dmg):
 		die()
 
 func die():
+	global.diff_scale *= 2
 	queue_free()
 	get_tree().paused = true
 	get_tree().get_first_node_in_group("item_selection").show()
@@ -72,6 +76,8 @@ func element_effect(element):
 			element_water()
 		"darkness":
 			element_darkness()
+		"spirit":
+			pass
 		_:
 			print("no elemento")
 
@@ -124,7 +130,8 @@ func element_spirit():
 func _on_area_2d_body_entered(body):
 	body.queue_free()
 	take_damage(body.damage)
-	element_effect(body.element)
+	for n in range(body.element.size()):
+		element_effect(body.element[n])
 
 
 func _on_timer_timeout():
