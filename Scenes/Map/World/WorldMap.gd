@@ -6,7 +6,7 @@ const DIRECTIONS = [Vector2.RIGHT, Vector2.UP, Vector2.LEFT, Vector2.DOWN]
 @export var wall_scene : PackedScene
 @export var enemy_risk = 50
 @export var enemies = 8
-@export var world_size = 15
+@export var world_size = 25
 @export var color_tint = Color.SKY_BLUE
 
 var map_position = Vector2.ZERO
