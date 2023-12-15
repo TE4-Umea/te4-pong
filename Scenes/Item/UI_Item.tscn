@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://cyrntu3r8663l"]
+[gd_scene load_steps=5 format=3 uid="uid://cyrntu3r8663l"]
 
 [ext_resource type="Script" path="res://Scenes/Item/UI_Item.gd" id="1_yi61t"]
 [ext_resource type="PackedScene" uid="uid://bim0pljk3s16v" path="res://Scenes/Item/json_data.tscn" id="3_32wix"]
+[ext_resource type="AudioStream" uid="uid://b727juvgcm6i6" path="res://Assets/Sounds/item_get.mp3" id="4_umv4y"]
 [ext_resource type="PackedScene" uid="uid://dsxw43c4p3wjp" path="res://Scenes/Item/ui_switch_item.tscn" id="5_gdp18"]
 
 [node name="UI_Item" type="Control" groups=["item_selection"]]
@@ -93,6 +94,10 @@ offset_left = -33.0
 offset_top = 120.0
 offset_right = -13.0
 offset_bottom = -10.0
+
+[node name="GetItem" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_umv4y")
+bus = &"Sfx"
 
 [connection signal="button1" from="UI_SwichItem" to="." method="_on_ui_swich_item_button_1"]
 [connection signal="button2" from="UI_SwichItem" to="." method="_on_ui_swich_item_button_2"]

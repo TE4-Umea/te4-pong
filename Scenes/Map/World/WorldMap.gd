@@ -12,15 +12,14 @@ const DIRECTIONS = [Vector2.RIGHT, Vector2.UP, Vector2.LEFT, Vector2.DOWN]
 var map_position = Vector2.ZERO
 var map = []
 var id
-var step_size
 var player = Vector2.ZERO
 var unused_tiles = []
-var enemy_tiles = []
 var offset : int
 var end
 var key
 var has_key = false
 var key_index
+var audio_files = []
 var tiles = []
 var can_move = true
 
@@ -44,6 +43,10 @@ func _generate_map():
 		last_dir = dir
 
 func _ready():
+	load_music_for_level(MapManager.current_world)
+	$Music.stream = audio_files[0]
+	$Music.play(global.level_song_timer)
+	
 	if MapManager.saved == true:
 		map = MapManager.current_map
 		id = MapManager.current_world
@@ -129,6 +132,7 @@ func _move(direction):
 			randomize()
 			var random = randi_range(0, 100)
 			if random < enemy_risk and enemies > 0:
+				global.level_song_timer = $Music.get_playback_position()
 				await _encounter()
 				enemies -= 1
 				global.enemy = global.enemy_list.pick_random()
@@ -154,8 +158,38 @@ func _process(delta):
 #	elif Input.is_action_just_pressed("click"):
 #		get_tree().change_scene_to_file("res://Scenes/Map/World/WorldMap.tscn")
 
-
 func _on_key_body_entered(body):
 	has_key = true
 	_save()
 	$Key.queue_free()
+
+func load_music_for_level(id):
+	match id:
+		0:
+			audio_files.append(preload("res://Assets/Music/2019-05-30_-_His_Fight_Is_Over_-_David_Fesliyan.mp3"))
+		1:
+			pass
+			#audio_files.append(preload())
+		2:
+			pass
+			#audio_files.append(preload())
+		3:
+			pass
+			#audio_files.append(preload())
+		4:
+			pass
+			#audio_files.append(preload())
+		5:
+			pass
+			#audio_files.append(preload())
+		6:
+			pass
+			#audio_files.append(preload())
+		7:
+			pass
+			#audio_files.append(preload())
+		8:
+			pass
+			#audio_files.append(preload())
+		_:
+			print("that is not a world id")

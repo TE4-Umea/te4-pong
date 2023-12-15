@@ -1,5 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://darcr8ymhfsa1"]
-
+[ext_resource type="Script" path="res://Scenes/MainMenu.gd" id="1_46qfw"]
+[ext_resource type="AudioStream" uid="uid://dcshyn45fa17c" path="res://Assets/Music/2021-05-28_-_Viking_Feast_-_David_Fesliyan.mp3" id="3_6pgd8"]
+[ext_resource type="AudioStream" uid="uid://dqbd0o5wyil52" path="res://Assets/Sounds/game-start-6104.mp3" id="4_sovbp"]
+[ext_resource type="PackedScene" uid="uid://ds7bd0kniftwo" path="res://Scenes/Audio/audio_options.tscn" id="4_wvlbv"]
 [ext_resource type="Script" path="res://Scenes/MainMenu.gd" id="1_46qfw"]
 [ext_resource type="Texture2D" uid="uid://5kjie7l541fc" path="res://Assets/Img/Parallax/Menu/sky.png" id="2_o8xpw"]
 [ext_resource type="Texture2D" uid="uid://di6si0w4u2sxi" path="res://Assets/Img/Parallax/Menu/clouds_bg.png" id="3_7ms7v"]
@@ -81,11 +84,12 @@ offset_left = 384.0
 offset_right = 768.0
 offset_bottom = 192.0
 theme_override_font_sizes/font_size = 80
-text = "RAT"
+text = "Loki's tale
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="button3" type="Button" parent="."]
+[node name="ButtonPlay" type="Button" parent="."]
 layout_mode = 0
 offset_left = 448.0
 offset_top = 464.0
@@ -94,4 +98,29 @@ offset_bottom = 528.0
 theme_override_font_sizes/font_size = 50
 text = "PLAY"
 
-[connection signal="pressed" from="button3" to="." method="_on_button_2_pressed"]
+[node name="ButtonOptions" type="Button" parent="."]
+layout_mode = 0
+offset_left = 472.0
+offset_top = 548.0
+offset_right = 681.0
+offset_bottom = 611.0
+theme_override_font_sizes/font_size = 35
+text = "OPTIONS"
+
+[node name="AudioOptions" parent="." instance=ExtResource("4_wvlbv")]
+layout_mode = 1
+offset_top = 80.0
+offset_bottom = 80.0
+
+[node name="StartGame" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_sovbp")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_6pgd8")
+autoplay = true
+bus = &"Music"
+
+[connection signal="pressed" from="ButtonPlay" to="." method="_on_button_play_pressed"]
+[connection signal="pressed" from="ButtonOptions" to="." method="_on_button_options_pressed"]
+[connection signal="back_button_pressed" from="AudioOptions" to="." method="_on_audio_options_back_button_pressed"]
+[connection signal="finished" from="StartGame" to="." method="_on_start_game_finished"]

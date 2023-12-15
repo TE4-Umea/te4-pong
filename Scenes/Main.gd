@@ -11,6 +11,9 @@ var enemy = "enemy"
 var enemy_list = []
 var boss = ""
 var is_boss = false
+
+var main_song_timer : float
+var level_song_timer : float
 var diff_scale = 1
 
 func update_player_items_index(item_index):
