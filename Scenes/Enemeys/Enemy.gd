@@ -34,6 +34,7 @@ func _physics_process(delta):
 
 func shoot():
 	if(can_shoot): 
+		
 		get_tree().get_first_node_in_group("world").spawn_ball(position.x - $Area2D/CollisionShape2D.shape.size.x/2 - global.ball_size.x, position.y, -1 , randf_range(min_degrees, max_degrees),damage)
 		$Timer.wait_time = fire_rate.pick_random()
 		$Timer.start()
@@ -50,10 +51,15 @@ func take_damage(dmg):
 		die()
 
 func die():
-	queue_free()
+	$EnemyDead.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+	$EnemyDead.play()
+	hide()
 	get_tree().paused = true
-	get_tree().get_first_node_in_group("item_selection").show()
+	get_tree().get_first_node_in_group("item_selection").show_ui_item()
 	#get_tree().change_scene_to_file("res://Scenes/Map/World/WorldMap.tscn")
+
+func _on_enemy_dead_finished():
+	queue_free()
 
 func element_effect(element):
 	match element:
@@ -151,3 +157,4 @@ func _on_ice_slow_timer_timeout():
 func _on_light_stun_timer_timeout():
 	can_shoot = true
 	slow_speed = 0
+

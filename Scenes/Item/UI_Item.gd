@@ -31,6 +31,7 @@ func _ready():
 
 func show_ui_item():
 	show()
+	$GetItem.play()
 
 func set_label_name(name):
 	var label_name = $Item/BackPanel/ItemName

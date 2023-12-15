@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://35kb3ptp4syg"]
+[gd_scene load_steps=12 format=3 uid="uid://35kb3ptp4syg"]
 
 [ext_resource type="Script" path="res://Scenes/Enemeys/fast_enemy.gd" id="1_r6qfp"]
 [ext_resource type="Texture2D" uid="uid://cvckrnbk63y1t" path="res://Assets/Img/Cave Troll Boss.png" id="2_gqwue"]
+[ext_resource type="AudioStream" uid="uid://bumjyq70v38gp" path="res://Assets/Sounds/enmey_dead.mp3" id="3_2y3al"]
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1il5r"]
 width = 96
@@ -97,6 +98,10 @@ wait_time = 3.0
 [node name="IceSlowTimer" type="Timer" parent="."]
 wait_time = 3.0
 
+[node name="EnemyDead" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_2y3al")
+
 [connection signal="timeout" from="MovementTimer" to="." method="_on_movement_timer_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout" flags=18]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered" flags=18]
+[connection signal="finished" from="EnemyDead" to="." method="_on_enemy_dead_finished"]

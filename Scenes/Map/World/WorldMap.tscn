@@ -44,4 +44,7 @@ shape = SubResource("RectangleShape2D_ho3b0")
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position_smoothing_enabled = true
 
+[node name="Music" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
+
 [connection signal="body_entered" from="Key" to="." method="_on_key_body_entered"]

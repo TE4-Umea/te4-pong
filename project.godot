@@ -23,6 +23,8 @@ True="*res://Scenes/true.gd"
 False="*res://Scenes/false.gd"
 MapManager="*res://Scenes/Map/MapManager.gd"
 Main="*res://Scenes/Map/Main.gd"
+DataSaver="*res://Scenes/DataSaver.gd"
+AudioLoader="*res://Scenes/AudioLoader.gd"
 
 [display]
 

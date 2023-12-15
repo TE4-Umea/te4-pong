@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://d1jdun1b61cjp"]
+[gd_scene load_steps=13 format=3 uid="uid://d1jdun1b61cjp"]
 
 [ext_resource type="Script" path="res://Scenes/Map/World.gd" id="1_a8amt"]
 [ext_resource type="Texture2D" uid="uid://md0p4wsg2nhe" path="res://Assets/Img/background_3.png" id="2_7nace"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://b5iy5pcb2xit3" path="res://Scenes/Player/Paddle.tscn" id="3_5a22m"]
 [ext_resource type="Texture2D" uid="uid://crc22omccnsfq" path="res://Assets/Img/LukasLogo(1).png" id="3_33vie"]
 [ext_resource type="PackedScene" uid="uid://be80dbp2b6dxv" path="res://Scenes/Ball/Ball.tscn" id="5_8pphb"]
+[ext_resource type="AudioStream" uid="uid://c7v3xt4stxhrc" path="res://Assets/Sounds/game_over.mp3" id="7_odgb7"]
+[ext_resource type="AudioStream" uid="uid://cxuo8nk82lj4r" path="res://Assets/Sounds/lukas_take_damage.wav" id="8_nylia"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5vdgs"]
 size = Vector2(1184, 48)
@@ -166,6 +168,17 @@ autostart = true
 
 [node name="Spawner" type="Marker2D" parent="."]
 position = Vector2(1024, 336)
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
+
+[node name="GameOver" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_odgb7")
+bus = &"Sfx"
+
+[node name="PlayerTakeDmage" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_nylia")
+bus = &"Sfx"
 
 [connection signal="body_entered" from="Norr" to="." method="_on_norr_body_entered"]
 [connection signal="body_entered" from="Bottom" to="." method="_on_bottom_body_entered"]

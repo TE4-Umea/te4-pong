@@ -15,6 +15,9 @@ func spawn_ball(x,y,direx,direxy,damage):
 
 # Called when the node enters the scene tree for thesss first time.
 func _ready():
+	$Music.stream = AudioLoader.enemy_battle_music[0]
+	$Music.play(1)
+	
 	$ProgressBar.value = global.player_hp
 	var enemy
 	if global.is_boss:
@@ -37,6 +40,7 @@ func _on_bottom_body_entered(body):
 
 
 func _on_kanye_body_entered(body):
+	$PlayerTakeDmage.play()
 	global.player_hp -= 25
 	$ProgressBar.value = global.player_hp
 #	await get_tree().create_timer(1).timeout
@@ -47,6 +51,8 @@ func _on_kanye_body_entered(body):
 		global.player_items_index = []
 		$Control/Label3.text = ("you died :c")
 		pauseGame()
+		$GameOver.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+		$GameOver.play()
 		get_tree().paused = true
 
 func _on_left_body_entered(body):#!left
