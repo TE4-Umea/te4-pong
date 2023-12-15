@@ -3,11 +3,16 @@ extends CharacterBody2D
 var direction = Vector2.ZERO
 var paused = false
 var damage
-var element
+var element = []
 var direx = -1
 var direxy = randf_range(-1.0, 1.0)
+var image = preload("res://Assets/Img/B).png")
+var lightning = 0
+var spirit = false
 
 func _ready():
+	if(spirit):
+		$AnimatedSprite2D.modulate = Color(1,0,1)
 	global.ball_size = $CollisionShape2D.shape.size
 	direction.y = direxy
 	direction.x = direx
@@ -35,7 +40,8 @@ func _on_world_pause_signal():
 func collided_with_player(player_damage, player_element):
 	damage = player_damage
 	element = player_element
-	element_effect(element)
+	for n in range(element.size()):
+		element_effect(element[n])
 	
 func element_effect(element):
 	match element:
@@ -55,6 +61,26 @@ func element_effect(element):
 			element_darkness()
 		"light":
 			element_light()
+		"lightning":
+			element_lightning()
+
+func element_lightning():
+	if([1,2,3].pick_random() == 1):
+		$litning_timer.start()
+		var player = get_tree().get_first_node_in_group("paddles")
+		var enemy = get_tree().get_first_node_in_group("enemy")
+		var line = Line2D.new()
+		var texture = ImageTexture.create_from_image(image)
+		line.set_texture(texture)
+		line.default_color = Color(0,1,1)
+		line.texture=ResourceLoader.load("res://Assets/Img/B).png")
+		line.add_point(Vector2(-10,player.size.y/2))
+		line.add_point(Vector2(enemy.position.x-position.x,enemy.position.y-position.y))
+		player.add_child(line)
+		get_tree().get_first_node_in_group("enemy").take_damage(10+damage)
+		for n in range(element.size()):
+			get_tree().get_first_node_in_group("enemy").element_effect(element[n])
+		position.x = 50000
 
 func element_light():
 	$AnimatedSprite2D.modulate = Color(2,2,2)
@@ -81,8 +107,12 @@ func element_earth():
 	speed *= .75
 
 func element_spirit():
-	print("sprit")
-	print(owner)
-	$AnimatedSprite2D.modulate = Color(1,0,1)
-	get_tree().get_first_node_in_group("world").spawn_ball(position.x+25,position.y,direction.x,-direction.y,damage/2)
-	pass
+	for n in range(global.player_items_index.size()):
+		if(global.player_items_index[n] == 7):
+			get_tree().get_first_node_in_group("world").spawn_spirit_ball(position.x+25,position.y,direction.x,-direction.y + randf_range(-1, 1),damage/2)
+
+
+func _on_litning_timer_timeout():
+	queue_free()
+	if(get_tree().get_first_node_in_group("paddles").get_child_count()>3):
+		get_tree().get_first_node_in_group("paddles").get_child(3).queue_free()

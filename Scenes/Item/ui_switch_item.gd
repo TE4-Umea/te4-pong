@@ -39,7 +39,7 @@ func _on_yes_button_pressed():
 		global.update_player_items_index($button3.item_index)
 		player_item.set_player_item($button3.item_stats)
 	
-	print(boss)
+	print(global.player_items_index)
 	if(boss):
 		boss = !boss
 		get_tree().change_scene_to_file("res://Scenes/Map/Overworld/Overworld.tscn")

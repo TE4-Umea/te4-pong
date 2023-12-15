@@ -3,9 +3,11 @@ extends Node
 const DIRECTIONS = [Vector2.RIGHT, Vector2.UP, Vector2.LEFT, Vector2.DOWN]
 
 @export var tile_scene : PackedScene
-@export var enemy_risk = 60
+@export var wall_scene : PackedScene
+@export var enemy_risk = 50
 @export var enemies = 8
-@export var world_size = 15
+@export var world_size = 25
+@export var color_tint = Color.SKY_BLUE
 
 var map_position = Vector2.ZERO
 var map = []
@@ -18,6 +20,8 @@ var key
 var has_key = false
 var key_index
 var audio_files = []
+var tiles = []
+var can_move = true
 
 func _generate_map():
 	map = []
@@ -60,8 +64,9 @@ func _ready():
 	for location in map:
 		var tile : Area2D = tile_scene.instantiate()
 		add_child(tile)
-		offset = tile.get_child(0).texture.get_width() * tile.get_child(0).scale.x
-		tile.get_child(2).text = str(location)
+		tile.modulate = color_tint
+		tiles.append(tile)
+		offset = tile.get_child(1).shape.extents.x*2
 		
 		var x = (get_viewport().get_visible_rect().size.x/2)
 		var y = (get_viewport().get_visible_rect().size.y/2)
@@ -74,9 +79,8 @@ func _ready():
 			else:
 				player = MapManager.player_pos
 				$Player.position = MapManager.player_global_pos + Vector2(x, y)
-#			tile.modulate = Color.GREEN
 		elif map.find(location) == map.size()-1:
-			tile.modulate = Color.RED
+			tile.get_child(0).frame = tile.end_frame
 			end = location
 		elif map.find(location) == key_index:
 			#key = location
@@ -84,10 +88,21 @@ func _ready():
 				$Key.position = tile.position
 			else:
 				$Key.queue_free()
-#			tile.modulate = Color.YELLOW
 		else:
 			unused_tiles.append(location)
-#			tile.modulate = Color.DIM_GRAY
+	
+	# Lägger ut väggar på kanterna
+	var tiles_pos = []
+	for tile in tiles:
+		tiles_pos.append(tile.position)
+	for tile in tiles:
+		for x in range(-1, 2):
+			for y in range(-1, 2):
+				if not tile.position + Vector2(x * offset, y * offset) in tiles_pos:
+					var wall : Area2D = wall_scene.instantiate()
+					add_child(wall)
+					wall.modulate = color_tint
+					wall.position = tile.position + Vector2(x * offset, y * offset)
 
 func _save():
 	MapManager.saved = true
@@ -100,7 +115,7 @@ func _save():
 	MapManager.enemies = enemies
 
 func _move(direction):
-	if player + direction in map:
+	if player + direction in map and can_move:
 		player += direction
 		$Player.position += Vector2(direction.x * offset, direction.y * offset)
 		if player == key and not has_key:
@@ -109,17 +124,27 @@ func _move(direction):
 			_save()
 		elif player == end:
 			if has_key:
+				_encounter()
 				MapManager.saved = false
 				global.is_boss = true
 				get_tree().change_scene_to_file("res://Scenes/Loading.tscn")
 		else:
+			randomize()
 			var random = randi_range(0, 100)
 			if random < enemy_risk and enemies > 0:
 				global.level_song_timer = $Music.get_playback_position()
+				await _encounter()
 				enemies -= 1
 				global.enemy = global.enemy_list.pick_random()
 				get_tree().change_scene_to_file("res://Scenes/Loading.tscn")
 			_save()
+
+func _encounter():
+	can_move = false
+	$Player/ColorRect.visible = true
+	$Player/Camera2D.zoom.x = 1.1
+	$Player/Camera2D.zoom.y = 1.1
+	await get_tree().create_timer(.75).timeout
 
 func _process(delta):
 	if Input.is_action_just_pressed("P1_UP"):

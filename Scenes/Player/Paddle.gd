@@ -2,18 +2,20 @@ extends CharacterBody2D
 
 @export var speed : float = 300.0
 @export var side = 'p1'
-var damage : float = 1000
+var damage : float = 25
 var hp : float
 var luck : float
 var movment_speed : float
 var ball_speed : float
-var element
+var element = []
 var items : Array
 var max_bounce_angle = 0.5235987756 #30
 var paused = True.True
 var recently_hit = True.True
+var size = Vector2(0,0)
 
 func _ready():
+	size = $CollisionShape2D.shape.size
 	items = global.player_items_copy
 	player_item.signal_player_for_item.connect(self.grab_item)
 	if (items.size() > 0): 
@@ -41,6 +43,7 @@ func get_axis(up, down):
 
 func _on_area_2d_body_entered(body):
 	$PlayerHitBall.play()
+
 	var body_x_direction = body.direction.x
 	var body_collision : CollisionShape2D = body.get_node("CollisionShape2D")
 	var body_height = body_collision.shape.get_rect().size.y
@@ -91,7 +94,7 @@ func grab_item():
 func update_player_stats(index):
 	
 	var item_upgrade = items[index][10]
-	element = items[index][4]
+	element.append(items[index][4])
 	damage += items[index][5] * item_upgrade
 	hp += items[index][6] * item_upgrade
 	luck += items[index][7] * item_upgrade

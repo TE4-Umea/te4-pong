@@ -1,5 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://bcql4dsu7c1lt"]
 
+
 [ext_resource type="Script" path="res://Scenes/Enemeys/hel.gd" id="1_lde8c"]
 [ext_resource type="Texture2D" uid="uid://b7yb7s00m475s" path="res://Assets/Img/Hel.png" id="2_8d2fm"]
 [ext_resource type="AudioStream" uid="uid://cecojcwmbri3t" path="res://Assets/Sounds/Hel_death_sound.mp3" id="3_0x65g"]
@@ -7,16 +8,13 @@
 [sub_resource type="LabelSettings" id="LabelSettings_r1b6h"]
 font_size = 64
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_qtyut"]
-size = Vector2(210, 10)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3obk3"]
 size = Vector2(208, 400)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_clax8"]
 size = Vector2(208, 400)
 
-[node name="Hel" type="CharacterBody2D"]
+[node name="Hel" type="CharacterBody2D" groups=["enemy"]]
 script = ExtResource("1_lde8c")
 
 [node name="Label" type="Label" parent="."]
@@ -27,16 +25,6 @@ offset_bottom = -170.0
 text = "Hel"
 label_settings = SubResource("LabelSettings_r1b6h")
 horizontal_alignment = 1
-metadata/_edit_use_anchors_ = true
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
-offset_left = -96.0
-offset_top = -208.0
-offset_right = 288.0
-offset_bottom = -198.0
-value = 100.0
-texture_progress = SubResource("PlaceholderTexture2D_qtyut")
-tint_progress = Color(1, 0, 0, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="MovementTimer" type="Timer" parent="."]

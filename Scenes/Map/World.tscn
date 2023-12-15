@@ -16,7 +16,7 @@ size = Vector2(1184, 48)
 size = Vector2(1184, 40)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1kfys"]
-size = Vector2(16, 680)
+size = Vector2(25, 1109)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0adeh"]
 size = Vector2(16, 748)
@@ -54,11 +54,12 @@ position = Vector2(576, 4)
 shape = SubResource("RectangleShape2D_22hlc")
 
 [node name="Kanye" type="Area2D" parent="."]
+position = Vector2(-60, 0)
 collision_layer = 4
 collision_mask = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Kanye"]
-position = Vector2(-8, 324)
+position = Vector2(-46.5, 348.5)
 shape = SubResource("RectangleShape2D_1kfys")
 
 [node name="!Left" type="Area2D" parent="."]
@@ -130,6 +131,7 @@ offset_bottom = 520.0
 text = "MAIN MENU"
 
 [node name="UI_Item" parent="." instance=ExtResource("2_pjynm")]
+visible = false
 z_index = 100
 offset_left = -6.0
 offset_top = -1.0
@@ -146,12 +148,23 @@ speed = 500.0
 position = Vector2(-277, 262)
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
-modulate = Color(1, 0, 0, 1)
+self_modulate = Color(1, 0, 0, 1)
 offset_left = 82.0
 offset_top = 16.0
 offset_right = 447.0
 offset_bottom = 43.0
 value = 100.0
+show_percentage = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ProgressBar" groups=["health"]]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 367.0
+offset_bottom = 29.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+bbcode_enabled = true
+text = "[center]100 hp[/center]"
+scroll_active = false
 
 [node name="ProgressBar2" type="ProgressBar" parent="."]
 modulate = Color(0, 1, 1, 1)
@@ -169,6 +182,7 @@ autostart = true
 [node name="Spawner" type="Marker2D" parent="."]
 position = Vector2(1024, 336)
 
+
 [node name="Music" type="AudioStreamPlayer" parent="."]
 bus = &"Music"
 
@@ -179,6 +193,22 @@ bus = &"Sfx"
 [node name="PlayerTakeDmage" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_nylia")
 bus = &"Sfx"
+
+[node name="enemy_health_bar" type="ProgressBar" parent="." groups=["enemy_health_bar"]]
+self_modulate = Color(1, 0, 0, 1)
+offset_left = 752.0
+offset_top = 16.0
+offset_right = 1117.0
+offset_bottom = 43.0
+value = 100.0
+show_percentage = false
+
+[node name="enemy_health" type="RichTextLabel" parent="enemy_health_bar" groups=["enemy_health"]]
+layout_mode = 0
+offset_right = 365.0
+offset_bottom = 28.0
+bbcode_enabled = true
+text = "[center]100 hp[/center]"
 
 [connection signal="body_entered" from="Norr" to="." method="_on_norr_body_entered"]
 [connection signal="body_entered" from="Bottom" to="." method="_on_bottom_body_entered"]

@@ -5,9 +5,6 @@
 [ext_resource type="AudioStream" uid="uid://dsfpyw13lxay0" path="res://Assets/Sounds/shoot.mp3" id="3_tcojk"]
 [ext_resource type="AudioStream" uid="uid://bumjyq70v38gp" path="res://Assets/Sounds/enmey_dead.mp3" id="4_uwifl"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_a3rgf"]
-size = Vector2(232, 10)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3obk3"]
 size = Vector2(232, 232)
 
@@ -17,16 +14,6 @@ size = Vector2(232, 232)
 [node name="enemy" type="CharacterBody2D"]
 position = Vector2(236, 108)
 script = ExtResource("1_4u4h7")
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
-modulate = Color(1, 0.0156863, 0, 1)
-self_modulate = Color(1, 0.054902, 0, 1)
-offset_left = -116.0
-offset_top = -134.0
-offset_right = 116.0
-offset_bottom = -109.0
-value = 100.0
-texture_progress = SubResource("PlaceholderTexture2D_a3rgf")
 
 [node name="MovementTimer" type="Timer" parent="."]
 autostart = true

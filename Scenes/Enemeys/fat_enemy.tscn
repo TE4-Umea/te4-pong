@@ -1,11 +1,10 @@
+
 [gd_scene load_steps=12 format=3 uid="uid://c01b1hf0pv15n"]
+
 
 [ext_resource type="Script" path="res://Scenes/Enemeys/fat_enemy.gd" id="1_865ug"]
 [ext_resource type="Texture2D" uid="uid://c36qkeb8sxvgf" path="res://Assets/Img/Frost Boss Yeti.png" id="2_k07ob"]
 [ext_resource type="AudioStream" uid="uid://bumjyq70v38gp" path="res://Assets/Sounds/enmey_dead.mp3" id="3_geh5d"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_d6atd"]
-size = Vector2(384, 10)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_umvt1"]
 atlas = ExtResource("2_k07ob")
@@ -49,20 +48,9 @@ size = Vector2(259, 330)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_clax8"]
 size = Vector2(259, 330)
 
-[node name="fat_enemy" type="CharacterBody2D"]
+[node name="fat_enemy" type="CharacterBody2D" groups=["enemy"]]
 position = Vector2(288, 128)
 script = ExtResource("1_865ug")
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
-modulate = Color(1, 0, 0, 1)
-offset_left = -135.0
-offset_top = -151.0
-offset_right = 249.0
-offset_bottom = -141.0
-scale = Vector2(0.68, 1)
-value = 100.0
-texture_progress = SubResource("PlaceholderTexture2D_d6atd")
-metadata/_edit_use_anchors_ = true
 
 [node name="MovementTimer" type="Timer" parent="."]
 autostart = true

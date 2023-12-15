@@ -13,12 +13,23 @@ func spawn_ball(x,y,direx,direxy,damage):
 	ball.damage = damage
 	add_child(ball)
 
+func spawn_spirit_ball(x,y,direx,direxy,damage):
+	var ball =  BALL.instantiate()
+	ball.spirit = true
+	ball.global_position = Vector2(x,y)
+	ball.direx = direx
+	ball.direxy = direxy
+	ball.damage = damage
+	add_child(ball)
+
 # Called when the node enters the scene tree for thesss first time.
 func _ready():
 	$Music.stream = AudioLoader.enemy_battle_music[0]
 	$Music.play(1)
 	
 	$ProgressBar.value = global.player_hp
+	$ProgressBar/RichTextLabel.clear()
+	$ProgressBar/RichTextLabel.append_text("[center]" + str(global.player_hp) + " HP[/center]")
 	var enemy
 	if global.is_boss:
 		enemy = global.boss.instantiate()
@@ -42,6 +53,8 @@ func _on_bottom_body_entered(body):
 func _on_kanye_body_entered(body):
 	$PlayerTakeDmage.play()
 	global.player_hp -= 25
+	$ProgressBar/RichTextLabel.clear()
+	$ProgressBar/RichTextLabel.append_text("[center]" + str(global.player_hp) + " HP[/center]")
 	$ProgressBar.value = global.player_hp
 #	await get_tree().create_timer(1).timeout
 	
@@ -77,6 +90,7 @@ func pauseGame():
 
 func _on_play_again_pressed():
 	get_tree().paused = false
+	global.diff_scale = 1
 	global.player_hp = 100
 	global.p1_score = 0
 	global.p2_score = 0
@@ -85,6 +99,7 @@ func _on_play_again_pressed():
 
 func _on_main_menu_pressed():
 	get_tree().paused = false
+	global.diff_scale = 1
 	global.player_hp = 100
 	global.p1_score = 0
 	global.p2_score = 0

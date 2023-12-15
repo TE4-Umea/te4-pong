@@ -22,3 +22,6 @@ func _on_audio_options_back_button_pressed():
 
 func _on_start_game_finished():
 	get_tree().change_scene_to_file("res://Scenes/Map/Overworld/Overworld.tscn")
+
+func _process(delta):
+	$ParallaxBackground.scroll_offset.x += 20*delta
