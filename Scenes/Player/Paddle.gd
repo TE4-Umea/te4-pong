@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var speed : float = 300.0
 @export var side = 'p1'
-var damage : float = 25
+var damage : float = 2500
 var hp : float
 var luck : float
 var movment_speed : float
@@ -42,7 +42,7 @@ func get_axis(up, down):
 
 
 func _on_area_2d_body_entered(body):
-	$PlayerHitBall.play()
+	$PlayerHitBall.play()		#Bollen försvinner för tidigt med lightning
 
 	var body_x_direction = body.direction.x
 	var body_collision : CollisionShape2D = body.get_node("CollisionShape2D")

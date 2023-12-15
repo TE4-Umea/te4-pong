@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://be80dbp2b6dxv"]
+[gd_scene load_steps=14 format=3 uid="uid://be80dbp2b6dxv"]
 
 [ext_resource type="Script" path="res://Scenes/Ball/Ball.gd" id="1_m8ubh"]
 [ext_resource type="Texture2D" uid="uid://bj3e0vlv1ssks" path="res://Assets/Img/GlowingWispIdle.png" id="2_5uybe"]
@@ -42,6 +42,32 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2anu4"]
 size = Vector2(48, 48)
 
+[sub_resource type="Gradient" id="Gradient_wasdb"]
+offsets = PackedFloat32Array(0, 0.533333, 1)
+colors = PackedColorArray(0.298039, 0.772549, 0.894118, 1, 0.266667, 0.466667, 1, 1, 1, 1, 1, 0.52549)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bo2ne"]
+gradient = SubResource("Gradient_wasdb")
+
+[sub_resource type="Curve" id="Curve_nmg2b"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_4d4l1"]
+curve = SubResource("Curve_nmg2b")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_nrauf"]
+particle_flag_disable_z = true
+gravity = Vector3(250, 0, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 20.0
+scale_max = 20.0
+scale_curve = SubResource("CurveTexture_4d4l1")
+color_ramp = SubResource("GradientTexture1D_bo2ne")
+turbulence_enabled = true
+turbulence_noise_scale = 1.2
+
 [node name="Ball" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 0
@@ -55,10 +81,16 @@ sprite_frames = SubResource("SpriteFrames_qtj5b")
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_2anu4")
 
 [node name="litning_timer" type="Timer" parent="."]
 wait_time = 0.05
 one_shot = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_nrauf")
+lifetime = 0.4
 
 [connection signal="timeout" from="litning_timer" to="." method="_on_litning_timer_timeout"]
