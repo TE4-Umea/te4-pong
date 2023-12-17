@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ti5dnrlnocox"]
+[gd_scene load_steps=7 format=3 uid="uid://ti5dnrlnocox"]
 
 [ext_resource type="Script" path="res://Scenes/Enemeys/Enemy.gd" id="1_4u4h7"]
 [ext_resource type="Texture2D" uid="uid://bx2dcegbutm0j" path="res://Assets/Img/B).png" id="2_20i51"]
@@ -11,7 +11,7 @@ size = Vector2(232, 232)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_clax8"]
 size = Vector2(232, 232)
 
-[node name="enemy" type="CharacterBody2D"]
+[node name="enemy" type="CharacterBody2D" groups=["enemy"]]
 position = Vector2(236, 108)
 script = ExtResource("1_4u4h7")
 
@@ -49,10 +49,12 @@ wait_time = 3.0
 
 [node name="ShootSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_tcojk")
+volume_db = -5.0
 bus = &"Sfx"
 
 [node name="EnemyDead" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_uwifl")
+bus = &"Sfx"
 
 [node name="EnemyHitSound" type="AudioStreamPlayer" parent="."]
 bus = &"Sfx"

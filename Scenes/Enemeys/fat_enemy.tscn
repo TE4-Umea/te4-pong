@@ -1,10 +1,9 @@
-
 [gd_scene load_steps=12 format=3 uid="uid://c01b1hf0pv15n"]
-
 
 [ext_resource type="Script" path="res://Scenes/Enemeys/fat_enemy.gd" id="1_865ug"]
 [ext_resource type="Texture2D" uid="uid://c36qkeb8sxvgf" path="res://Assets/Img/Frost Boss Yeti.png" id="2_k07ob"]
 [ext_resource type="AudioStream" uid="uid://bumjyq70v38gp" path="res://Assets/Sounds/enmey_dead.mp3" id="3_geh5d"]
+[ext_resource type="AudioStream" uid="uid://dsfpyw13lxay0" path="res://Assets/Sounds/shoot.mp3" id="4_q3033"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_umvt1"]
 atlas = ExtResource("2_k07ob")
@@ -89,6 +88,15 @@ wait_time = 3.0
 
 [node name="EnemyDead" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_geh5d")
+bus = &"Sfx"
+
+[node name="EnemyHitSound" type="AudioStreamPlayer" parent="."]
+bus = &"Sfx"
+
+[node name="ShootSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_q3033")
+volume_db = -5.0
+bus = &"Sfx"
 
 [connection signal="timeout" from="MovementTimer" to="." method="_on_movement_timer_timeout" flags=18]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout" flags=18]
