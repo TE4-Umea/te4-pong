@@ -81,7 +81,7 @@ func element_effect(element):
 func element_lightning():
 
 	if(randf_range(0, 1) > pow(0.66,lightning)):
-		$litning_timer.start()
+		$LightningTimer.start()
 		$ElementSoundEffect.stream = element_sound[2]
 		$ElementSoundEffect.play()
 

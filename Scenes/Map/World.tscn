@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://d1jdun1b61cjp"]
 
 [ext_resource type="Script" path="res://Scenes/Map/World.gd" id="1_a8amt"]
-[ext_resource type="Texture2D" uid="uid://md0p4wsg2nhe" path="res://Assets/Img/background_3.png" id="2_7nace"]
+[ext_resource type="Texture2D" uid="uid://c5wtgrbwf18iu" path="res://Assets/rsz_1ice_cave_1.png" id="2_nejy7"]
 [ext_resource type="PackedScene" uid="uid://cyrntu3r8663l" path="res://Scenes/Item/UI_Item.tscn" id="2_pjynm"]
 [ext_resource type="PackedScene" uid="uid://b5iy5pcb2xit3" path="res://Scenes/Player/Paddle.tscn" id="3_5a22m"]
 [ext_resource type="Texture2D" uid="uid://crc22omccnsfq" path="res://Assets/Img/LukasLogo(1).png" id="3_33vie"]
@@ -83,7 +83,7 @@ z_index = -10
 layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 648.0
-texture = ExtResource("2_7nace")
+texture = ExtResource("2_nejy7")
 metadata/_edit_use_anchors_ = true
 
 [node name="TextureRect" type="TextureRect" parent="Control"]

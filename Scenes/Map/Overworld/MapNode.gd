@@ -26,11 +26,18 @@ func _draw():
 		$AnimatedSprite2D.modulate = Color.WHITE
 	else:
 		$AnimatedSprite2D.modulate = Color.DIM_GRAY
+	$Line2D.clear_points()
 	for node in connected:
 		if node.chosen and active or chosen:
-			draw_line(position-position, node.position-position, Color.GREEN, 2)
+			#draw_line(position-position, node.position-position, Color.GREEN, 2)
+			$Line2D.default_color = Color.GREEN
+			$Line2D.add_point(position-position)
+			$Line2D.add_point(node.position-position)
 		else:
-			draw_line(position-position, node.position-position, Color.WEB_GRAY, 1)
+			#draw_line(position-position, node.position-position, Color.WEB_GRAY, 1)
+			$Line2D.default_color = Color.GRAY
+			$Line2D.add_point(position-position)
+			$Line2D.add_point(node.position-position)
 
 func _process(delta):
 	if mouse_over and Input.is_action_just_pressed("click") and active and not chosen:
