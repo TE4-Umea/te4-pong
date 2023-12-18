@@ -68,6 +68,8 @@ func take_damage(dmg):
 		die()
 
 func die():
+	if(global.player_hp<100):
+		global.player_hp += 25
 	$EnemyDead.process_mode = Node.PROCESS_MODE_WHEN_PAUSED
 	$EnemyDead.play()
 	hide()
@@ -111,6 +113,9 @@ func element_ice():
 	$IceSlowTimer.start()
 	slow_speed = 30
  
+func element_lightning():
+	pass
+	# chanse for lightning bolt (kanske ska vara i player)
 
 func element_earth():
 	$EnemyHitSound.stream = enemy_element_hit_sound[2]

@@ -8,11 +8,23 @@ var direx = -1
 var direxy = randf_range(-1.0, 1.0)
 var image = preload("res://Assets/Img/B).png")
 var lightning = 0
+var water = 0
+var earth = 0
 var spirit = false
 var element_sound = []
 
 func _ready():
+
+	for n in range(global.player_items_index.size()):
+		if(global.player_items_index[n] == 5):
+			lightning += 1
+		if(global.player_items_index[n]==6):
+			water += 1
+		if(global.player_items_index[n]==8):
+			earth += 1
+
 	element_sound = AudioLoader.element_sound
+
 	if(spirit):
 		$AnimatedSprite2D.modulate = Color(1,0,1)
 	global.ball_size = $CollisionShape2D.shape.size
@@ -67,10 +79,12 @@ func element_effect(element):
 			element_lightning()
 
 func element_lightning():
-	if([1,2,3].pick_random() == 1):
-		$LightningTimer.start()
+
+	if(randf_range(0, 1) > pow(0.66,lightning)):
+		$litning_timer.start()
 		$ElementSoundEffect.stream = element_sound[2]
 		$ElementSoundEffect.play()
+
 		var player = get_tree().get_first_node_in_group("paddles")
 		var enemy = get_tree().get_first_node_in_group("enemy")
 		var line = Line2D.new()
@@ -106,12 +120,13 @@ func element_wind():
 	speed *= 2
 
 func element_water():
-	damage *= [1,3].pick_random()
+	if(randf_range(0, 1) > pow(0.66,water)):
+		damage *= 3
 
 func element_earth():
-	$CollisionShape2D.set_scale(Vector2(4,4))
-	$AnimatedSprite2D.set_scale(Vector2(6,6))
-	speed *= .75
+	$CollisionShape2D.set_scale(Vector2(2*(earth+1),2*(earth+1)))
+	$AnimatedSprite2D.set_scale(Vector2(3*(earth+1),3*(earth+1)))
+	speed *= pow(0.75,earth)
 
 func element_spirit():
 	for n in range(global.player_items_index.size()):
