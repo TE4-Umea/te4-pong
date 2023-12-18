@@ -58,7 +58,8 @@ autoplay = "default"
 shape = SubResource("RectangleShape2D_2anu4")
 
 [node name="LightningTimer" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.05
+one_shot = true
 
 [node name="ElementSoundEffect" type="AudioStreamPlayer" parent="."]
 bus = &"Sfx"

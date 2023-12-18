@@ -68,16 +68,17 @@ func element_effect(element):
 
 func element_lightning():
 	if([1,2,3].pick_random() == 1):
+		$LightningTimer.start()
 		$ElementSoundEffect.stream = element_sound[2]
 		$ElementSoundEffect.play()
-		$LightningTimer.start()
 		var player = get_tree().get_first_node_in_group("paddles")
 		var enemy = get_tree().get_first_node_in_group("enemy")
 		var line = Line2D.new()
+		line.name = "lightning"
 		#var texture = ImageTexture.create_from_image(image)
 		#line.set_texture(texture)
 		line.default_color = Color(0,1,1)
-		line.texture=ResourceLoader.load("res://Assets/Img/B).png")
+		#line.texture=ResourceLoader.load("res://Assets/Img/B).png")
 		line.add_point(Vector2(-10,player.size.y/2))
 		line.add_point(Vector2(enemy.position.x-position.x,enemy.position.y-position.y))
 		player.add_child(line)
@@ -122,4 +123,5 @@ func element_spirit():
 func _on_lightning_timer_timeout():
 	queue_free()
 	if(get_tree().get_first_node_in_group("paddles").get_child_count()>3):
-		get_tree().get_first_node_in_group("paddles").get_child(3).queue_free()
+		var paddel = get_tree().get_first_node_in_group("paddles")
+		paddel.get_child(paddel.get_child_count() - 1).queue_free()

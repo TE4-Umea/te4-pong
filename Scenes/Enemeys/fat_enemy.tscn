@@ -95,7 +95,6 @@ bus = &"Sfx"
 
 [node name="ShootSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_q3033")
-volume_db = -5.0
 bus = &"Sfx"
 
 [connection signal="timeout" from="MovementTimer" to="." method="_on_movement_timer_timeout" flags=18]

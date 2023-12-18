@@ -66,7 +66,6 @@ bus = &"Sfx"
 
 [node name="ShootSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_686wb")
-volume_db = -5.0
 bus = &"Sfx"
 
 [node name="EnemyHitSound" type="AudioStreamPlayer" parent="."]
