@@ -108,15 +108,15 @@ func _on_main_menu_pressed():
 func _on_stamina_timer_timeout():
 	if shift and $ProgressBar2.value > 0:
 		$p1.speed = 1000
-		$ProgressBar2.value -= 5
+		$ProgressBar2.value -= 2
 	else:
 		shift = false
 		$p1.speed = 500
-		$ProgressBar2.value += 1
+		$ProgressBar2.value += .25
 
 func _input(event):
 	if event.is_action_pressed("Shift"):
-		if $ProgressBar2.value > 25:
+		if $ProgressBar2.value > 10:
 			$p1.speed = 1000
 			shift = true
 	elif event.is_action_released("Shift"):

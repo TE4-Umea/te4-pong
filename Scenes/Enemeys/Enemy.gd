@@ -59,6 +59,8 @@ func take_damage(dmg):
 		die()
 
 func die():
+	if(global.player_hp<100):
+		global.player_hp += 25
 	global.diff_scale *= 1.5
 	queue_free()
 	get_tree().paused = true
@@ -99,7 +101,7 @@ func element_ice():
  
 
 func element_lightning():
-	print("lightning")
+	pass
 	# chanse for lightning bolt (kanske ska vara i player)
 
  

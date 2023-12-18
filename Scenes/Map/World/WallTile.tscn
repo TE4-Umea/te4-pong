@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://db1ty3qgqrjjj"]
+[gd_scene load_steps=4 format=3 uid="uid://d001yyfb1x3tw"]
 
 [ext_resource type="Script" path="res://Scenes/Map/World/MapTile.gd" id="1_ojv4l"]
 [ext_resource type="Texture2D" uid="uid://baqwixov7322f" path="res://Assets/Img/Hel_Tiles.png" id="2_2ht7n"]
