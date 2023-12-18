@@ -9,8 +9,10 @@ var direxy = randf_range(-1.0, 1.0)
 var image = preload("res://Assets/Img/B).png")
 var lightning = 0
 var spirit = false
+var element_sound = []
 
 func _ready():
+	element_sound = AudioLoader.element_sound
 	if(spirit):
 		$AnimatedSprite2D.modulate = Color(1,0,1)
 	global.ball_size = $CollisionShape2D.shape.size
@@ -66,14 +68,17 @@ func element_effect(element):
 
 func element_lightning():
 	if([1,2,3].pick_random() == 1):
-		$litning_timer.start()
+		$LightningTimer.start()
+		$ElementSoundEffect.stream = element_sound[2]
+		$ElementSoundEffect.play()
 		var player = get_tree().get_first_node_in_group("paddles")
 		var enemy = get_tree().get_first_node_in_group("enemy")
 		var line = Line2D.new()
-		var texture = ImageTexture.create_from_image(image)
-		line.set_texture(texture)
+		line.name = "lightning"
+		#var texture = ImageTexture.create_from_image(image)
+		#line.set_texture(texture)
 		line.default_color = Color(0,1,1)
-		line.texture=ResourceLoader.load("res://Assets/Img/B).png")
+		#line.texture=ResourceLoader.load("res://Assets/Img/B).png")
 		line.add_point(Vector2(-10,player.size.y/2))
 		line.add_point(Vector2(enemy.position.x-position.x,enemy.position.y-position.y))
 		player.add_child(line)
@@ -96,6 +101,8 @@ func element_ice():
 
 
 func element_wind():
+	$ElementSoundEffect.stream = element_sound[1]
+	$ElementSoundEffect.play()
 	speed *= 2
 
 func element_water():
@@ -109,10 +116,12 @@ func element_earth():
 func element_spirit():
 	for n in range(global.player_items_index.size()):
 		if(global.player_items_index[n] == 7):
+			$ElementSoundEffect.stream = element_sound[0]
+			$ElementSoundEffect.play()
 			get_tree().get_first_node_in_group("world").spawn_spirit_ball(position.x+25,position.y,direction.x,-direction.y + randf_range(-1, 1),damage/2)
 
-
-func _on_litning_timer_timeout():
+func _on_lightning_timer_timeout():
 	queue_free()
 	if(get_tree().get_first_node_in_group("paddles").get_child_count()>3):
-		get_tree().get_first_node_in_group("paddles").get_child(3).queue_free()
+		var paddel = get_tree().get_first_node_in_group("paddles")
+		paddel.get_child(paddel.get_child_count() - 1).queue_free()

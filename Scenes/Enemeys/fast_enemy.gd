@@ -1,6 +1,7 @@
 extends "res://Scenes/Enemeys/Enemy.gd"
 
 func _ready():
+	get_element_hit_sound()
 	for n in range(global.player_items_index.size()):
 		if(global.player_items_index[n] == 1):
 			fire_damage *= 2
