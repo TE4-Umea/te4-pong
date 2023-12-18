@@ -42,6 +42,8 @@ func get_axis(up, down):
 
 
 func _on_area_2d_body_entered(body):
+	$HitParticles.position.y = body.position.y - position.y
+	$HitParticles.emitting = true
 	if !element.has("lightning"):
 		$PlayerHitBall.play()
 

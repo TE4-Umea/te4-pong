@@ -50,10 +50,6 @@ shape = SubResource("RectangleShape2D_ho3b0")
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position_smoothing_enabled = true
 
-
-[node name="Music" type="AudioStreamPlayer" parent="."]
-bus = &"Music"
-
 [node name="ColorRect" type="ColorRect" parent="Player"]
 visible = false
 modulate = Color(0.45098, 0.0196078, 0.12549, 1)
@@ -62,5 +58,7 @@ offset_left = -584.0
 offset_top = -336.0
 offset_right = 584.0
 offset_bottom = 336.0
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
 
 [connection signal="body_entered" from="Key" to="." method="_on_key_body_entered"]

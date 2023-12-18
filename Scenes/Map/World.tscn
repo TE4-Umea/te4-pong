@@ -183,15 +183,12 @@ autostart = true
 position = Vector2(1024, 336)
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
-bus = &"Music"
 
 [node name="GameOver" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_odgb7")
-bus = &"Sfx"
 
 [node name="PlayerTakeDmage" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_nylia")
-bus = &"Sfx"
 
 [node name="enemy_health_bar" type="ProgressBar" parent="." groups=["enemy_health_bar"]]
 self_modulate = Color(1, 0, 0, 1)

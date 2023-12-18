@@ -168,11 +168,9 @@ func load_music_for_level(id):
 		0:
 			audio_files.append(preload("res://Assets/Music/2019-05-30_-_His_Fight_Is_Over_-_David_Fesliyan.mp3"))
 		1:
-			pass
-			#audio_files.append(preload())
+			audio_files.append(preload("res://Assets/Music/2019-05-30_-_His_Fight_Is_Over_-_David_Fesliyan.mp3"))
 		2:
-			pass
-			#audio_files.append(preload())
+			audio_files.append(preload("res://Assets/Music/2019-05-30_-_His_Fight_Is_Over_-_David_Fesliyan.mp3"))
 		3:
 			pass
 			#audio_files.append(preload())
