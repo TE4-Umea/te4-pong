@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://be80dbp2b6dxv"]
+[gd_scene load_steps=15 format=3 uid="uid://be80dbp2b6dxv"]
 
 [ext_resource type="Script" path="res://Scenes/Ball/Ball.gd" id="1_m8ubh"]
 [ext_resource type="Texture2D" uid="uid://bj3e0vlv1ssks" path="res://Assets/Img/GlowingWispIdle.png" id="2_5uybe"]
+[ext_resource type="Script" path="res://Scenes/Ball/Trail.gd" id="3_gc5sg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xvba6"]
 atlas = ExtResource("2_5uybe")
@@ -42,23 +43,73 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2anu4"]
 size = Vector2(48, 48)
 
+[sub_resource type="Curve" id="Curve_fu5me"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ln143"]
+curve = SubResource("Curve_fu5me")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jfm0r"]
+emission_shape = 1
+emission_sphere_radius = 15.0
+particle_flag_disable_z = true
+gravity = Vector3(0, -98, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 5.0
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_ln143")
+turbulence_enabled = true
+turbulence_noise_scale = 4.0
+
+[sub_resource type="Curve" id="Curve_2rwbv"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_3cyr2"]
+colors = PackedColorArray(0.298039, 0.772549, 0.894118, 1, 1, 1, 1, 0.607843)
+
 [node name="Ball" type="CharacterBody2D"]
 collision_layer = 2
 collision_mask = 0
 script = ExtResource("1_m8ubh")
 speed = 600.0
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["ball_sprite"]]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 rotation = 1.5708
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_qtj5b")
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("RectangleShape2D_2anu4")
 
-[node name="litning_timer" type="Timer" parent="."]
+[node name="LightningTimer" type="Timer" parent="."]
 wait_time = 0.05
 one_shot = true
 
-[connection signal="timeout" from="litning_timer" to="." method="_on_litning_timer_timeout"]
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+visible = false
+position = Vector2(-8, 0)
+amount = 25
+process_material = SubResource("ParticleProcessMaterial_jfm0r")
+lifetime = 0.5
+trail_lifetime = 1.5
+
+[node name="Line2D" type="Line2D" parent="."]
+top_level = true
+z_index = -5
+position = Vector2(-9, 3)
+width = 20.0
+width_curve = SubResource("Curve_2rwbv")
+default_color = Color(0.266667, 0.466667, 1, 1)
+gradient = SubResource("Gradient_3cyr2")
+script = ExtResource("3_gc5sg")
+max_length = 20
+
+[node name="ElementSoundEffect" type="AudioStreamPlayer" parent="."]
+bus = &"Sfx"
+
+[connection signal="timeout" from="LightningTimer" to="." method="_on_lightning_timer_timeout"]

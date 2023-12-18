@@ -59,4 +59,6 @@ offset_top = -336.0
 offset_right = 584.0
 offset_bottom = 336.0
 
+[node name="Music" type="AudioStreamPlayer" parent="."]
+
 [connection signal="body_entered" from="Key" to="." method="_on_key_body_entered"]

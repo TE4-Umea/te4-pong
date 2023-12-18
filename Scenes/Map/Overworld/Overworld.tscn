@@ -1,13 +1,16 @@
-[gd_scene load_steps=7 format=3 uid="uid://c3v18p47u2k67"]
+[gd_scene load_steps=9 format=3 uid="uid://c3v18p47u2k67"]
 
+[ext_resource type="Script" path="res://Scenes/Map/Overworld/Overworld.gd" id="1_3r2fc"]
 [ext_resource type="PackedScene" uid="uid://brapjlmy1ervw" path="res://Scenes/Map/Overworld/MapNode.tscn" id="1_ygq0s"]
 [ext_resource type="PackedScene" uid="uid://fworrtukuh2s" path="res://Scenes/Enemeys/shielded_enemy.tscn" id="2_0n318"]
 [ext_resource type="PackedScene" uid="uid://c01b1hf0pv15n" path="res://Scenes/Enemeys/fat_enemy.tscn" id="3_fw3iw"]
 [ext_resource type="PackedScene" uid="uid://bcql4dsu7c1lt" path="res://Scenes/Enemeys/hel.tscn" id="4_hxaoi"]
 [ext_resource type="PackedScene" uid="uid://35kb3ptp4syg" path="res://Scenes/Enemeys/fast_enemy.tscn" id="4_lry0b"]
 [ext_resource type="PackedScene" uid="uid://ti5dnrlnocox" path="res://Scenes/Enemeys/Enemy.tscn" id="6_tcbgb"]
+[ext_resource type="AudioStream" uid="uid://dcshyn45fa17c" path="res://Assets/Music/2021-05-28_-_Viking_Feast_-_David_Fesliyan.mp3" id="8_lkq5n"]
 
 [node name="Overworld" type="Node"]
+script = ExtResource("1_3r2fc")
 
 [node name="Hel" parent="." node_paths=PackedStringArray("connected") instance=ExtResource("1_ygq0s")]
 position = Vector2(576, 512)
@@ -56,3 +59,6 @@ id = 7
 [node name="Asgard" parent="." instance=ExtResource("1_ygq0s")]
 position = Vector2(576, 144)
 id = 8
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_lkq5n")

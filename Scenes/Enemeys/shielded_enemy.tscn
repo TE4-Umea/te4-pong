@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://fworrtukuh2s"]
+[gd_scene load_steps=12 format=3 uid="uid://fworrtukuh2s"]
 
 [ext_resource type="Script" path="res://Scenes/Enemeys/shielded_enemy.gd" id="1_s5xda"]
 [ext_resource type="Texture2D" uid="uid://5a8rwljpebrn" path="res://Assets/Img/Abyss Cult leader.png" id="2_2uu87"]
 [ext_resource type="Texture2D" uid="uid://bx2dcegbutm0j" path="res://Assets/Img/B).png" id="2_hqnbd"]
+[ext_resource type="AudioStream" uid="uid://bumjyq70v38gp" path="res://Assets/Sounds/enmey_dead.mp3" id="4_1aec4"]
+[ext_resource type="AudioStream" uid="uid://dsfpyw13lxay0" path="res://Assets/Sounds/shoot.mp3" id="5_dijh8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oexb0"]
 atlas = ExtResource("2_2uu87")
@@ -94,6 +96,17 @@ wait_time = 3.0
 [node name="IceSlowTimer" type="Timer" parent="."]
 wait_time = 3.0
 
+[node name="EnemyDead" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_1aec4")
+bus = &"Sfx"
+
+[node name="EnemyHitSound" type="AudioStreamPlayer" parent="."]
+bus = &"Sfx"
+
+[node name="ShootSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_dijh8")
+bus = &"Sfx"
+
 [connection signal="timeout" from="Shield" to="." method="_on_shield_timeout"]
 [connection signal="timeout" from="MovementTimer" to="." method="_on_movement_timer_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout" flags=18]
@@ -103,3 +116,4 @@ wait_time = 3.0
 [connection signal="timeout" from="FireBrunTimer" to="." method="_on_fire_brun_timer_timeout"]
 [connection signal="timeout" from="LightStunTimer" to="." method="_on_light_stun_timer_timeout"]
 [connection signal="timeout" from="IceSlowTimer" to="." method="_on_ice_slow_timer_timeout"]
+[connection signal="finished" from="EnemyDead" to="." method="_on_enemy_dead_finished"]
