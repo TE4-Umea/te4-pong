@@ -10,6 +10,7 @@ func _on_area_2d_2_body_entered(body):
 		$Area2D2/CollisionShape2D.position.y = 5000
  
 func _ready():
+	get_element_hit_sound()
 	for n in range(global.player_items_index.size()):
 		if(global.player_items_index[n] == 1):
 			fire_damage *= 2

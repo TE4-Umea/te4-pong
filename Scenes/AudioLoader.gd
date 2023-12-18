@@ -8,7 +8,7 @@ func _ready():
 	enemy_battle_music.append(load("res://Assets/Music/2022-04-13_-_Brace_For_Impact_-_www.FesliyanStudios.com.mp3"))
 	
 	#fire
-	enemy_element_hit_sound.append(load("res://Assets/Sounds/enmey_hit.mp3"))
+	enemy_element_hit_sound.append(load("res://Assets/Sounds/fire_hit.mp3"))
 	#ice
 	enemy_element_hit_sound.append(load("res://Assets/Sounds/ice_hit.wav"))
 	#earth
@@ -22,7 +22,7 @@ func _ready():
 	
 	#spirit
 	element_sound.append(load("res://Assets/Sounds/spirit.wav"))
-	#air
+	#wind
 	element_sound.append(load("res://Assets/Sounds/air_shoot.wav"))
 	#lightning
 	element_sound.append(load("res://Assets/Sounds/lighting.mp3"))

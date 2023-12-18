@@ -182,7 +182,6 @@ autostart = true
 [node name="Spawner" type="Marker2D" parent="."]
 position = Vector2(1024, 336)
 
-
 [node name="Music" type="AudioStreamPlayer" parent="."]
 bus = &"Music"
 

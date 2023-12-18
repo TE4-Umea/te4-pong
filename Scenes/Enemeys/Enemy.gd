@@ -22,6 +22,14 @@ var direction = 1
 var min_degrees = -1
 var max_degrees = 1
 var size = Vector2(0,0)
+var enemy_element_hit_sound = []
+
+func _ready():
+	get_element_hit_sound()
+
+func get_element_hit_sound():
+	enemy_element_hit_sound = AudioLoader.enemy_element_hit_sound
+
 
 func item_stacking():
 	for n in range(global.player_items_index.size()):
@@ -41,7 +49,7 @@ func _physics_process(delta):
 
 func shoot():
 	if(can_shoot): 
-		
+		$ShootSound.play()
 		get_tree().get_first_node_in_group("world").spawn_ball(position.x - $Area2D/CollisionShape2D.shape.size.x/2 - global.ball_size.x, position.y, -1 , randf_range(min_degrees, max_degrees),damage)
 		$Timer.wait_time = fire_rate.pick_random()
 		$Timer.start()
@@ -77,22 +85,20 @@ func element_effect(element):
 			element_fire()
 		"ice":
 			element_ice()
-		"lightning":
-			element_lightning()
-		"light":
-			element_light()
-		"air":
-			element_air()
+		"earth":
+			element_earth()
 		"water":
 			element_water()
+		"light":
+			element_light()
 		"darkness":
 			element_darkness()
-		"spirit":
-			pass
 		_:
 			print("no elemento")
 
 func element_fire():
+	$EnemyHitSound.stream = enemy_element_hit_sound[0]
+	$EnemyHitSound.play()
 	if($FireBrunTimer.is_stopped()):
 		$FireBrunTimer.start()
 		$FireTickTimer.start()
@@ -100,32 +106,24 @@ func element_fire():
 		$FireBrunTimer.start()
 
 func element_ice():
+	$EnemyHitSound.stream = enemy_element_hit_sound[1]
+	$EnemyHitSound.play()
 	$IceSlowTimer.start()
 	slow_speed = 30
  
 
-func element_lightning():
-	print("lightning")
-	# chanse for lightning bolt (kanske ska vara i player)
-
- 
 func element_earth():
-	print("earh")
-	# big rock (kanske ska vara i ball)
-
-
-func element_air():
-	print("air")
-	# buff? (kanske ska vara i player)
-
+	$EnemyHitSound.stream = enemy_element_hit_sound[2]
+	$EnemyHitSound.play()
 
 func element_water():
-	print("water")
-	# shotgun? (kanske ska vara i player)
-
+	$EnemyHitSound.stream = enemy_element_hit_sound[3]
+	$EnemyHitSound.play()
 
 func element_light():
 	if(can_be_stund):
+		$EnemyHitSound.stream = enemy_element_hit_sound[4]
+		$EnemyHitSound.play()
 		$LightStunTimer.start()
 		can_shoot = false
 		slow_speed = 100
@@ -133,11 +131,9 @@ func element_light():
 func element_darkness():
 	for n in range(global.player_items_index.size()):
 		if(global.player_items_index[n] == 4):
+			$EnemyHitSound.stream = enemy_element_hit_sound[5]
+			$EnemyHitSound.play()
 			darkness_stack += 5
-
-func element_spirit():
-	print("spirti")
-	# makes to balls (kanske ska vara i player)
 
 
 func _on_area_2d_body_entered(body):
