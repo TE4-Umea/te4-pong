@@ -42,10 +42,10 @@ func get_axis(up, down):
 
 
 func _on_area_2d_body_entered(body):
-	$PlayerHitBall.play()		#Bollen försvinner för tidigt med lightning
-
 	$HitParticles.position.y = body.position.y - position.y
 	$HitParticles.emitting = true
+	if !element.has("lightning"):
+		$PlayerHitBall.play()
 
 	var body_x_direction = body.direction.x
 	var body_collision : CollisionShape2D = body.get_node("CollisionShape2D")

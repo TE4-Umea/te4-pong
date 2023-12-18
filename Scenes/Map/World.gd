@@ -25,7 +25,7 @@ func spawn_spirit_ball(x,y,direx,direxy,damage):
 # Called when the node enters the scene tree for thesss first time.
 func _ready():
 	$Music.stream = AudioLoader.enemy_battle_music[0]
-	$Music.play(1)
+	$Music.play()
 	
 	$ProgressBar.value = global.player_hp
 	$ProgressBar/RichTextLabel.clear()

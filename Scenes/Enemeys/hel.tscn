@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://bcql4dsu7c1lt"]
 
-
 [ext_resource type="Script" path="res://Scenes/Enemeys/hel.gd" id="1_lde8c"]
 [ext_resource type="Texture2D" uid="uid://b7yb7s00m475s" path="res://Assets/Img/Hel.png" id="2_8d2fm"]
 [ext_resource type="AudioStream" uid="uid://cecojcwmbri3t" path="res://Assets/Sounds/Hel_death_sound.mp3" id="3_0x65g"]
+[ext_resource type="AudioStream" uid="uid://dsfpyw13lxay0" path="res://Assets/Sounds/shoot.mp3" id="4_686wb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_r1b6h"]
 font_size = 64
@@ -28,10 +28,6 @@ horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="MovementTimer" type="Timer" parent="."]
-autostart = true
-
-[node name="Timer2" type="Timer" parent="."]
-wait_time = 5.005
 autostart = true
 
 [node name="Timer" type="Timer" parent="."]
@@ -68,8 +64,14 @@ wait_time = 3.0
 stream = ExtResource("3_0x65g")
 bus = &"Sfx"
 
+[node name="ShootSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_686wb")
+bus = &"Sfx"
+
+[node name="EnemyHitSound" type="AudioStreamPlayer" parent="."]
+bus = &"Sfx"
+
 [connection signal="timeout" from="MovementTimer" to="." method="_on_movement_timer_timeout" flags=18]
-[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout" flags=18]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered" flags=18]
 [connection signal="timeout" from="FireTickTimer" to="." method="_on_fire_tick_timer_timeout"]

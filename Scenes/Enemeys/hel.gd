@@ -21,6 +21,7 @@ func _ready():
 	damage = 25
 
 func take_damage(dmg):
+	get_element_hit_sound()
 	var new_resistance : float = round(resistance * pow(0.99, darkness_stack))
 	if dmg*(1-new_resistance/100)<hp:
 		hp-=dmg*(1-new_resistance/100)
@@ -58,13 +59,7 @@ func _on_enemy_dead_finished():
 
 
 func shoot():
+	$ShootSound.play()
 	get_tree().get_first_node_in_group("world").spawn_ball(position.x - $Area2D/CollisionShape2D.shape.size.x/2 - global.ball_size.x, position.y, -1 , randf_range(min_degrees, max_degrees),damage)
 	$Timer.wait_time = fire_rate.pick_random()
 	$Timer.start()
-
-
-func _on_timer_2_timeout():
-	return
-	#spawn_minion()
-
-

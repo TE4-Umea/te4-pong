@@ -92,6 +92,7 @@ shape = SubResource("RectangleShape2D_kuvxx")
 
 [node name="PlayerHitBall" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_de1hy")
+bus = &"Sfx"
 
 [node name="HitParticles" type="GPUParticles2D" parent="."]
 position = Vector2(0, 64)
