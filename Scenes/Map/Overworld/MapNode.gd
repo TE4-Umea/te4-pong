@@ -6,9 +6,11 @@ extends Area2D
 @export var enemies : Array[PackedScene] = []
 @export var boss : PackedScene
 
+var path_scene = preload("res://Scenes/Map/Overworld/pathway.tscn")
 var sibling
 var chosen = false
 var mouse_over = false
+var paths = []
 
 func _ready():
 	if MapManager.node_state.size()-1 < id:
@@ -27,10 +29,19 @@ func _draw():
 	else:
 		$AnimatedSprite2D.modulate = Color.DIM_GRAY
 	for node in connected:
+		var path = path_scene.instantiate()
+		add_child(path)
+		paths.append(path)
 		if node.chosen and active or chosen:
-			draw_line(position-position, node.position-position, Color.GREEN, 2)
+			#draw_line(position-position, node.position-position, Color.GREEN, 2)
+			path.default_color = Color.GREEN
+			path.add_point(position-position)
+			path.add_point(node.position-position)
 		else:
-			draw_line(position-position, node.position-position, Color.WEB_GRAY, 1)
+			#draw_line(position-position, node.position-position, Color.WEB_GRAY, 1)
+			path.default_color = Color.GRAY
+			path.add_point(position-position)
+			path.add_point(node.position-position)
 
 func _process(delta):
 	if mouse_over and Input.is_action_just_pressed("click") and active and not chosen:

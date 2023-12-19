@@ -141,7 +141,7 @@ func _move(direction):
 
 func _encounter():
 	can_move = false
-	$Player/ColorRect.visible = true
+	$Player/Camera2D/ColorRect.visible = true
 	$Player/Camera2D.zoom.x = 1.1
 	$Player/Camera2D.zoom.y = 1.1
 	await get_tree().create_timer(.75).timeout
