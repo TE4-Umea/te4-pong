@@ -128,6 +128,7 @@ func element_water():
 		damage *= 3
 
 func element_earth():
+	position += Vector2($CollisionShape2D.shape.size.x*(earth-1),0)
 	$CollisionShape2D.set_scale(Vector2(2*(earth+1),2*(earth+1)))
 	$AnimatedSprite2D.set_scale(Vector2(3*(earth+1),3*(earth+1)))
 	speed *= pow(0.75,earth)

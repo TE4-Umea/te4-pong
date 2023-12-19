@@ -43,7 +43,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2anu4"]
-size = Vector2(48, 48)
+size = Vector2(48, 40)
 
 [sub_resource type="Curve" id="Curve_2rwbv"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -144,6 +144,7 @@ frame_progress = 0.701086
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_2anu4")
 
 [node name="LightningTimer" type="Timer" parent="."]

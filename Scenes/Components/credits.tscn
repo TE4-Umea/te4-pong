@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://dnw5nwbyay6hm"]
+
+[ext_resource type="Script" path="res://Scenes/Components/credits.gd" id="1_4228s"]
+[ext_resource type="AudioStream" uid="uid://buxoxx48s02ip" path="res://Assets/Music/2019-05-30_-_His_Fight_Is_Over_-_David_Fesliyan.mp3" id="2_wp0ta"]
+
+[node name="Credits" type="Node2D"]
+script = ExtResource("1_4228s")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -33.0
+offset_top = -35.0
+offset_right = 1184.0
+offset_bottom = 666.0
+color = Color(0.054902, 0.054902, 0.054902, 1)
+metadata/_edit_lock_ = true
+
+[node name="CreditsContainer" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Line" type="Label" parent="CreditsContainer"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 373.0
+offset_top = 592.0
+offset_right = 768.0
+offset_bottom = 645.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+horizontal_alignment = 1
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_wp0ta")
+autoplay = true
+bus = &"Music"
