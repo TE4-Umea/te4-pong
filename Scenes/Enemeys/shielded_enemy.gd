@@ -24,7 +24,18 @@ func _ready():
 
 func shoot():
 	if(can_shoot): 
-		get_tree().get_first_node_in_group("world").spawn_ball(position.x - $Area2D/CollisionShape2D.shape.size.x/2 - global.ball_size.x - 20, position.y, -1 , randf_range(min_degrees, max_degrees),damage)
+		print("🥵")
+		$ShootSound.play()
+		print(last_degrees)
+		if(last_degrees > 0.5):
+			last_degrees = randf_range(0, 1)
+			get_tree().get_first_node_in_group("world").spawn_ball(position.x - $Area2D/CollisionShape2D.shape.size.x/2 - global.ball_size.x - 20, position.y, -1 , last_degrees,damage)
+		elif(last_degrees < -0.5):
+			last_degrees = randf_range(-1, 0)
+			get_tree().get_first_node_in_group("world").spawn_ball(position.x - $Area2D/CollisionShape2D.shape.size.x/2 - global.ball_size.x - 20, position.y, -1 , last_degrees,damage)
+		else:
+			last_degrees = randf_range(last_degrees -0.5, last_degrees +0.5)
+			get_tree().get_first_node_in_group("world").spawn_ball(position.x - $Area2D/CollisionShape2D.shape.size.x/2 - global.ball_size.x - 20, position.y, -1 , last_degrees,damage)
 		$Timer.wait_time = fire_rate.pick_random()
 		$Timer.start()
 

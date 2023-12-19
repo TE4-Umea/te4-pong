@@ -14,13 +14,14 @@ var enemy_element
 var max_hp = 100 * global.diff_scale
 var hp = max_hp
 var damage = 25
-var fire_rate = [0.5,1,2]
+var fire_rate = [0.5,1,1.5]
 var BULLET = preload("res://Scenes/Ball/Ball.tscn")
 var can_shoot = true
 var slow_speed : float = 0
 var direction = 1
 var min_degrees = -1
 var max_degrees = 1
+var last_degrees = randf_range(min_degrees, max_degrees)
 var size = Vector2(0,0)
 var enemy_element_hit_sound = []
 
@@ -49,8 +50,18 @@ func _physics_process(delta):
 
 func shoot():
 	if(can_shoot): 
+		print("🥵")
 		$ShootSound.play()
-		get_tree().get_first_node_in_group("world").spawn_ball(position.x - $Area2D/CollisionShape2D.shape.size.x/2 - global.ball_size.x, position.y, -1 , randf_range(min_degrees, max_degrees),damage)
+		print(last_degrees)
+		if(last_degrees > 0.5):
+			last_degrees = randf_range(0, 1)
+			get_tree().get_first_node_in_group("world").spawn_ball(position.x - $Area2D/CollisionShape2D.shape.size.x/2 - global.ball_size.x, position.y, -1 , last_degrees,damage)
+		elif(last_degrees < -0.5):
+			last_degrees = randf_range(-1, 0)
+			get_tree().get_first_node_in_group("world").spawn_ball(position.x - $Area2D/CollisionShape2D.shape.size.x/2 - global.ball_size.x, position.y, -1 , last_degrees,damage)
+		else:
+			last_degrees = randf_range(last_degrees -0.5, last_degrees +0.5)
+			get_tree().get_first_node_in_group("world").spawn_ball(position.x - $Area2D/CollisionShape2D.shape.size.x/2 - global.ball_size.x, position.y, -1 , last_degrees,damage)
 		$Timer.wait_time = fire_rate.pick_random()
 		$Timer.start()
 
@@ -68,6 +79,10 @@ func take_damage(dmg):
 		die()
 
 func die():
+	hp = 0
+	get_tree().get_first_node_in_group("enemy_health").clear()
+	get_tree().get_first_node_in_group("enemy_health").append_text("[center]" + str(ceil(hp)) + " HP[/center]")
+	get_tree().get_first_node_in_group("enemy_health_bar").value = hp/max_hp*100
 	if(global.player_hp<100):
 		global.player_hp += 25
 	$EnemyDead.process_mode = Node.PROCESS_MODE_WHEN_PAUSED

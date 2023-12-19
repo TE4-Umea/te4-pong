@@ -41,7 +41,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2anu4"]
-size = Vector2(48, 48)
+size = Vector2(48, 40)
 
 [sub_resource type="Curve" id="Curve_0ruaj"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -63,6 +63,7 @@ sprite_frames = SubResource("SpriteFrames_qtj5b")
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_2anu4")
 
 [node name="LightningTimer" type="Timer" parent="."]
