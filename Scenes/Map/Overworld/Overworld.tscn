@@ -62,3 +62,4 @@ id = 8
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_lkq5n")
+bus = &"Music"
