@@ -1,0 +1,51 @@
+[gd_scene load_steps=4 format=3 uid="uid://dsxw43c4p3wjp"]
+
+[ext_resource type="Script" path="res://Scenes/Item/ui_switch_item.gd" id="1_ddw2v"]
+[ext_resource type="Theme" uid="uid://hdu1ggqw5xvg" path="res://Theme/button_default.tres" id="2_ox530"]
+[ext_resource type="PackedScene" uid="uid://dqa5y0rjx8m0e" path="res://Scenes/Item/item_base.tscn" id="3_igiqr"]
+
+[node name="UI_SwitchItem" type="Control" groups=["item_select"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ddw2v")
+
+[node name="YesButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 504.0
+offset_top = 440.0
+offset_right = 670.0
+offset_bottom = 509.0
+theme = ExtResource("2_ox530")
+theme_override_font_sizes/font_size = 50
+disabled = true
+text = "YES"
+
+[node name="button1" parent="." instance=ExtResource("3_igiqr")]
+layout_mode = 1
+offset_left = 216.0
+offset_top = 288.0
+offset_right = -723.0
+offset_bottom = -237.0
+
+[node name="button2" parent="." instance=ExtResource("3_igiqr")]
+layout_mode = 1
+offset_left = 456.0
+offset_top = 288.0
+offset_right = -483.0
+offset_bottom = -237.0
+
+[node name="button3" parent="." instance=ExtResource("3_igiqr")]
+layout_mode = 1
+offset_left = 704.0
+offset_top = 288.0
+offset_right = -235.0
+offset_bottom = -237.0
+
+[connection signal="pressed" from="YesButton" to="." method="_on_yes_button_pressed"]
+[connection signal="button_pressed" from="button1" to="." method="_on_button_1_button_pressed"]
+[connection signal="button_pressed" from="button2" to="." method="_on_button_2_button_pressed"]
+[connection signal="button_pressed" from="button3" to="." method="_on_button_3_button_pressed"]

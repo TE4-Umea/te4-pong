@@ -1,0 +1,142 @@
+[
+  {
+	"name": "ˈməsˌtaSH",
+	"desc": "it does <red>nothing</red>, trust",
+	"ability": "ability",
+	"rarity": "normal",
+	"element": "element",
+	"stats": {
+	  "damage": 0,
+	  "hp": 0,
+	  "luck": 0,
+	  "movment_speed": 0,
+	  "ball_speed": 0
+	}
+  },
+  {
+	"name": "Hel's Fire",
+	"desc": "Applies <green>FIRE STACKS</green> that deal constant damage over time",
+	"ability": "Hel Fire",
+	"rarity": "normal",
+	"element": "fire",
+	"stats": {
+	  "damage": 10,
+	  "hp": 1,
+	  "luck": 0.1,
+	  "movment_speed": 100,
+	  "ball_speed": 44
+	}
+  },
+  {
+	"name": "Jötunn hand",
+	"desc": "Applies <green>ICE 🥶</green> on hit",
+	"ability": "Jötunn hand",
+	"rarity": "normal",
+	"element": "ice",
+	"stats": {
+	  "damage": 10,
+	  "hp": 1,
+	  "luck": 0.5,
+	  "movment_speed": 90,
+	  "ball_speed": 0.6
+	}
+  },
+  {
+	"name": "Ljósálfar arrow",
+	"desc": "Applies <green>light</green> on hit",
+	"ability": "Light arrow",
+	"rarity": "normal",
+	"element": "light",
+	"stats": {
+	  "damage": 0,
+	  "hp": 100,
+	  "luck": 0,
+	  "movment_speed": 0,
+	  "ball_speed": 0
+	}
+  },
+  {
+	"name": "Dökkálfar arrow",
+	"desc": "Applies <green>darkness</green> on hit",
+	"ability": "Dark arrow",
+	"rarity": "normal",
+	"element": "darkness",
+	"stats": {
+	  "damage": 0,
+	  "hp": 2,
+	  "luck": 9,
+	  "movment_speed": 20,
+	  "ball_speed": 0
+	}
+  },
+  {
+	"name": "Mjöllnir's lightning",
+	"desc": "Fires a lightning bolt",
+	"ability": "Lightning shot",
+	"rarity": "normal",
+	"element": "lightning",
+	"stats": {
+	  "damage": 10,
+	  "hp": 2,
+	  "luck": 9,
+	  "movment_speed": 20,
+	  "ball_speed": 0
+	}
+  },
+  {
+	"name": "Njord's water pistol",
+	"desc": "Gain a chance to <green>crit</green> on enemy hits",
+	"ability": "Water pistol",
+	"rarity": "normal",
+	"element": "water",
+	"stats": {
+	  "damage": 10,
+	  "hp": 2,
+	  "luck": 9,
+	  "movment_speed": 20,
+	  "ball_speed": 0
+	}
+  },
+  {
+	"name": "Vættir ball",
+	"desc": "When you deflect enemy bullets you create a second <green>spirit</green> ball",
+	"ability": "Vættir ball",
+	"rarity": "normal",
+	"element": "spirit",
+	"stats": {
+	  "damage": 10,
+	  "hp": 2,
+	  "luck": 9,
+	  "movment_speed": 20,
+	  "ball_speed": 0
+	}
+  },
+  {
+	"name": "Hrungnir's toy",
+	"desc": "Makes your balls <green>big</green>",
+	"ability": "Big ball",
+	"rarity": "normal",
+	"element": "earth",
+	"stats": {
+	  "damage": 25,
+	  "hp": 2,
+	  "luck": 9,
+	  "movment_speed": 20,
+	  "ball_speed": -5
+	}
+  },
+  {
+	"name": "Hræsvelgr's scraps",
+	"desc": "The scraps are stronger than the <green>stronges steriodes</green>",
+	"ability": "Hræsvelgr scraps",
+	"rarity": "normal",
+	"element": "wind",
+	"stats": {
+	  "damage": 50,
+	  "hp": 50,
+	  "luck": 50,
+	  "movment_speed": 50,
+	  "ball_speed": 50
+	}
+  }
+]

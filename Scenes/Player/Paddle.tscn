@@ -1,0 +1,106 @@
+[gd_scene load_steps=14 format=3 uid="uid://b5iy5pcb2xit3"]
+
+[ext_resource type="Script" path="res://Scenes/Player/Paddle.gd" id="1_yyuuv"]
+[ext_resource type="Texture2D" uid="uid://8x6ixp130hqd" path="res://Assets/Img/lukas.png" id="2_5ykia"]
+[ext_resource type="AudioStream" uid="uid://ierbjr7148je" path="res://Assets/Sounds/ball_hit_player.mp3" id="3_de1hy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ce7q5"]
+atlas = ExtResource("2_5ykia")
+region = Rect2(0, 0, 38, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mte36"]
+atlas = ExtResource("2_5ykia")
+region = Rect2(38, 0, 38, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wlea8"]
+atlas = ExtResource("2_5ykia")
+region = Rect2(76, 0, 38, 66)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvavh"]
+atlas = ExtResource("2_5ykia")
+region = Rect2(114, 0, 38, 66)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qswp8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ce7q5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mte36")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wlea8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jvavh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_73suw"]
+size = Vector2(16, 88)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kuvxx"]
+size = Vector2(20, 96)
+
+[sub_resource type="Curve" id="Curve_ocm73"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_eh34c"]
+curve = SubResource("Curve_ocm73")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_78j6v"]
+particle_flag_disable_z = true
+spread = 110.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 200.0
+initial_velocity_max = 200.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 7.0
+scale_max = 7.0
+scale_curve = SubResource("CurveTexture_eh34c")
+turbulence_noise_strength = 0.2
+turbulence_noise_scale = 1.0
+
+[node name="Paddle" type="CharacterBody2D" groups=["paddles"]]
+script = ExtResource("1_yyuuv")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-11, 69)
+scale = Vector2(-1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_qswp8")
+autoplay = "default"
+frame_progress = 0.286152
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(7.99127, 68)
+shape = SubResource("RectangleShape2D_73suw")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(7.99127, 64.0094)
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 3.9906)
+shape = SubResource("RectangleShape2D_kuvxx")
+
+[node name="PlayerHitBall" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_de1hy")
+bus = &"Sfx"
+
+[node name="HitParticles" type="GPUParticles2D" parent="."]
+position = Vector2(0, 64)
+emitting = false
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_78j6v")
+lifetime = 0.3
+one_shot = true
+explosiveness = 1.0
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

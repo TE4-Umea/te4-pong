@@ -1,0 +1,119 @@
+[gd_scene load_steps=12 format=3 uid="uid://fworrtukuh2s"]
+
+[ext_resource type="Script" path="res://Scenes/Enemeys/shielded_enemy.gd" id="1_s5xda"]
+[ext_resource type="Texture2D" uid="uid://5a8rwljpebrn" path="res://Assets/Img/Abyss Cult leader.png" id="2_2uu87"]
+[ext_resource type="Texture2D" uid="uid://bx2dcegbutm0j" path="res://Assets/Img/B).png" id="2_hqnbd"]
+[ext_resource type="AudioStream" uid="uid://bumjyq70v38gp" path="res://Assets/Sounds/enmey_dead.mp3" id="4_1aec4"]
+[ext_resource type="AudioStream" uid="uid://dsfpyw13lxay0" path="res://Assets/Sounds/shoot.mp3" id="5_dijh8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oexb0"]
+atlas = ExtResource("2_2uu87")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5hmhh"]
+atlas = ExtResource("2_2uu87")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wssxw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oexb0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5hmhh")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3obk3"]
+size = Vector2(113, 175)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_clax8"]
+size = Vector2(113, 175)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ckjk"]
+size = Vector2(6.5, 180)
+
+[node name="shielded_enemy" type="CharacterBody2D" groups=["enemy"]]
+position = Vector2(236, 109)
+script = ExtResource("1_s5xda")
+
+[node name="Shield" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="MovementTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="AnimationSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-10, -21)
+scale = Vector2(-7, 7)
+sprite_frames = SubResource("SpriteFrames_wssxw")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-9, 4)
+shape = SubResource("RectangleShape2D_3obk3")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-9, 4)
+shape = SubResource("RectangleShape2D_clax8")
+
+[node name="Area2D2" type="Area2D" parent="." groups=["shield"]]
+position = Vector2(-180, -13)
+collision_layer = 4
+collision_mask = 2
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="Area2D2"]
+modulate = Color(0.0156863, 0.454902, 1, 1)
+position = Vector2(100.26, 17.3067)
+rotation = -1.5708
+scale = Vector2(0.786969, 0.0304319)
+texture = ExtResource("2_hqnbd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(100, 18)
+shape = SubResource("RectangleShape2D_8ckjk")
+
+[node name="FireTickTimer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="FireBrunTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="LightStunTimer" type="Timer" parent="."]
+
+[node name="IceSlowTimer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="EnemyDead" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_1aec4")
+bus = &"Sfx"
+
+[node name="EnemyHitSound" type="AudioStreamPlayer" parent="."]
+bus = &"Sfx"
+
+[node name="ShootSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_dijh8")
+bus = &"Sfx"
+
+[connection signal="timeout" from="Shield" to="." method="_on_shield_timeout"]
+[connection signal="timeout" from="MovementTimer" to="." method="_on_movement_timer_timeout"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout" flags=18]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered" flags=18]
+[connection signal="body_entered" from="Area2D2" to="." method="_on_area_2d_2_body_entered"]
+[connection signal="timeout" from="FireTickTimer" to="." method="_on_fire_tick_timer_timeout"]
+[connection signal="timeout" from="FireBrunTimer" to="." method="_on_fire_brun_timer_timeout"]
+[connection signal="timeout" from="LightStunTimer" to="." method="_on_light_stun_timer_timeout"]
+[connection signal="timeout" from="IceSlowTimer" to="." method="_on_ice_slow_timer_timeout"]
+[connection signal="finished" from="EnemyDead" to="." method="_on_enemy_dead_finished"]

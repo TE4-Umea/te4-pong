@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://darcr8ymhfsa1"]
+[gd_scene load_steps=12 format=3 uid="uid://darcr8ymhfsa1"]
 
 [ext_resource type="Script" path="res://Scenes/MainMenu.gd" id="1_46qfw"]
-[ext_resource type="Texture2D" uid="uid://bx2dcegbutm0j" path="res://B).png" id="1_spygn"]
+[ext_resource type="Texture2D" uid="uid://5kjie7l541fc" path="res://Assets/Img/Parallax/Menu/sky.png" id="2_o8xpw"]
+[ext_resource type="AudioStream" uid="uid://dcshyn45fa17c" path="res://Assets/Music/2021-05-28_-_Viking_Feast_-_David_Fesliyan.mp3" id="3_6pgd8"]
+[ext_resource type="Texture2D" uid="uid://di6si0w4u2sxi" path="res://Assets/Img/Parallax/Menu/clouds_bg.png" id="3_7ms7v"]
+[ext_resource type="Texture2D" uid="uid://nojl4oyhfsl8" path="res://Assets/Img/Parallax/Menu/cloud_lonely.png" id="4_hp3e5"]
+[ext_resource type="AudioStream" uid="uid://dqbd0o5wyil52" path="res://Assets/Sounds/game-start-6104.mp3" id="4_sovbp"]
+[ext_resource type="PackedScene" uid="uid://ds7bd0kniftwo" path="res://Scenes/Audio/audio_options.tscn" id="4_wvlbv"]
+[ext_resource type="Texture2D" uid="uid://cnoq7f88qgik6" path="res://Assets/Img/Parallax/Menu/glacial_mountains.png" id="5_t43hg"]
+[ext_resource type="Texture2D" uid="uid://chv6jlefmd0ql" path="res://Assets/Img/Parallax/Menu/clouds_mg_3.png" id="6_7sran"]
+[ext_resource type="Texture2D" uid="uid://cksgm3he57nyr" path="res://Assets/Img/Parallax/Menu/clouds_mg_2.png" id="7_kth13"]
+[ext_resource type="Texture2D" uid="uid://35udk8cn7aum" path="res://Assets/Img/Parallax/Menu/clouds_mg_1.png" id="8_jb57q"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -12,29 +21,105 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_46qfw")
 
-[node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 0
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground"]
 offset_right = 1152.0
 offset_bottom = 648.0
-texture = ExtResource("1_spygn")
+texture = ExtResource("2_o8xpw")
+
+[node name="CloudsBGLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.3, 0.3)
+motion_mirroring = Vector2(1152, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/CloudsBGLayer"]
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("3_7ms7v")
+
+[node name="CloudLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(1152, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/CloudLayer"]
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("4_hp3e5")
+
+[node name="TextureRect2" type="TextureRect" parent="ParallaxBackground"]
+offset_top = 48.0
+offset_right = 1152.0
+offset_bottom = 696.0
+texture = ExtResource("5_t43hg")
+
+[node name="FGCloudsLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.4, 0.4)
+motion_mirroring = Vector2(1152, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/FGCloudsLayer3"]
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("6_7sran")
+
+[node name="FGCloudsLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.7, 0.7)
+motion_mirroring = Vector2(1152, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/FGCloudsLayer2"]
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("7_kth13")
+
+[node name="FGCloudsLayer1" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(1152, 0)
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxBackground/FGCloudsLayer1"]
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("8_jb57q")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
 offset_left = 384.0
-offset_top = 128.0
 offset_right = 768.0
-offset_bottom = 320.0
+offset_bottom = 192.0
 theme_override_font_sizes/font_size = 80
-text = "PONG"
+text = "Loki's tale
+"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="."]
+[node name="ButtonPlay" type="Button" parent="."]
 layout_mode = 0
 offset_left = 448.0
-offset_top = 448.0
+offset_top = 464.0
 offset_right = 704.0
-offset_bottom = 512.0
+offset_bottom = 528.0
+theme_override_font_sizes/font_size = 50
 text = "PLAY"
 
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[node name="ButtonOptions" type="Button" parent="."]
+layout_mode = 0
+offset_left = 472.0
+offset_top = 548.0
+offset_right = 681.0
+offset_bottom = 611.0
+theme_override_font_sizes/font_size = 35
+text = "OPTIONS"
+
+[node name="AudioOptions" parent="." instance=ExtResource("4_wvlbv")]
+layout_mode = 1
+offset_top = 80.0
+offset_bottom = 80.0
+
+[node name="StartGame" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_sovbp")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_6pgd8")
+autoplay = true
+
+[connection signal="pressed" from="ButtonPlay" to="." method="_on_button_play_pressed"]
+[connection signal="pressed" from="ButtonOptions" to="." method="_on_button_options_pressed"]
+[connection signal="back_button_pressed" from="AudioOptions" to="." method="_on_audio_options_back_button_pressed"]
+[connection signal="finished" from="StartGame" to="." method="_on_start_game_finished"]
