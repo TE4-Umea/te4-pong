@@ -14,14 +14,20 @@ func _on_button_options_pressed():
 	$AudioOptions.show()
 	$ButtonPlay.hide()
 	$ButtonOptions.hide()
+	$ButtonCredits.hide()
+
+func _on_button_credits_pressed():
+	get_tree().change_scene_to_file("res://Scenes/Components/credits.tscn")
 
 func _on_audio_options_back_button_pressed():
 	$AudioOptions.hide()
 	$ButtonPlay.show()
 	$ButtonOptions.show()
+	$ButtonCredits.show()
 
 func _on_start_game_finished():
 	get_tree().change_scene_to_file("res://Scenes/Map/Overworld/Overworld.tscn")
 
 func _process(delta):
 	$ParallaxBackground.scroll_offset.x += 20*delta
+
