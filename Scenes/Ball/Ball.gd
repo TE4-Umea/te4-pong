@@ -14,7 +14,6 @@ var spirit = false
 var element_sound = []
 
 func _ready():
-
 	for n in range(global.player_items_index.size()):
 		if(global.player_items_index[n] == 5):
 			lightning += 1
@@ -102,15 +101,20 @@ func element_lightning():
 		position.x = 50000
 
 func element_light():
+	$LightParticles.local_coords = true
+	$LightParticles.emitting = true
 	$AnimatedSprite2D.modulate = Color(2,2,2)
 
 func element_darkness():
 	$AnimatedSprite2D.modulate = Color(.4,.4,.4)
 
 func element_fire():
+	$FireParticles.emitting = true
 	$AnimatedSprite2D.modulate = Color(1,.3,.3)
 
 func element_ice():
+	$IceParticles.local_coords = true
+	$IceParticles.emitting = true
 	$AnimatedSprite2D.modulate = Color(.5,.5,1)
 
 

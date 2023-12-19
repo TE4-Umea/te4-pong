@@ -1,8 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://be80dbp2b6dxv"]
+[gd_scene load_steps=27 format=3 uid="uid://be80dbp2b6dxv"]
 
 [ext_resource type="Script" path="res://Scenes/Ball/Ball.gd" id="1_m8ubh"]
 [ext_resource type="Texture2D" uid="uid://bj3e0vlv1ssks" path="res://Assets/Img/GlowingWispIdle.png" id="2_5uybe"]
 [ext_resource type="Script" path="res://Scenes/Ball/Trail.gd" id="3_gc5sg"]
+[ext_resource type="Texture2D" uid="uid://yx27xo7vj4c2" path="res://Assets/Img/Particles/random_selection.png" id="4_rrmm4"]
+[ext_resource type="Texture2D" uid="uid://bpcd83o0tnj6m" path="res://Assets/Img/Particles/offset_glow.png" id="5_dqwlr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xvba6"]
 atlas = ExtResource("2_5uybe")
@@ -43,32 +45,88 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2anu4"]
 size = Vector2(48, 48)
 
-[sub_resource type="Curve" id="Curve_fu5me"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="CurveTexture" id="CurveTexture_ln143"]
-curve = SubResource("Curve_fu5me")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jfm0r"]
-emission_shape = 1
-emission_sphere_radius = 15.0
-particle_flag_disable_z = true
-gravity = Vector3(0, -98, 0)
-orbit_velocity_min = 0.0
-orbit_velocity_max = 0.0
-scale_min = 5.0
-scale_max = 5.0
-scale_curve = SubResource("CurveTexture_ln143")
-turbulence_enabled = true
-turbulence_noise_scale = 4.0
-
 [sub_resource type="Curve" id="Curve_2rwbv"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_3cyr2"]
 colors = PackedColorArray(0.298039, 0.772549, 0.894118, 1, 1, 1, 1, 0.607843)
+
+[sub_resource type="Curve" id="Curve_3dxjj"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_fi8xw"]
+curve = SubResource("Curve_3dxjj")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_akc6i"]
+emission_shape = 1
+emission_sphere_radius = 20.0
+particle_flag_disable_z = true
+gravity = Vector3(0, -200, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+scale_min = 7.0
+scale_max = 7.0
+scale_curve = SubResource("CurveTexture_fi8xw")
+color = Color(1, 0.694118, 0.239216, 1)
+turbulence_enabled = true
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4qav0"]
+blend_mode = 1
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_4pxg5"]
+offsets = PackedFloat32Array(0, 0.511111, 1)
+colors = PackedColorArray(0, 0, 0, 0.176471, 1, 1, 0.65098, 1, 1, 1, 0.65098, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mrtin"]
+gradient = SubResource("Gradient_4pxg5")
+
+[sub_resource type="Curve" id="Curve_rsxg6"]
+_data = [Vector2(0, 0), 0.0, 2.73501, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_glnue"]
+curve = SubResource("Curve_rsxg6")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rrmyv"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+angle_max = 360.0
+scale_min = 0.3
+scale_max = 0.7
+scale_curve = SubResource("CurveTexture_glnue")
+color_ramp = SubResource("GradientTexture1D_mrtin")
+anim_offset_min = 1.0
+anim_offset_max = 1.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qqj3b"]
+blend_mode = 1
+
+[sub_resource type="Curve" id="Curve_4e16n"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.505263), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_ljq7u"]
+curve = SubResource("Curve_4e16n")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ph3j8"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 10, 0)
+angular_velocity_max = 250.0
+orbit_velocity_min = 0.0
+orbit_velocity_max = 0.0
+angle_max = 360.0
+scale_min = 0.3
+scale_max = 0.7
+scale_curve = SubResource("CurveTexture_ljq7u")
+color = Color(0.298039, 0.772549, 0.894118, 1)
 
 [node name="Ball" type="CharacterBody2D"]
 collision_layer = 2
@@ -81,6 +139,8 @@ rotation = 1.5708
 scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_qtj5b")
 autoplay = "default"
+frame = 2
+frame_progress = 0.701086
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -89,14 +149,6 @@ shape = SubResource("RectangleShape2D_2anu4")
 [node name="LightningTimer" type="Timer" parent="."]
 wait_time = 0.05
 one_shot = true
-
-[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-visible = false
-position = Vector2(-8, 0)
-amount = 25
-process_material = SubResource("ParticleProcessMaterial_jfm0r")
-lifetime = 0.5
-trail_lifetime = 1.5
 
 [node name="Line2D" type="Line2D" parent="."]
 top_level = true
@@ -111,5 +163,28 @@ max_length = 20
 
 [node name="ElementSoundEffect" type="AudioStreamPlayer" parent="."]
 bus = &"Sfx"
+
+[node name="FireParticles" type="GPUParticles2D" parent="."]
+position = Vector2(-9, 3)
+emitting = false
+amount = 30
+process_material = SubResource("ParticleProcessMaterial_akc6i")
+lifetime = 0.5
+
+[node name="LightParticles" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_4qav0")
+position = Vector2(-9, 3)
+emitting = false
+amount = 4
+process_material = SubResource("ParticleProcessMaterial_rrmyv")
+texture = ExtResource("4_rrmm4")
+lifetime = 0.3
+
+[node name="IceParticles" type="GPUParticles2D" parent="."]
+material = SubResource("CanvasItemMaterial_qqj3b")
+emitting = false
+amount = 10
+process_material = SubResource("ParticleProcessMaterial_ph3j8")
+texture = ExtResource("5_dqwlr")
 
 [connection signal="timeout" from="LightningTimer" to="." method="_on_lightning_timer_timeout"]

@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cghvcsb7453s3"]
-
-[ext_resource type="PackedScene" uid="uid://c0a41qpfebny" path="res://Scenes/Map/Old/OverWorld/Map_Init.tscn" id="1_kwav0"]
-
-[node name="Overworld" type="Node"]
-
-[node name="MapInit" parent="." instance=ExtResource("1_kwav0")]
