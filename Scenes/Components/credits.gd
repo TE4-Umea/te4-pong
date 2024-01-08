@@ -70,7 +70,8 @@ var credits = [
 		"Tim Fagerdal"
 	],[
 		"Play Tester",
-		"Lukas Johansson"
+		"Lukas Johansson",
+		""
 	],[
 		"Tools used",
 		"Developed with Godot Engine",
