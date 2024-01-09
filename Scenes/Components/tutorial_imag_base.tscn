@@ -1,0 +1,111 @@
+[gd_scene load_steps=5 format=3 uid="uid://1j2xn2g2frdn"]
+
+[ext_resource type="Script" path="res://Scenes/Components/tutorial_base_script.gd" id="1_h42mw"]
+[ext_resource type="Texture2D" uid="uid://4pypg5s1r4i3" path="res://Assets/Img/cursor_left.png" id="2_5ag2l"]
+[ext_resource type="Texture2D" uid="uid://8a141lap5cvt" path="res://Assets/Img/owerworldmap.jpg" id="3_pyb8h"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8fm4p"]
+bg_color = Color(0.227451, 0.227451, 0.227451, 1)
+
+[node name="TutorialImagBase" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_h42mw")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -377.5
+offset_top = -283.5
+offset_right = 377.5
+offset_bottom = 283.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.713726)
+
+[node name="Titel" type="Label" parent="Background"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -225.0
+offset_top = 8.0
+offset_right = 225.0
+offset_bottom = 80.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "BIG TEXT"
+horizontal_alignment = 1
+
+[node name="Text" type="Label" parent="Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -238.5
+offset_top = 63.5
+offset_right = 239.5
+offset_bottom = 249.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. "
+autowrap_mode = 3
+
+[node name="LeftButton" type="Button" parent="Background"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -128.5
+offset_right = 256.0
+offset_bottom = 959.5
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+theme_override_styles/normal = SubResource("StyleBoxFlat_8fm4p")
+icon = ExtResource("2_5ag2l")
+
+[node name="RightButton" type="Button" parent="Background"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -129.0
+offset_right = 256.0
+offset_bottom = 959.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(-0.25, 0.25)
+theme_override_styles/normal = SubResource("StyleBoxFlat_8fm4p")
+icon = ExtResource("2_5ag2l")
+
+[node name="TextureRect" type="TextureRect" parent="Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.5
+offset_top = -202.5
+offset_right = 1160.5
+offset_bottom = 1016.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_pyb8h")
+
+[connection signal="pressed" from="Background/LeftButton" to="." method="_on_left_button_pressed"]
+[connection signal="pressed" from="Background/RightButton" to="." method="_on_right_button_pressed"]

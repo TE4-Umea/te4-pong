@@ -1,0 +1,111 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjlpqj7g2u7ej"]
+
+[ext_resource type="Script" path="res://Scenes/Components/tutorial_base_script.gd" id="1_4kj27"]
+[ext_resource type="Texture2D" uid="uid://4pypg5s1r4i3" path="res://Assets/Img/cursor_left.png" id="2_o0ydl"]
+[ext_resource type="Texture2D" uid="uid://chyf0qhu63nbr" path="res://Assets/Img/fight.png" id="3_av0l4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wwsxn"]
+bg_color = Color(0.227451, 0.227451, 0.227451, 1)
+
+[node name="TutorialFight" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4kj27")
+
+[node name="Background" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -377.5
+offset_top = -283.5
+offset_right = 377.5
+offset_bottom = 283.5
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.713726)
+
+[node name="Titel" type="Label" parent="Background"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -225.0
+offset_top = 8.0
+offset_right = 225.0
+offset_bottom = 80.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 50
+text = "Combat "
+horizontal_alignment = 1
+
+[node name="Text" type="Label" parent="Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -230.5
+offset_top = 142.5
+offset_right = 247.5
+offset_bottom = 262.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 19
+text = "Enemies shoots magic missiles that needs to be deflected, if the missiles slips past the player you take damage. Defeat the enemy by hitting them with a deflected missile. Use shift to move faster. "
+autowrap_mode = 3
+
+[node name="LeftButton" type="Button" parent="Background"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -128.5
+offset_right = 256.0
+offset_bottom = 959.5
+grow_vertical = 2
+scale = Vector2(0.25, 0.25)
+theme_override_styles/normal = SubResource("StyleBoxFlat_wwsxn")
+icon = ExtResource("2_o0ydl")
+
+[node name="RightButton" type="Button" parent="Background"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -129.0
+offset_right = 256.0
+offset_bottom = 959.0
+grow_horizontal = 0
+grow_vertical = 2
+scale = Vector2(-0.25, 0.25)
+theme_override_styles/normal = SubResource("StyleBoxFlat_wwsxn")
+icon = ExtResource("2_o0ydl")
+
+[node name="TextureRect" type="TextureRect" parent="Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -236.5
+offset_top = -198.5
+offset_right = 2159.5
+offset_bottom = 1418.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_av0l4")
+
+[connection signal="pressed" from="Background/LeftButton" to="." method="_on_left_button_pressed"]
+[connection signal="pressed" from="Background/RightButton" to="." method="_on_right_button_pressed"]
