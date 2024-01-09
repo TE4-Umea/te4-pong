@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://dp7arl8smy6nk"]
+
+[ext_resource type="Script" path="res://Scenes/Components/tutorials.gd" id="1_d6jo0"]
+[ext_resource type="PackedScene" uid="uid://hr7v7udl8gwi" path="res://Scenes/Components/tutorial_over_world.tscn" id="2_cewg1"]
+[ext_resource type="PackedScene" uid="uid://c0lufmpqh7763" path="res://Scenes/Components/tutorial_map.tscn" id="3_5i04q"]
+[ext_resource type="PackedScene" uid="uid://bjlpqj7g2u7ej" path="res://Scenes/Components/tutorial_fight.tscn" id="4_oruws"]
+[ext_resource type="PackedScene" uid="uid://dw0dudsxqh1rl" path="res://Scenes/Components/tutorial_items.tscn" id="5_ok4rq"]
+
+[node name="Tutorials" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_d6jo0")
+
+[node name="Container" type="Container" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 3.0
+offset_top = -37.0
+offset_right = 3.0
+offset_bottom = -37.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TutorialOverWorld" parent="Container" instance=ExtResource("2_cewg1")]
+visible = false
+layout_mode = 2
+
+[node name="TutorialMap" parent="Container" instance=ExtResource("3_5i04q")]
+visible = false
+layout_mode = 2
+
+[node name="TutorialFight" parent="Container" instance=ExtResource("4_oruws")]
+visible = false
+layout_mode = 2
+
+[node name="TutorialItems" parent="Container" instance=ExtResource("5_ok4rq")]
+visible = false
+layout_mode = 2
+
+[connection signal="go_left" from="Container/TutorialOverWorld" to="." method="_on_go_left"]
+[connection signal="go_right" from="Container/TutorialOverWorld" to="." method="_on_go_right"]
+[connection signal="go_left" from="Container/TutorialMap" to="." method="_on_go_left"]
+[connection signal="go_right" from="Container/TutorialMap" to="." method="_on_go_right"]
+[connection signal="go_left" from="Container/TutorialFight" to="." method="_on_go_left"]
+[connection signal="go_right" from="Container/TutorialFight" to="." method="_on_go_right"]
+[connection signal="go_left" from="Container/TutorialItems" to="." method="_on_go_left"]
+[connection signal="go_right" from="Container/TutorialItems" to="." method="_on_go_right"]

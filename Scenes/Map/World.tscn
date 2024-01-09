@@ -1,0 +1,222 @@
+[gd_scene load_steps=13 format=3 uid="uid://d1jdun1b61cjp"]
+
+[ext_resource type="Script" path="res://Scenes/Map/World.gd" id="1_a8amt"]
+[ext_resource type="Texture2D" uid="uid://c5wtgrbwf18iu" path="res://Assets/rsz_1ice_cave_1.png" id="2_nejy7"]
+[ext_resource type="PackedScene" uid="uid://cyrntu3r8663l" path="res://Scenes/Item/UI_Item.tscn" id="2_pjynm"]
+[ext_resource type="PackedScene" uid="uid://b5iy5pcb2xit3" path="res://Scenes/Player/Paddle.tscn" id="3_5a22m"]
+[ext_resource type="Texture2D" uid="uid://crc22omccnsfq" path="res://Assets/Img/LukasLogo(1).png" id="3_33vie"]
+[ext_resource type="PackedScene" uid="uid://be80dbp2b6dxv" path="res://Scenes/Ball/Ball.tscn" id="5_8pphb"]
+[ext_resource type="AudioStream" uid="uid://c7v3xt4stxhrc" path="res://Assets/Sounds/game_over.mp3" id="7_odgb7"]
+[ext_resource type="AudioStream" uid="uid://cxuo8nk82lj4r" path="res://Assets/Sounds/lukas_take_damage.wav" id="8_nylia"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5vdgs"]
+size = Vector2(1184, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_22hlc"]
+size = Vector2(1184, 40)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1kfys"]
+size = Vector2(25, 1109)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0adeh"]
+size = Vector2(16, 748)
+
+[node name="World" type="Node" groups=["world"]]
+script = ExtResource("1_a8amt")
+
+[node name="Norr" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Norr"]
+position = Vector2(576, -24)
+shape = SubResource("RectangleShape2D_5vdgs")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Norr"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Norr/StaticBody2D"]
+position = Vector2(576, -24)
+shape = SubResource("RectangleShape2D_5vdgs")
+
+[node name="Bottom" type="Area2D" parent="."]
+position = Vector2(0, 664)
+collision_layer = 4
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom"]
+position = Vector2(576, 4)
+shape = SubResource("RectangleShape2D_22hlc")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Bottom"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bottom/StaticBody2D"]
+position = Vector2(576, 4)
+shape = SubResource("RectangleShape2D_22hlc")
+
+[node name="Kanye" type="Area2D" parent="."]
+position = Vector2(-60, 0)
+collision_layer = 4
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Kanye"]
+position = Vector2(-46.5, 348.5)
+shape = SubResource("RectangleShape2D_1kfys")
+
+[node name="!Left" type="Area2D" parent="."]
+position = Vector2(1152, 0)
+collision_layer = 4
+collision_mask = 6
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="!Left"]
+position = Vector2(88, 319)
+shape = SubResource("RectangleShape2D_0adeh")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Background" type="TextureRect" parent="Control"]
+modulate = Color(0.9, 0.9, 0.9, 1)
+z_index = -10
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("2_nejy7")
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.05
+anchor_bottom = -0.05
+offset_left = 40.0
+offset_top = 16.0
+offset_right = 80.0
+offset_bottom = 56.0
+texture = ExtResource("3_33vie")
+expand_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label3" type="Label" parent="Control"]
+visible = false
+z_index = 10
+layout_mode = 0
+offset_left = 320.0
+offset_top = 192.0
+offset_right = 832.0
+offset_bottom = 448.0
+theme_override_font_sizes/font_size = 60
+text = "Winner"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayAgain" type="Button" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 448.0
+offset_top = 384.0
+offset_right = 704.0
+offset_bottom = 448.0
+text = "PLAY AGAIN"
+
+[node name="MainMenu" type="Button" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 448.0
+offset_top = 456.0
+offset_right = 704.0
+offset_bottom = 520.0
+text = "MAIN MENU"
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+
+[node name="UI_Item" parent="." instance=ExtResource("2_pjynm")]
+visible = false
+z_index = 100
+offset_left = -6.0
+offset_top = -1.0
+offset_right = -6.0
+offset_bottom = -1.0
+
+[node name="p1" parent="." instance=ExtResource("3_5a22m")]
+position = Vector2(72, 320)
+collision_layer = 5
+collision_mask = 5
+speed = 500.0
+
+[node name="Ball" parent="." instance=ExtResource("5_8pphb")]
+position = Vector2(-277, 262)
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+self_modulate = Color(1, 0, 0, 1)
+offset_left = 82.0
+offset_top = 16.0
+offset_right = 447.0
+offset_bottom = 43.0
+value = 100.0
+show_percentage = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ProgressBar" groups=["health"]]
+layout_mode = 0
+offset_top = 1.0
+offset_right = 367.0
+offset_bottom = 29.0
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+bbcode_enabled = true
+text = "[center]100 hp[/center]"
+scroll_active = false
+
+[node name="ProgressBar2" type="ProgressBar" parent="."]
+modulate = Color(0, 1, 1, 1)
+offset_left = 82.0
+offset_top = 45.0
+offset_right = 447.0
+offset_bottom = 55.0
+value = 100.0
+show_percentage = false
+
+[node name="stamina_timer" type="Timer" parent="ProgressBar2"]
+wait_time = 0.01
+autostart = true
+
+[node name="Spawner" type="Marker2D" parent="."]
+position = Vector2(1024, 336)
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
+
+[node name="GameOver" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_odgb7")
+bus = &"Sfx"
+
+[node name="PlayerTakeDmage" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_nylia")
+bus = &"Sfx"
+
+[node name="enemy_health_bar" type="ProgressBar" parent="." groups=["enemy_health_bar"]]
+self_modulate = Color(1, 0, 0, 1)
+offset_left = 752.0
+offset_top = 16.0
+offset_right = 1117.0
+offset_bottom = 43.0
+value = 100.0
+show_percentage = false
+
+[node name="enemy_health" type="RichTextLabel" parent="enemy_health_bar" groups=["enemy_health"]]
+layout_mode = 0
+offset_right = 365.0
+offset_bottom = 28.0
+bbcode_enabled = true
+text = "[center]100 hp[/center]"
+
+[connection signal="body_entered" from="Norr" to="." method="_on_norr_body_entered"]
+[connection signal="body_entered" from="Bottom" to="." method="_on_bottom_body_entered"]
+[connection signal="body_entered" from="Kanye" to="." method="_on_kanye_body_entered"]
+[connection signal="body_entered" from="!Left" to="." method="_on_left_body_entered"]
+[connection signal="pressed" from="Control/PlayAgain" to="." method="_on_play_again_pressed"]
+[connection signal="pressed" from="Control/MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="yes_button_pressed" from="UI_Item" to="." method="_on_ui_item_yes_button_pressed"]
+[connection signal="timeout" from="ProgressBar2/stamina_timer" to="." method="_on_stamina_timer_timeout"]

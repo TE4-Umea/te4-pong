@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://c3v18p47u2k67"]
+
+[ext_resource type="Script" path="res://Scenes/Map/Overworld/Overworld.gd" id="1_3r2fc"]
+[ext_resource type="PackedScene" uid="uid://brapjlmy1ervw" path="res://Scenes/Map/Overworld/MapNode.tscn" id="1_ygq0s"]
+[ext_resource type="PackedScene" uid="uid://fworrtukuh2s" path="res://Scenes/Enemeys/shielded_enemy.tscn" id="2_0n318"]
+[ext_resource type="PackedScene" uid="uid://c01b1hf0pv15n" path="res://Scenes/Enemeys/fat_enemy.tscn" id="3_fw3iw"]
+[ext_resource type="PackedScene" uid="uid://bcql4dsu7c1lt" path="res://Scenes/Enemeys/hel.tscn" id="4_hxaoi"]
+[ext_resource type="PackedScene" uid="uid://35kb3ptp4syg" path="res://Scenes/Enemeys/fast_enemy.tscn" id="4_lry0b"]
+[ext_resource type="PackedScene" uid="uid://ti5dnrlnocox" path="res://Scenes/Enemeys/Enemy.tscn" id="6_tcbgb"]
+[ext_resource type="AudioStream" uid="uid://dcshyn45fa17c" path="res://Assets/Music/2021-05-28_-_Viking_Feast_-_David_Fesliyan.mp3" id="8_lkq5n"]
+
+[node name="Overworld" type="Node"]
+script = ExtResource("1_3r2fc")
+
+[node name="Hel" parent="." node_paths=PackedStringArray("connected") instance=ExtResource("1_ygq0s")]
+position = Vector2(576, 512)
+active = true
+connected = [NodePath("../Jotunheimr"), NodePath("../Nioavellir")]
+enemies = Array[PackedScene]([ExtResource("2_0n318"), ExtResource("3_fw3iw"), ExtResource("4_lry0b")])
+boss = ExtResource("4_hxaoi")
+
+[node name="Jotunheimr" parent="." node_paths=PackedStringArray("connected") instance=ExtResource("1_ygq0s")]
+position = Vector2(400, 449)
+connected = [NodePath("../Muspelheim"), NodePath("../Midgard")]
+id = 1
+enemies = Array[PackedScene]([ExtResource("6_tcbgb")])
+
+[node name="Nioavellir" parent="." node_paths=PackedStringArray("connected") instance=ExtResource("1_ygq0s")]
+position = Vector2(768, 448)
+connected = [NodePath("../Midgard"), NodePath("../Niflheim")]
+id = 2
+enemies = Array[PackedScene]([ExtResource("6_tcbgb")])
+
+[node name="Muspelheim" parent="." node_paths=PackedStringArray("connected") instance=ExtResource("1_ygq0s")]
+position = Vector2(384, 353)
+connected = [NodePath("../Alfheim")]
+id = 3
+
+[node name="Midgard" parent="." node_paths=PackedStringArray("connected") instance=ExtResource("1_ygq0s")]
+position = Vector2(576, 336)
+connected = [NodePath("../Alfheim"), NodePath("../Vanaheim")]
+id = 4
+
+[node name="Niflheim" parent="." node_paths=PackedStringArray("connected") instance=ExtResource("1_ygq0s")]
+position = Vector2(784, 352)
+connected = [NodePath("../Vanaheim")]
+id = 5
+
+[node name="Alfheim" parent="." node_paths=PackedStringArray("connected") instance=ExtResource("1_ygq0s")]
+position = Vector2(432, 240)
+connected = [NodePath("../Asgard")]
+id = 6
+
+[node name="Vanaheim" parent="." node_paths=PackedStringArray("connected") instance=ExtResource("1_ygq0s")]
+position = Vector2(720, 241)
+connected = [NodePath("../Asgard")]
+id = 7
+
+[node name="Asgard" parent="." instance=ExtResource("1_ygq0s")]
+position = Vector2(576, 144)
+id = 8
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_lkq5n")
+bus = &"Music"

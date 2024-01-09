@@ -1,0 +1,98 @@
+[gd_scene load_steps=3 format=3 uid="uid://ds7bd0kniftwo"]
+
+[ext_resource type="Script" path="res://Scenes/Audio/audio_options.gd" id="1_osbbv"]
+[ext_resource type="PackedScene" uid="uid://dv061iur4cvl6" path="res://Scenes/Audio/volume_slider.tscn" id="1_ss7hp"]
+
+[node name="AudioOptions" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_osbbv")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -157.0
+offset_top = -223.5
+offset_right = 157.0
+offset_bottom = 5.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/separation = 5
+
+[node name="MasterLabal" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Master Volume"
+horizontal_alignment = 1
+
+[node name="Master" parent="PanelContainer/VBoxContainer" instance=ExtResource("1_ss7hp")]
+layout_mode = 2
+bus_name = "Master"
+
+[node name="MusicLabal" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Music Volume"
+horizontal_alignment = 1
+
+[node name="Music" parent="PanelContainer/VBoxContainer" instance=ExtResource("1_ss7hp")]
+layout_mode = 2
+bus_name = "Music"
+
+[node name="SfxLabal" type="Label" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
+text = "Sfx Volume"
+horizontal_alignment = 1
+
+[node name="Sfx" parent="PanelContainer/VBoxContainer" instance=ExtResource("1_ss7hp")]
+layout_mode = 2
+bus_name = "Sfx"
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -267.0
+offset_top = 61.0
+offset_right = -11.0
+offset_bottom = 138.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "BACK"
+
+[node name="SaveButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 25.0
+offset_top = 61.0
+offset_right = 281.0
+offset_bottom = 138.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "Save"
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="SaveButton" to="." method="_on_save_button_pressed"]
