@@ -33,12 +33,10 @@ func _draw():
 		add_child(path)
 		paths.append(path)
 		if node.chosen and active or chosen:
-			#draw_line(position-position, node.position-position, Color.GREEN, 2)
 			path.default_color = Color.GREEN
 			path.add_point(position-position)
 			path.add_point(node.position-position)
 		else:
-			#draw_line(position-position, node.position-position, Color.WEB_GRAY, 1)
 			path.default_color = Color.GRAY
 			path.add_point(position-position)
 			path.add_point(node.position-position)
